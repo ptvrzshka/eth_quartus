@@ -1,0 +1,2131 @@
+
+eth_3.elf:     file format elf32-littlenios2
+eth_3.elf
+architecture: nios2:r1, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x00002188
+
+Program Header:
+    LOAD off    0x00001000 vaddr 0x00002000 paddr 0x00002000 align 2**12
+         filesz 0x00000020 memsz 0x00000020 flags r-x
+    LOAD off    0x00001020 vaddr 0x00002020 paddr 0x00002020 align 2**12
+         filesz 0x000013e0 memsz 0x000013e0 flags r-x
+    LOAD off    0x00002400 vaddr 0x00003400 paddr 0x00003490 align 2**12
+         filesz 0x00000090 memsz 0x00000090 flags rw-
+    LOAD off    0x00002520 vaddr 0x00003520 paddr 0x00003520 align 2**12
+         filesz 0x00000000 memsz 0x000001c4 flags rw-
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .entry        00000020  00002000  00002000  00001000  2**5
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .exceptions   00000168  00002020  00002020  00001020  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .text         0000123c  00002188  00002188  00001188  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  3 .rodata       0000003c  000033c4  000033c4  000023c4  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 .rwdata       00000090  00003400  00003490  00002400  2**2
+                  CONTENTS, ALLOC, LOAD, DATA, SMALL_DATA
+  5 .bss          000001c4  00003520  00003520  00002520  2**2
+                  ALLOC, SMALL_DATA
+  6 .system_ram   00000000  000036e4  000036e4  00002490  2**0
+                  CONTENTS
+  7 .header_ram   00000000  00005400  00005400  00002490  2**0
+                  CONTENTS
+  8 .comment      00000023  00000000  00000000  00002490  2**0
+                  CONTENTS, READONLY
+  9 .debug_aranges 00000368  00000000  00000000  000024b8  2**3
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_info   00003adf  00000000  00000000  00002820  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_abbrev 0000156f  00000000  00000000  000062ff  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_line   000016ee  00000000  00000000  0000786e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_frame  00000650  00000000  00000000  00008f5c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 14 .debug_str    00001579  00000000  00000000  000095ac  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 15 .debug_loc    00001780  00000000  00000000  0000ab25  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 16 .debug_alt_sim_info 00000030  00000000  00000000  0000c2a8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 17 .debug_ranges 00000170  00000000  00000000  0000c2d8  2**3
+                  CONTENTS, READONLY, DEBUGGING
+ 18 .thread_model 00000003  00000000  00000000  0000dd52  2**0
+                  CONTENTS, READONLY
+ 19 .cpu          0000000c  00000000  00000000  0000dd55  2**0
+                  CONTENTS, READONLY
+ 20 .qsys         00000001  00000000  00000000  0000dd61  2**0
+                  CONTENTS, READONLY
+ 21 .simulation_enabled 00000001  00000000  00000000  0000dd62  2**0
+                  CONTENTS, READONLY
+ 22 .stderr_dev   0000000b  00000000  00000000  0000dd63  2**0
+                  CONTENTS, READONLY
+ 23 .stdin_dev    0000000b  00000000  00000000  0000dd6e  2**0
+                  CONTENTS, READONLY
+ 24 .stdout_dev   0000000b  00000000  00000000  0000dd79  2**0
+                  CONTENTS, READONLY
+ 25 .sopc_system_name 0000000b  00000000  00000000  0000dd84  2**0
+                  CONTENTS, READONLY
+ 26 .quartus_project_dir 00000031  00000000  00000000  0000dd8f  2**0
+                  CONTENTS, READONLY
+ 27 .jdi          00005554  00000000  00000000  0000ddc0  2**0
+                  CONTENTS, READONLY
+ 28 .sopcinfo     0007536c  00000000  00000000  00013314  2**0
+                  CONTENTS, READONLY
+SYMBOL TABLE:
+00002000 l    d  .entry	00000000 .entry
+00002020 l    d  .exceptions	00000000 .exceptions
+00002188 l    d  .text	00000000 .text
+000033c4 l    d  .rodata	00000000 .rodata
+00003400 l    d  .rwdata	00000000 .rwdata
+00003520 l    d  .bss	00000000 .bss
+000036e4 l    d  .system_ram	00000000 .system_ram
+00005400 l    d  .header_ram	00000000 .header_ram
+00000000 l    d  .comment	00000000 .comment
+00000000 l    d  .debug_aranges	00000000 .debug_aranges
+00000000 l    d  .debug_info	00000000 .debug_info
+00000000 l    d  .debug_abbrev	00000000 .debug_abbrev
+00000000 l    d  .debug_line	00000000 .debug_line
+00000000 l    d  .debug_frame	00000000 .debug_frame
+00000000 l    d  .debug_str	00000000 .debug_str
+00000000 l    d  .debug_loc	00000000 .debug_loc
+00000000 l    d  .debug_alt_sim_info	00000000 .debug_alt_sim_info
+00000000 l    d  .debug_ranges	00000000 .debug_ranges
+00000000 l    df *ABS*	00000000 ../eth_3_bsp//obj/HAL/src/crt0.o
+000021d0 l       .text	00000000 alt_after_alt_main
+00000000 l    df *ABS*	00000000 alt_irq_handler.c
+00000000 l    df *ABS*	00000000 alt_instruction_exception_entry.c
+00000000 l    df *ABS*	00000000 hello_world_small.c
+00000000 l    df *ABS*	00000000 memcmp.c
+00000000 l    df *ABS*	00000000 memcpy.c
+00000000 l    df *ABS*	00000000 memset.c
+00000000 l    df *ABS*	00000000 alt_dcache_flush_all.c
+00000000 l    df *ABS*	00000000 alt_iic.c
+00000000 l    df *ABS*	00000000 alt_iic_isr_register.c
+00000000 l    df *ABS*	00000000 alt_irq_vars.c
+00000000 l    df *ABS*	00000000 alt_load.c
+00000000 l    df *ABS*	00000000 alt_main.c
+00000000 l    df *ABS*	00000000 alt_sys_init.c
+00003430 l     O .rwdata	00000030 rx_dma
+00003400 l     O .rwdata	00000030 tx_dma
+00000000 l    df *ABS*	00000000 altera_avalon_sgdma.c
+00002c1c l     F .text	0000005c alt_avalon_sgdma_irq
+00000000 l    df *ABS*	00000000 alt_dcache_flush.c
+00000000 l    df *ABS*	00000000 alt_dev_llist_insert.c
+00000000 l    df *ABS*	00000000 alt_errno.c
+00000000 l    df *ABS*	00000000 alt_find_dev.c
+00000000 l    df *ABS*	00000000 alt_icache_flush_all.c
+00000000 l    df *ABS*	00000000 altera_nios2_gen2_irq.c
+00000000 l    df *ABS*	00000000 alt_icache_flush.c
+00000000 l    df *ABS*	00000000 int_errno.c
+00000000 l    df *ABS*	00000000 strlen.c
+0000353c g     O .bss	00000004 alt_instruction_exception_handler
+00002b98 g     F .text	0000002c alt_main
+000035e4 g     O .bss	00000100 alt_irq
+00003490 g       *ABS*	00000000 __flash_rwdata_start
+00002cf4 g     F .text	00000080 alt_avalon_sgdma_do_sync_transfer
+00005400 g       *ABS*	00000000 __alt_mem_header_ram
+0000346c g     O .rwdata	00000004 ip
+00002e80 g     F .text	00000114 alt_avalon_sgdma_construct_descriptor_burst
+00003368 g     F .text	00000008 altera_nios2_gen2_irq_init
+00002000 g     F .entry	0000001c __reset
+00003014 g     F .text	00000048 alt_avalon_sgdma_construct_stream_to_mem_desc_burst
+00002020 g       *ABS*	00000000 __flash_exceptions_start
+00003540 g     O .bss	00000004 errno
+000025d8 g     F .text	00000094 create_ip
+00003534 g     O .bss	00000004 alt_argv
+0000b460 g       *ABS*	00000000 _gp
+00002444 g     F .text	00000098 open_sgdma
+00002750 g     F .text	00000188 sgdma_rx_irq_handler
+00003274 g     F .text	00000074 alt_find_dev
+00002964 g     F .text	00000028 memcpy
+00003520 g     O .bss	00000001 fl_proto
+000032f4 g     F .text	00000074 alt_exception_cause_generated_bad_addr
+00003084 g     F .text	00000050 alt_avalon_sgdma_construct_mem_to_stream_desc_burst
+00003464 g     O .rwdata	00000004 udp
+00003460 g     O .rwdata	00000004 tse
+00003370 g     F .text	00000038 alt_icache_flush
+00003474 g     O .rwdata	00000004 eth
+00003544 g     O .bss	00000020 tx_descriptor_header
+00002d9c g     F .text	0000001c alt_avalon_sgdma_stop
+00003470 g     O .rwdata	00000004 arp
+000031e0 g     F .text	00000028 alt_dcache_flush
+000036e4 g       *ABS*	00000000 __bss_end
+00002a50 g     F .text	00000068 alt_iic_isr_register
+00002c78 g     F .text	0000007c alt_avalon_sgdma_do_async_transfer
+00003564 g     O .bss	00000020 rx_descriptor_end
+00002a38 g     F .text	00000018 alt_ic_irq_enabled
+0000352c g     O .bss	00000004 alt_irq_active
+000020fc g     F .exceptions	00000060 alt_irq_handler
+00002db8 g     F .text	0000002c alt_avalon_sgdma_check_descriptor_status
+00002000 g       *ABS*	00000000 __alt_mem_system_ram
+000029ac g     F .text	00000018 alt_dcache_flush_all
+00003584 g     O .bss	00000020 rx_descriptor
+00003490 g       *ABS*	00000000 __ram_rwdata_end
+000023e4 g     F .text	00000060 timer_init
+00002e30 g     F .text	00000030 alt_avalon_sgdma_enable_desc_poll
+00003400 g       *ABS*	00000000 __ram_rodata_end
+00003480 g     O .rwdata	00000004 jtag_uart_0
+000030d4 g     F .text	00000040 alt_avalon_sgdma_construct_mem_to_stream_desc
+00002d74 g     F .text	00000010 alt_avalon_sgdma_register_callback
+000036e4 g       *ABS*	00000000 end
+0000215c g     F .exceptions	0000002c alt_instruction_exception_entry
+00003ffc g       *ABS*	00000000 __alt_stack_pointer
+00002e60 g     F .text	00000020 alt_avalon_sgdma_disable_desc_poll
+00002fdc g     F .text	00000038 alt_avalon_sgdma_construct_mem_to_mem_desc
+0000305c g     F .text	00000028 alt_avalon_sgdma_construct_stream_to_mem_desc
+000022dc g     F .text	00000108 tse_init
+00002188 g     F .text	0000004c _start
+00003524 g     O .bss	00000004 sgdma_tx_dev
+00002de4 g     F .text	0000004c alt_avalon_sgdma_open
+00002be4 g     F .text	00000038 alt_sys_init
+0000266c g     F .text	0000003c create_udp
+00003400 g       *ABS*	00000000 __ram_rwdata_start
+000033c4 g       *ABS*	00000000 __ram_rodata_start
+00002934 g     F .text	00000030 memcmp
+000036e4 g       *ABS*	00000000 __alt_stack_base
+00003208 g     F .text	0000006c alt_dev_llist_insert
+00002d84 g     F .text	00000018 alt_avalon_sgdma_start
+00003520 g       *ABS*	00000000 __bss_start
+0000270c g     F .text	00000044 create_icmp
+0000298c g     F .text	00000020 memset
+000028d8 g     F .text	0000005c main
+00003530 g     O .bss	00000004 alt_envp
+00003484 g     O .rwdata	00000008 alt_sgdma_list
+0000348c g     O .rwdata	00000004 alt_errno
+000033c4 g       *ABS*	00000000 __flash_rodata_start
+00002bc4 g     F .text	00000020 alt_irq_init
+00003538 g     O .bss	00000004 alt_argc
+0000251c g     F .text	000000bc create_arp
+000026a8 g     F .text	00000064 calculate_checksum
+00002020 g       .exceptions	00000000 alt_irq_entry
+00002020 g       *ABS*	00000000 __ram_exceptions_start
+000029c4 g     F .text	00000004 alt_ic_isr_register
+00003490 g       *ABS*	00000000 _edata
+000036e4 g       *ABS*	00000000 _end
+00002188 g       *ABS*	00000000 __ram_exceptions_end
+00002a00 g     F .text	00000038 alt_ic_irq_disable
+00003478 g     O .rwdata	00000001 RTP_PAYLOAD_TYPE
+000035a4 g     O .bss	00000020 tx_descriptor_end
+00003114 g     F .text	00000048 alt_avalon_sgdma_construct_descriptor
+000021d4 g     F .text	00000108 timer_irq_handler
+00003468 g     O .rwdata	00000004 icmp
+000024dc g     F .text	00000040 create_eth
+00003ffc g       *ABS*	00000000 __alt_data_end
+00002020 g     F .exceptions	00000000 alt_exception
+000035c4 g     O .bss	00000020 tx_descriptor_data
+00003528 g     O .bss	00000004 sgdma_rx_dev
+0000201c g       .entry	00000000 _exit
+000033a8 g     F .text	0000001c strlen
+000032e8 g     F .text	0000000c alt_icache_flush_all
+0000347c g     O .rwdata	00000004 alt_priority_mask
+000029c8 g     F .text	00000038 alt_ic_irq_enable
+00002f94 g     F .text	00000048 alt_avalon_sgdma_construct_mem_to_mem_desc_burst
+00002ab8 g     F .text	000000e0 alt_load
+0000315c g     F .text	00000084 alt_avalon_sgdma_init
+
+
+
+Disassembly of section .entry:
+
+00002000 <__reset>:
+    2000:	00840014 	movui	r2,4096
+    2004:	1001483a 	initi	r2
+    2008:	10bff804 	addi	r2,r2,-32
+    200c:	00bffd16 	blt	zero,r2,2004 <_gp+0xffff6ba4>
+    2010:	00400034 	movhi	at,0
+    2014:	08486214 	ori	at,at,8584
+    2018:	0800683a 	jmp	at
+
+0000201c <_exit>:
+    201c:	00000000 	call	0 <__alt_mem_system_ram-0x2000>
+
+Disassembly of section .exceptions:
+
+00002020 <alt_exception>:
+    2020:	deffed04 	addi	sp,sp,-76
+    2024:	dfc00015 	stw	ra,0(sp)
+    2028:	d8400215 	stw	at,8(sp)
+    202c:	d8800315 	stw	r2,12(sp)
+    2030:	d8c00415 	stw	r3,16(sp)
+    2034:	d9000515 	stw	r4,20(sp)
+    2038:	d9400615 	stw	r5,24(sp)
+    203c:	d9800715 	stw	r6,28(sp)
+    2040:	d9c00815 	stw	r7,32(sp)
+    2044:	000b307a 	rdctl	r5,estatus
+    2048:	da000915 	stw	r8,36(sp)
+    204c:	da400a15 	stw	r9,40(sp)
+    2050:	da800b15 	stw	r10,44(sp)
+    2054:	dac00c15 	stw	r11,48(sp)
+    2058:	db000d15 	stw	r12,52(sp)
+    205c:	db400e15 	stw	r13,56(sp)
+    2060:	db800f15 	stw	r14,60(sp)
+    2064:	dbc01015 	stw	r15,64(sp)
+    2068:	d9401115 	stw	r5,68(sp)
+    206c:	ebffff04 	addi	r15,ea,-4
+    2070:	dbc01215 	stw	r15,72(sp)
+    2074:	0009313a 	rdctl	r4,ipending
+    2078:	2880004c 	andi	r2,r5,1
+    207c:	10000326 	beq	r2,zero,208c <alt_exception+0x6c>
+    2080:	20000226 	beq	r4,zero,208c <alt_exception+0x6c>
+    2084:	00020fc0 	call	20fc <alt_irq_handler>
+    2088:	00000706 	br	20a8 <alt_exception+0x88>
+    208c:	df401215 	stw	ea,72(sp)
+    2090:	e8bfff17 	ldw	r2,-4(ea)
+    2094:	e93fff04 	addi	r4,ea,-4
+    2098:	000215c0 	call	215c <alt_instruction_exception_entry>
+    209c:	1000021e 	bne	r2,zero,20a8 <alt_exception+0x88>
+    20a0:	ebffff04 	addi	r15,ea,-4
+    20a4:	dbc01215 	stw	r15,72(sp)
+    20a8:	d9401117 	ldw	r5,68(sp)
+    20ac:	df401217 	ldw	ea,72(sp)
+    20b0:	dfc00017 	ldw	ra,0(sp)
+    20b4:	2801707a 	wrctl	estatus,r5
+    20b8:	d8400217 	ldw	at,8(sp)
+    20bc:	d8800317 	ldw	r2,12(sp)
+    20c0:	d8c00417 	ldw	r3,16(sp)
+    20c4:	d9000517 	ldw	r4,20(sp)
+    20c8:	d9400617 	ldw	r5,24(sp)
+    20cc:	d9800717 	ldw	r6,28(sp)
+    20d0:	d9c00817 	ldw	r7,32(sp)
+    20d4:	da000917 	ldw	r8,36(sp)
+    20d8:	da400a17 	ldw	r9,40(sp)
+    20dc:	da800b17 	ldw	r10,44(sp)
+    20e0:	dac00c17 	ldw	r11,48(sp)
+    20e4:	db000d17 	ldw	r12,52(sp)
+    20e8:	db400e17 	ldw	r13,56(sp)
+    20ec:	db800f17 	ldw	r14,60(sp)
+    20f0:	dbc01017 	ldw	r15,64(sp)
+    20f4:	dec01304 	addi	sp,sp,76
+    20f8:	ef80083a 	eret
+
+000020fc <alt_irq_handler>:
+    20fc:	defffe04 	addi	sp,sp,-8
+    2100:	dfc00115 	stw	ra,4(sp)
+    2104:	dc000015 	stw	r16,0(sp)
+    2108:	0009313a 	rdctl	r4,ipending
+    210c:	04000034 	movhi	r16,0
+    2110:	840d7904 	addi	r16,r16,13796
+    2114:	0005883a 	mov	r2,zero
+    2118:	00c00044 	movi	r3,1
+    211c:	20ca703a 	and	r5,r4,r3
+    2120:	28000b26 	beq	r5,zero,2150 <alt_irq_handler+0x54>
+    2124:	100490fa 	slli	r2,r2,3
+    2128:	8085883a 	add	r2,r16,r2
+    212c:	10c00017 	ldw	r3,0(r2)
+    2130:	11000117 	ldw	r4,4(r2)
+    2134:	183ee83a 	callr	r3
+    2138:	0009313a 	rdctl	r4,ipending
+    213c:	203ff51e 	bne	r4,zero,2114 <_gp+0xffff6cb4>
+    2140:	dfc00117 	ldw	ra,4(sp)
+    2144:	dc000017 	ldw	r16,0(sp)
+    2148:	dec00204 	addi	sp,sp,8
+    214c:	f800283a 	ret
+    2150:	18c7883a 	add	r3,r3,r3
+    2154:	10800044 	addi	r2,r2,1
+    2158:	003ff006 	br	211c <_gp+0xffff6cbc>
+
+0000215c <alt_instruction_exception_entry>:
+    215c:	000531fa 	rdctl	r2,exception
+    2160:	000d333a 	rdctl	r6,badaddr
+    2164:	d0e03717 	ldw	r3,-32548(gp)
+    2168:	18000426 	beq	r3,zero,217c <alt_instruction_exception_entry+0x20>
+    216c:	10801f0c 	andi	r2,r2,124
+    2170:	200b883a 	mov	r5,r4
+    2174:	1008d0ba 	srli	r4,r2,2
+    2178:	1800683a 	jmp	r3
+    217c:	003da03a 	break	0
+    2180:	0005883a 	mov	r2,zero
+    2184:	f800283a 	ret
+
+Disassembly of section .text:
+
+00002188 <_start>:
+    2188:	00820014 	movui	r2,2048
+    218c:	10000033 	initd	0(r2)
+    2190:	10bff804 	addi	r2,r2,-32
+    2194:	00bffd16 	blt	zero,r2,218c <_gp+0xffff6d2c>
+    2198:	06c00034 	movhi	sp,0
+    219c:	decfff14 	ori	sp,sp,16380
+    21a0:	06800034 	movhi	gp,0
+    21a4:	d6ad1814 	ori	gp,gp,46176
+    21a8:	00800034 	movhi	r2,0
+    21ac:	108d4814 	ori	r2,r2,13600
+    21b0:	00c00034 	movhi	r3,0
+    21b4:	18cdb914 	ori	r3,r3,14052
+    21b8:	10c00326 	beq	r2,r3,21c8 <_start+0x40>
+    21bc:	10000015 	stw	zero,0(r2)
+    21c0:	10800104 	addi	r2,r2,4
+    21c4:	10fffd36 	bltu	r2,r3,21bc <_gp+0xffff6d5c>
+    21c8:	0002ab80 	call	2ab8 <alt_load>
+    21cc:	0002b980 	call	2b98 <alt_main>
+
+000021d0 <alt_after_alt_main>:
+    21d0:	003fff06 	br	21d0 <_gp+0xffff6d70>
+
+000021d4 <timer_irq_handler>:
+													ALTERA_AVALON_TIMER_CONTROL_START_MSK);
+}
+
+// Handler of timer interrupt
+void timer_irq_handler(void *context)
+{
+    21d4:	defff904 	addi	sp,sp,-28
+    21d8:	dfc00615 	stw	ra,24(sp)
+    21dc:	dc400515 	stw	r17,20(sp)
+    21e0:	dc000415 	stw	r16,16(sp)
+    // Clear flag of interrupt
+    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+    21e4:	00956004 	movi	r2,21888
+    21e8:	10000035 	stwio	zero,0(r2)
+
+    if (fl_proto == 1)
+    21ec:	d4603003 	ldbu	r17,-32576(gp)
+    21f0:	04000044 	movi	r16,1
+    21f4:	8c00201e 	bne	r17,r16,2278 <timer_irq_handler+0xa4>
+    {
+    	alt_dcache_flush_all();
+    21f8:	00029ac0 	call	29ac <alt_dcache_flush_all>
+		alt_avalon_sgdma_construct_mem_to_stream_desc(&tx_descriptor_header, &tx_descriptor_data, (alt_u32 *)HEADER_RAM_BASE, 54, 0, 1, 0, 0);
+    21fc:	01400034 	movhi	r5,0
+    2200:	01000034 	movhi	r4,0
+    2204:	01c00d84 	movi	r7,54
+    2208:	01950004 	movi	r6,21504
+    220c:	294d7104 	addi	r5,r5,13764
+    2210:	210d5104 	addi	r4,r4,13636
+    2214:	d8000315 	stw	zero,12(sp)
+    2218:	d8000215 	stw	zero,8(sp)
+    221c:	dc400115 	stw	r17,4(sp)
+    2220:	d8000015 	stw	zero,0(sp)
+    2224:	00030d40 	call	30d4 <alt_avalon_sgdma_construct_mem_to_stream_desc>
+		alt_avalon_sgdma_construct_mem_to_stream_desc(&tx_descriptor_data, &tx_descriptor_end, RX_DMA_M_WRITE_RX_TX_BUF_BASE, 1280, 0, 0, 1, 0);
+    2228:	01400034 	movhi	r5,0
+    222c:	01000034 	movhi	r4,0
+    2230:	294d6904 	addi	r5,r5,13732
+    2234:	210d7104 	addi	r4,r4,13764
+    2238:	d8000315 	stw	zero,12(sp)
+    223c:	dc400215 	stw	r17,8(sp)
+    2240:	d8000115 	stw	zero,4(sp)
+    2244:	d8000015 	stw	zero,0(sp)
+    2248:	01c14004 	movi	r7,1280
+    224c:	000d883a 	mov	r6,zero
+    2250:	00030d40 	call	30d4 <alt_avalon_sgdma_construct_mem_to_stream_desc>
+
+		alt_avalon_sgdma_do_async_transfer(sgdma_tx_dev, &tx_descriptor_header);
+    2254:	d1203117 	ldw	r4,-32572(gp)
+    2258:	01400034 	movhi	r5,0
+    225c:	294d5104 	addi	r5,r5,13636
+    2260:	0002c780 	call	2c78 <alt_avalon_sgdma_do_async_transfer>
+		while (alt_avalon_sgdma_check_descriptor_status(&tx_descriptor_data) != 0);
+    2264:	01000034 	movhi	r4,0
+    2268:	210d7104 	addi	r4,r4,13764
+    226c:	0002db80 	call	2db8 <alt_avalon_sgdma_check_descriptor_status>
+    2270:	103ffc1e 	bne	r2,zero,2264 <_gp+0xffff6e04>
+    2274:	00001406 	br	22c8 <timer_irq_handler+0xf4>
+    }
+    else
+    {
+    	alt_dcache_flush_all();
+    2278:	00029ac0 	call	29ac <alt_dcache_flush_all>
+		alt_avalon_sgdma_construct_mem_to_stream_desc(&tx_descriptor_header, &tx_descriptor_data, (alt_u32 *)HEADER_RAM_BASE, 42, 0, 1, 1, 0);
+    227c:	01400034 	movhi	r5,0
+    2280:	01000034 	movhi	r4,0
+    2284:	294d7104 	addi	r5,r5,13764
+    2288:	210d5104 	addi	r4,r4,13636
+    228c:	d8000315 	stw	zero,12(sp)
+    2290:	dc000215 	stw	r16,8(sp)
+    2294:	dc000115 	stw	r16,4(sp)
+    2298:	d8000015 	stw	zero,0(sp)
+    229c:	01c00a84 	movi	r7,42
+    22a0:	01950004 	movi	r6,21504
+    22a4:	00030d40 	call	30d4 <alt_avalon_sgdma_construct_mem_to_stream_desc>
+		alt_avalon_sgdma_do_async_transfer(sgdma_tx_dev, &tx_descriptor_header);
+    22a8:	d1203117 	ldw	r4,-32572(gp)
+    22ac:	01400034 	movhi	r5,0
+    22b0:	294d5104 	addi	r5,r5,13636
+    22b4:	0002c780 	call	2c78 <alt_avalon_sgdma_do_async_transfer>
+		while (alt_avalon_sgdma_check_descriptor_status(&tx_descriptor_header) != 0);
+    22b8:	01000034 	movhi	r4,0
+    22bc:	210d5104 	addi	r4,r4,13636
+    22c0:	0002db80 	call	2db8 <alt_avalon_sgdma_check_descriptor_status>
+    22c4:	103ffc1e 	bne	r2,zero,22b8 <_gp+0xffff6e58>
+    }
+}
+    22c8:	dfc00617 	ldw	ra,24(sp)
+    22cc:	dc400517 	ldw	r17,20(sp)
+    22d0:	dc000417 	ldw	r16,16(sp)
+    22d4:	dec00704 	addi	sp,sp,28
+    22d8:	f800283a 	ret
+
+000022dc <tse_init>:
+
+// Initialization of Triple-Speed Ethernet
+void tse_init(void)
+{
+	// Specify the addresses of the PHY devices to be accessed through MDIO interface
+	*(tse + 0x0F) = 0x00;
+    22dc:	d0e00017 	ldw	r3,-32768(gp)
+
+	// Disable read and write transfers and wait
+	IOWR(tse, 0x02, 0x00800220);
+    22e0:	00802034 	movhi	r2,128
+    22e4:	10808804 	addi	r2,r2,544
+
+// Initialization of Triple-Speed Ethernet
+void tse_init(void)
+{
+	// Specify the addresses of the PHY devices to be accessed through MDIO interface
+	*(tse + 0x0F) = 0x00;
+    22e8:	18000f15 	stw	zero,60(r3)
+
+	// Disable read and write transfers and wait
+	IOWR(tse, 0x02, 0x00800220);
+    22ec:	18800235 	stwio	r2,8(r3)
+	while ( IORD(tse, 0x02) !=  0x00800220 );
+    22f0:	d0e00017 	ldw	r3,-32768(gp)
+    22f4:	19000237 	ldwio	r4,8(r3)
+    22f8:	20bffd1e 	bne	r4,r2,22f0 <_gp+0xffff6e90>
+
+	// MAC FIFO Configuration
+	IOWR(tse, 0x09, TSE_RECEIVE_FIFO_DEPTH-16);
+    22fc:	01001c04 	movi	r4,112
+    2300:	19000935 	stwio	r4,36(r3)
+	IOWR(tse, 0x0E, 3);
+    2304:	d0e00017 	ldw	r3,-32768(gp)
+    2308:	014000c4 	movi	r5,3
+    230c:	19400e35 	stwio	r5,56(r3)
+	IOWR(tse, 0x0D, 8);
+    2310:	d1600017 	ldw	r5,-32768(gp)
+    2314:	00c00204 	movi	r3,8
+    2318:	28c00d35 	stwio	r3,52(r5)
+	IOWR(tse, 0x07, TSE_RECEIVE_FIFO_DEPTH-16);
+    231c:	d1600017 	ldw	r5,-32768(gp)
+    2320:	29000735 	stwio	r4,28(r5)
+	IOWR(tse, 0x0C, 8);
+    2324:	d1200017 	ldw	r4,-32768(gp)
+    2328:	20c00c35 	stwio	r3,48(r4)
+	IOWR(tse, 0x0B, 8);
+    232c:	d1200017 	ldw	r4,-32768(gp)
+    2330:	20c00b35 	stwio	r3,44(r4)
+	IOWR(tse, 0x0A, 0);
+    2334:	d0e00017 	ldw	r3,-32768(gp)
+    2338:	18000a35 	stwio	zero,40(r3)
+	IOWR(tse, 0x08, 0);
+    233c:	d0e00017 	ldw	r3,-32768(gp)
+    2340:	18000835 	stwio	zero,32(r3)
+
+	// Initialize the MAC address
+	IOWR(tse, 0x03, 0xEFBEADDE);
+    2344:	d0e00017 	ldw	r3,-32768(gp)
+    2348:	013beff4 	movhi	r4,61375
+    234c:	212b7784 	addi	r4,r4,-21026
+    2350:	19000335 	stwio	r4,12(r3)
+	IOWR(tse, 0x04, 0x0000FECA);
+    2354:	d0e00017 	ldw	r3,-32768(gp)
+    2358:	013fb294 	movui	r4,65226
+    235c:	19000435 	stwio	r4,16(r3)
+
+	// MAC function configuration
+	IOWR(tse, 0x05, 1280 + 54);
+    2360:	d0e00017 	ldw	r3,-32768(gp)
+    2364:	01014d84 	movi	r4,1334
+    2368:	19000535 	stwio	r4,20(r3)
+	IOWR(tse, 0x17, 12);
+    236c:	d0e00017 	ldw	r3,-32768(gp)
+    2370:	01000304 	movi	r4,12
+    2374:	19001735 	stwio	r4,92(r3)
+	IOWR(tse, 0x06, 0xFFFF);
+    2378:	d0e00017 	ldw	r3,-32768(gp)
+    237c:	013fffd4 	movui	r4,65535
+    2380:	19000635 	stwio	r4,24(r3)
+	IOWR(tse, 0x02, 0x00800220);
+    2384:	d0e00017 	ldw	r3,-32768(gp)
+    2388:	18800235 	stwio	r2,8(r3)
+	while (IORD(tse, 0x02 ) != 0x00800220);
+    238c:	d0e00017 	ldw	r3,-32768(gp)
+    2390:	18c00204 	addi	r3,r3,8
+    2394:	19000037 	ldwio	r4,0(r3)
+    2398:	20bffc1e 	bne	r4,r2,238c <_gp+0xffff6f2c>
+
+	// Software reset the PHY chip and wait
+	IOWR(tse, 0x02, (IORD(tse, 0x02) | 0x2000));
+    239c:	18800037 	ldwio	r2,0(r3)
+    23a0:	10880014 	ori	r2,r2,8192
+    23a4:	18800035 	stwio	r2,0(r3)
+	while ((IORD(tse, 0x02) & 0x2000) != 0);
+    23a8:	d0a00017 	ldw	r2,-32768(gp)
+    23ac:	10c00237 	ldwio	r3,8(r2)
+    23b0:	18c8000c 	andi	r3,r3,8192
+    23b4:	183ffc1e 	bne	r3,zero,23a8 <_gp+0xffff6f48>
+	*(tse + 0x02 ) = *(tse + 0x02 ) | 0x0080023B;
+    23b8:	11000217 	ldw	r4,8(r2)
+    23bc:	00c02034 	movhi	r3,128
+    23c0:	18c08ec4 	addi	r3,r3,571
+    23c4:	20c8b03a 	or	r4,r4,r3
+    23c8:	11000215 	stw	r4,8(r2)
+	while ( *(tse + 0x02 ) != ( *(tse + 0x02) | 0x0080023B ) );
+    23cc:	11400217 	ldw	r5,8(r2)
+    23d0:	11000217 	ldw	r4,8(r2)
+    23d4:	20c8b03a 	or	r4,r4,r3
+    23d8:	293ffc1e 	bne	r5,r4,23cc <_gp+0xffff6f6c>
+
+	IOWR(tse, 0x3a, 0x0000);
+    23dc:	10003a35 	stwio	zero,232(r2)
+    23e0:	f800283a 	ret
+
+000023e4 <timer_init>:
+}
+
+// Initialization of timer
+void timer_init(alt_u32 timer_period)
+{
+    23e4:	defffd04 	addi	sp,sp,-12
+    23e8:	dc000115 	stw	r16,4(sp)
+    23ec:	dfc00215 	stw	ra,8(sp)
+	// Disable timer before configuration
+	IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE, 0);
+    23f0:	04156104 	movi	r16,21892
+    23f4:	80000035 	stwio	zero,0(r16)
+
+	IOWR_ALTERA_AVALON_TIMER_PERIODL(TIMER_0_BASE, (timer_period & 0xFFFF));
+    23f8:	20ffffcc 	andi	r3,r4,65535
+    23fc:	00956204 	movi	r2,21896
+    2400:	10c00035 	stwio	r3,0(r2)
+	IOWR_ALTERA_AVALON_TIMER_PERIODH(TIMER_0_BASE, (timer_period >> 16) & 0xFFFF);
+    2404:	2008d43a 	srli	r4,r4,16
+    2408:	00956304 	movi	r2,21900
+    240c:	11000035 	stwio	r4,0(r2)
+
+	// Register of interrupt
+	alt_ic_isr_register(TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID, TIMER_0_IRQ, timer_irq_handler, 0, 0);
+    2410:	01800034 	movhi	r6,0
+    2414:	d8000015 	stw	zero,0(sp)
+    2418:	000f883a 	mov	r7,zero
+    241c:	31887504 	addi	r6,r6,8660
+    2420:	014000c4 	movi	r5,3
+    2424:	0009883a 	mov	r4,zero
+    2428:	00029c40 	call	29c4 <alt_ic_isr_register>
+
+	// Enable timer and resolve interrupt
+	IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE, ALTERA_AVALON_TIMER_CONTROL_ITO_MSK |
+    242c:	008001c4 	movi	r2,7
+    2430:	80800035 	stwio	r2,0(r16)
+													ALTERA_AVALON_TIMER_CONTROL_CONT_MSK |
+													ALTERA_AVALON_TIMER_CONTROL_START_MSK);
+}
+    2434:	dfc00217 	ldw	ra,8(sp)
+    2438:	dc000117 	ldw	r16,4(sp)
+    243c:	dec00304 	addi	sp,sp,12
+    2440:	f800283a 	ret
+
+00002444 <open_sgdma>:
+
+// Open the SGDMA transmit/receive device
+alt_u8 open_sgdma(void)
+{
+	// Transmit device
+	sgdma_tx_dev = alt_avalon_sgdma_open ("/dev/tx_dma");
+    2444:	01000034 	movhi	r4,0
+    }
+}
+
+// Open the SGDMA transmit/receive device
+alt_u8 open_sgdma(void)
+{
+    2448:	defffe04 	addi	sp,sp,-8
+	// Transmit device
+	sgdma_tx_dev = alt_avalon_sgdma_open ("/dev/tx_dma");
+    244c:	210cf104 	addi	r4,r4,13252
+    }
+}
+
+// Open the SGDMA transmit/receive device
+alt_u8 open_sgdma(void)
+{
+    2450:	dfc00115 	stw	ra,4(sp)
+	// Transmit device
+	sgdma_tx_dev = alt_avalon_sgdma_open ("/dev/tx_dma");
+    2454:	0002de40 	call	2de4 <alt_avalon_sgdma_open>
+    2458:	d0a03115 	stw	r2,-32572(gp)
+	if (sgdma_tx_dev == NULL) return(1);
+    245c:	10001926 	beq	r2,zero,24c4 <open_sgdma+0x80>
+
+	// Transmit device
+	sgdma_rx_dev = alt_avalon_sgdma_open ("/dev/rx_dma");
+    2460:	01000034 	movhi	r4,0
+    2464:	210cf404 	addi	r4,r4,13264
+    2468:	0002de40 	call	2de4 <alt_avalon_sgdma_open>
+    246c:	d0a03215 	stw	r2,-32568(gp)
+	if (sgdma_rx_dev == NULL) return(2);
+    2470:	10001626 	beq	r2,zero,24cc <open_sgdma+0x88>
+
+	// Register receive interrupt handler and allocate memory area
+	alt_avalon_sgdma_register_callback(sgdma_rx_dev, (alt_avalon_sgdma_callback)sgdma_rx_irq_handler, 0x00000014, NULL);
+    2474:	01400034 	movhi	r5,0
+    2478:	1009883a 	mov	r4,r2
+    247c:	000f883a 	mov	r7,zero
+    2480:	01800504 	movi	r6,20
+    2484:	2949d404 	addi	r5,r5,10064
+    2488:	0002d740 	call	2d74 <alt_avalon_sgdma_register_callback>
+	alt_avalon_sgdma_construct_stream_to_mem_desc(&rx_descriptor, &rx_descriptor_end, (alt_u32 *)(HEADER_RAM_BASE + 100), 0, 0);
+    248c:	01400034 	movhi	r5,0
+    2490:	01000034 	movhi	r4,0
+    2494:	000f883a 	mov	r7,zero
+    2498:	01951904 	movi	r6,21604
+    249c:	294d5904 	addi	r5,r5,13668
+    24a0:	210d6104 	addi	r4,r4,13700
+    24a4:	d8000015 	stw	zero,0(sp)
+    24a8:	000305c0 	call	305c <alt_avalon_sgdma_construct_stream_to_mem_desc>
+	alt_avalon_sgdma_do_async_transfer(sgdma_rx_dev, &rx_descriptor);
+    24ac:	d1203217 	ldw	r4,-32568(gp)
+    24b0:	01400034 	movhi	r5,0
+    24b4:	294d6104 	addi	r5,r5,13700
+    24b8:	0002c780 	call	2c78 <alt_avalon_sgdma_do_async_transfer>
+
+	return(0);
+    24bc:	0005883a 	mov	r2,zero
+    24c0:	00000306 	br	24d0 <open_sgdma+0x8c>
+// Open the SGDMA transmit/receive device
+alt_u8 open_sgdma(void)
+{
+	// Transmit device
+	sgdma_tx_dev = alt_avalon_sgdma_open ("/dev/tx_dma");
+	if (sgdma_tx_dev == NULL) return(1);
+    24c4:	00800044 	movi	r2,1
+    24c8:	00000106 	br	24d0 <open_sgdma+0x8c>
+
+	// Transmit device
+	sgdma_rx_dev = alt_avalon_sgdma_open ("/dev/rx_dma");
+	if (sgdma_rx_dev == NULL) return(2);
+    24cc:	00800084 	movi	r2,2
+	alt_avalon_sgdma_register_callback(sgdma_rx_dev, (alt_avalon_sgdma_callback)sgdma_rx_irq_handler, 0x00000014, NULL);
+	alt_avalon_sgdma_construct_stream_to_mem_desc(&rx_descriptor, &rx_descriptor_end, (alt_u32 *)(HEADER_RAM_BASE + 100), 0, 0);
+	alt_avalon_sgdma_do_async_transfer(sgdma_rx_dev, &rx_descriptor);
+
+	return(0);
+}
+    24d0:	dfc00117 	ldw	ra,4(sp)
+    24d4:	dec00204 	addi	sp,sp,8
+    24d8:	f800283a 	ret
+
+000024dc <create_eth>:
+	memset(frame_pc, 0, 100);
+}
+
+// Create ETH header (struct eth, type - encapsulation protocol)
+void create_eth(struct eth_hdr *eth)
+{
+    24dc:	defffe04 	addi	sp,sp,-8
+    24e0:	dc000015 	stw	r16,0(sp)
+	memcpy(eth->mac_dest, "\xFF\xFF\xFF\xFF\xFF\xFF", 6);
+    24e4:	01400034 	movhi	r5,0
+    24e8:	04000184 	movi	r16,6
+    24ec:	800d883a 	mov	r6,r16
+    24f0:	294cf704 	addi	r5,r5,13276
+	memset(frame_pc, 0, 100);
+}
+
+// Create ETH header (struct eth, type - encapsulation protocol)
+void create_eth(struct eth_hdr *eth)
+{
+    24f4:	dfc00115 	stw	ra,4(sp)
+	memcpy(eth->mac_dest, "\xFF\xFF\xFF\xFF\xFF\xFF", 6);
+    24f8:	00029640 	call	2964 <memcpy>
+	memcpy(eth->mac_src, "\xDE\xAD\xBE\xEF\xCA\xFE", 6);
+    24fc:	01400034 	movhi	r5,0
+    2500:	800d883a 	mov	r6,r16
+    2504:	294cf904 	addi	r5,r5,13284
+    2508:	1409883a 	add	r4,r2,r16
+}
+    250c:	dfc00117 	ldw	ra,4(sp)
+    2510:	dc000017 	ldw	r16,0(sp)
+    2514:	dec00204 	addi	sp,sp,8
+
+// Create ETH header (struct eth, type - encapsulation protocol)
+void create_eth(struct eth_hdr *eth)
+{
+	memcpy(eth->mac_dest, "\xFF\xFF\xFF\xFF\xFF\xFF", 6);
+	memcpy(eth->mac_src, "\xDE\xAD\xBE\xEF\xCA\xFE", 6);
+    2518:	00029641 	jmpi	2964 <memcpy>
+
+0000251c <create_arp>:
+}
+
+// Create ARP packet (struct arp, operation - request/reply)
+void create_arp(struct arp_packet *arp, alt_u16 operation)
+{
+    251c:	defffc04 	addi	sp,sp,-16
+    2520:	dfc00315 	stw	ra,12(sp)
+    2524:	dc800215 	stw	r18,8(sp)
+    2528:	dc400115 	stw	r17,4(sp)
+    252c:	dc000015 	stw	r16,0(sp)
+	arp->eth_type = __builtin_bswap16(0x0806);
+    2530:	00818204 	movi	r2,1544
+    2534:	2080000d 	sth	r2,0(r4)
+	arp->hw_type = __builtin_bswap16(0x0001);
+    2538:	00804004 	movi	r2,256
+    253c:	2080008d 	sth	r2,2(r4)
+	arp->proto_type = __builtin_bswap16(0x0800);
+    2540:	00800204 	movi	r2,8
+    2544:	2080010d 	sth	r2,4(r4)
+	arp->hw_len = 6;
+    2548:	00800184 	movi	r2,6
+    254c:	20800185 	stb	r2,6(r4)
+	arp->proto_len = 4;
+
+	// Operation (ARP-request = 1, ARP-reply = 2)
+	arp->operation = __builtin_bswap16(operation);
+    2550:	297fffcc 	andi	r5,r5,65535
+{
+	arp->eth_type = __builtin_bswap16(0x0806);
+	arp->hw_type = __builtin_bswap16(0x0001);
+	arp->proto_type = __builtin_bswap16(0x0800);
+	arp->hw_len = 6;
+	arp->proto_len = 4;
+    2554:	00800104 	movi	r2,4
+    2558:	208001c5 	stb	r2,7(r4)
+
+	// Operation (ARP-request = 1, ARP-reply = 2)
+	arp->operation = __builtin_bswap16(operation);
+    255c:	2804923a 	slli	r2,r5,8
+    2560:	280ad23a 	srli	r5,r5,8
+
+	memcpy(arp->sender_mac, "\xDE\xAD\xBE\xEF\xCA\xFE", 6);
+    2564:	04800184 	movi	r18,6
+	memcpy(eth->mac_src, "\xDE\xAD\xBE\xEF\xCA\xFE", 6);
+}
+
+// Create ARP packet (struct arp, operation - request/reply)
+void create_arp(struct arp_packet *arp, alt_u16 operation)
+{
+    2568:	2021883a 	mov	r16,r4
+	arp->proto_type = __builtin_bswap16(0x0800);
+	arp->hw_len = 6;
+	arp->proto_len = 4;
+
+	// Operation (ARP-request = 1, ARP-reply = 2)
+	arp->operation = __builtin_bswap16(operation);
+    256c:	114ab03a 	or	r5,r2,r5
+    2570:	2140020d 	sth	r5,8(r4)
+
+	memcpy(arp->sender_mac, "\xDE\xAD\xBE\xEF\xCA\xFE", 6);
+    2574:	01400034 	movhi	r5,0
+    2578:	900d883a 	mov	r6,r18
+    257c:	294cf904 	addi	r5,r5,13284
+    2580:	21000284 	addi	r4,r4,10
+    2584:	00029640 	call	2964 <memcpy>
+	memcpy(arp->sender_ip, "\xC0\xA8\x01\x02", 4);
+    2588:	04400104 	movi	r17,4
+    258c:	01400034 	movhi	r5,0
+    2590:	880d883a 	mov	r6,r17
+    2594:	81000404 	addi	r4,r16,16
+    2598:	294cfb04 	addi	r5,r5,13292
+    259c:	00029640 	call	2964 <memcpy>
+	memset(arp->target_mac, 0, 6);
+    25a0:	900d883a 	mov	r6,r18
+    25a4:	81000504 	addi	r4,r16,20
+    25a8:	000b883a 	mov	r5,zero
+    25ac:	000298c0 	call	298c <memset>
+	memcpy(arp->target_ip, "\xC0\xA8\x01\x05", 4);
+    25b0:	01400034 	movhi	r5,0
+    25b4:	880d883a 	mov	r6,r17
+    25b8:	294cfd04 	addi	r5,r5,13300
+    25bc:	81000684 	addi	r4,r16,26
+}
+    25c0:	dfc00317 	ldw	ra,12(sp)
+    25c4:	dc800217 	ldw	r18,8(sp)
+    25c8:	dc400117 	ldw	r17,4(sp)
+    25cc:	dc000017 	ldw	r16,0(sp)
+    25d0:	dec00404 	addi	sp,sp,16
+	arp->operation = __builtin_bswap16(operation);
+
+	memcpy(arp->sender_mac, "\xDE\xAD\xBE\xEF\xCA\xFE", 6);
+	memcpy(arp->sender_ip, "\xC0\xA8\x01\x02", 4);
+	memset(arp->target_mac, 0, 6);
+	memcpy(arp->target_ip, "\xC0\xA8\x01\x05", 4);
+    25d4:	00029641 	jmpi	2964 <memcpy>
+
+000025d8 <create_ip>:
+}
+
+// Create IP header (struct ip, protocol - encapsulation protocol, data_len - length of data after IP header)
+void create_ip(struct ip_hdr *ip, alt_u8 protocol, alt_u32 data_len)
+{
+    25d8:	defffd04 	addi	sp,sp,-12
+    25dc:	dc400115 	stw	r17,4(sp)
+    25e0:	dc000015 	stw	r16,0(sp)
+    25e4:	dfc00215 	stw	ra,8(sp)
+	ip->eth_type = __builtin_bswap16(0x0800);
+    25e8:	00800204 	movi	r2,8
+	ip->ver_ihl = 0x45;
+	ip->tos = 0x00;
+	ip->len = __builtin_bswap16(sizeof(struct ip_hdr) + data_len);
+    25ec:	31800584 	addi	r6,r6,22
+}
+
+// Create IP header (struct ip, protocol - encapsulation protocol, data_len - length of data after IP header)
+void create_ip(struct ip_hdr *ip, alt_u8 protocol, alt_u32 data_len)
+{
+	ip->eth_type = __builtin_bswap16(0x0800);
+    25f0:	2080000d 	sth	r2,0(r4)
+	ip->ver_ihl = 0x45;
+	ip->tos = 0x00;
+	ip->len = __builtin_bswap16(sizeof(struct ip_hdr) + data_len);
+    25f4:	31bfffcc 	andi	r6,r6,65535
+
+// Create IP header (struct ip, protocol - encapsulation protocol, data_len - length of data after IP header)
+void create_ip(struct ip_hdr *ip, alt_u8 protocol, alt_u32 data_len)
+{
+	ip->eth_type = __builtin_bswap16(0x0800);
+	ip->ver_ihl = 0x45;
+    25f8:	00801144 	movi	r2,69
+    25fc:	20800085 	stb	r2,2(r4)
+	ip->tos = 0x00;
+	ip->len = __builtin_bswap16(sizeof(struct ip_hdr) + data_len);
+    2600:	3004923a 	slli	r2,r6,8
+    2604:	300cd23a 	srli	r6,r6,8
+	ip->id = 0;
+	ip->flags_offset = 0;
+	ip->ttl = 0x40;
+	ip->protocol = protocol;
+    2608:	214002c5 	stb	r5,11(r4)
+	ip->checksum = 0;
+	memcpy(ip->ip_src, "\xC0\xA8\x01\x02", 4);
+    260c:	04400104 	movi	r17,4
+void create_ip(struct ip_hdr *ip, alt_u8 protocol, alt_u32 data_len)
+{
+	ip->eth_type = __builtin_bswap16(0x0800);
+	ip->ver_ihl = 0x45;
+	ip->tos = 0x00;
+	ip->len = __builtin_bswap16(sizeof(struct ip_hdr) + data_len);
+    2610:	118cb03a 	or	r6,r2,r6
+	ip->id = 0;
+	ip->flags_offset = 0;
+	ip->ttl = 0x40;
+	ip->protocol = protocol;
+	ip->checksum = 0;
+	memcpy(ip->ip_src, "\xC0\xA8\x01\x02", 4);
+    2614:	01400034 	movhi	r5,0
+	ip->ver_ihl = 0x45;
+	ip->tos = 0x00;
+	ip->len = __builtin_bswap16(sizeof(struct ip_hdr) + data_len);
+	ip->id = 0;
+	ip->flags_offset = 0;
+	ip->ttl = 0x40;
+    2618:	00801004 	movi	r2,64
+void create_ip(struct ip_hdr *ip, alt_u8 protocol, alt_u32 data_len)
+{
+	ip->eth_type = __builtin_bswap16(0x0800);
+	ip->ver_ihl = 0x45;
+	ip->tos = 0x00;
+	ip->len = __builtin_bswap16(sizeof(struct ip_hdr) + data_len);
+    261c:	2180010d 	sth	r6,4(r4)
+	memcpy(arp->target_ip, "\xC0\xA8\x01\x05", 4);
+}
+
+// Create IP header (struct ip, protocol - encapsulation protocol, data_len - length of data after IP header)
+void create_ip(struct ip_hdr *ip, alt_u8 protocol, alt_u32 data_len)
+{
+    2620:	2021883a 	mov	r16,r4
+	ip->eth_type = __builtin_bswap16(0x0800);
+	ip->ver_ihl = 0x45;
+	ip->tos = 0x00;
+    2624:	200000c5 	stb	zero,3(r4)
+	ip->len = __builtin_bswap16(sizeof(struct ip_hdr) + data_len);
+	ip->id = 0;
+    2628:	2000018d 	sth	zero,6(r4)
+	ip->flags_offset = 0;
+    262c:	2000020d 	sth	zero,8(r4)
+	ip->ttl = 0x40;
+    2630:	20800285 	stb	r2,10(r4)
+	ip->protocol = protocol;
+	ip->checksum = 0;
+    2634:	2000030d 	sth	zero,12(r4)
+	memcpy(ip->ip_src, "\xC0\xA8\x01\x02", 4);
+    2638:	880d883a 	mov	r6,r17
+    263c:	294cfb04 	addi	r5,r5,13292
+    2640:	21000384 	addi	r4,r4,14
+    2644:	00029640 	call	2964 <memcpy>
+	memcpy(ip->ip_dest, "\xC0\xA8\x01\x05", 4);
+    2648:	01400034 	movhi	r5,0
+    264c:	880d883a 	mov	r6,r17
+    2650:	294cfd04 	addi	r5,r5,13300
+    2654:	81000484 	addi	r4,r16,18
+}
+    2658:	dfc00217 	ldw	ra,8(sp)
+    265c:	dc400117 	ldw	r17,4(sp)
+    2660:	dc000017 	ldw	r16,0(sp)
+    2664:	dec00304 	addi	sp,sp,12
+	ip->flags_offset = 0;
+	ip->ttl = 0x40;
+	ip->protocol = protocol;
+	ip->checksum = 0;
+	memcpy(ip->ip_src, "\xC0\xA8\x01\x02", 4);
+	memcpy(ip->ip_dest, "\xC0\xA8\x01\x05", 4);
+    2668:	00029641 	jmpi	2964 <memcpy>
+
+0000266c <create_udp>:
+}
+
+// Create UDP header
+void create_udp(struct udp_hdr *udp, alt_u16 dest_port, alt_u32 data_len)
+{
+	udp->port_src = __builtin_bswap16(5004);
+    266c:	00a304c4 	movi	r2,-29677
+	udp->port_dest = __builtin_bswap16(dest_port);
+    2670:	297fffcc 	andi	r5,r5,65535
+}
+
+// Create UDP header
+void create_udp(struct udp_hdr *udp, alt_u16 dest_port, alt_u32 data_len)
+{
+	udp->port_src = __builtin_bswap16(5004);
+    2674:	2080000d 	sth	r2,0(r4)
+	udp->port_dest = __builtin_bswap16(dest_port);
+    2678:	2804923a 	slli	r2,r5,8
+    267c:	280ad23a 	srli	r5,r5,8
+	udp->len = __builtin_bswap16(sizeof(struct udp_hdr) + data_len);
+    2680:	31800204 	addi	r6,r6,8
+    2684:	31bfffcc 	andi	r6,r6,65535
+
+// Create UDP header
+void create_udp(struct udp_hdr *udp, alt_u16 dest_port, alt_u32 data_len)
+{
+	udp->port_src = __builtin_bswap16(5004);
+	udp->port_dest = __builtin_bswap16(dest_port);
+    2688:	114ab03a 	or	r5,r2,r5
+	udp->len = __builtin_bswap16(sizeof(struct udp_hdr) + data_len);
+    268c:	3004923a 	slli	r2,r6,8
+    2690:	300cd23a 	srli	r6,r6,8
+
+// Create UDP header
+void create_udp(struct udp_hdr *udp, alt_u16 dest_port, alt_u32 data_len)
+{
+	udp->port_src = __builtin_bswap16(5004);
+	udp->port_dest = __builtin_bswap16(dest_port);
+    2694:	2140008d 	sth	r5,2(r4)
+	udp->len = __builtin_bswap16(sizeof(struct udp_hdr) + data_len);
+	udp->checksum = 0;
+    2698:	2000018d 	sth	zero,6(r4)
+// Create UDP header
+void create_udp(struct udp_hdr *udp, alt_u16 dest_port, alt_u32 data_len)
+{
+	udp->port_src = __builtin_bswap16(5004);
+	udp->port_dest = __builtin_bswap16(dest_port);
+	udp->len = __builtin_bswap16(sizeof(struct udp_hdr) + data_len);
+    269c:	118cb03a 	or	r6,r2,r6
+    26a0:	2180010d 	sth	r6,4(r4)
+	udp->checksum = 0;
+    26a4:	f800283a 	ret
+
+000026a8 <calculate_checksum>:
+}
+
+// Calculate checksum for IP/ICMP/UDP/TCP
+alt_u16 calculate_checksum(alt_u8* data, alt_u32 length)
+{
+    26a8:	200d883a 	mov	r6,r4
+    alt_u16* buffer = (alt_u16 *)data;
+    alt_u16 temp = 0;
+
+    while (length > 1)
+    26ac:	2805883a 	mov	r2,r5
+
+// Calculate checksum for IP/ICMP/UDP/TCP
+alt_u16 calculate_checksum(alt_u8* data, alt_u32 length)
+{
+    alt_u16* buffer = (alt_u16 *)data;
+    alt_u16 temp = 0;
+    26b0:	0007883a 	mov	r3,zero
+
+    while (length > 1)
+    26b4:	01c00044 	movi	r7,1
+    26b8:	3880052e 	bgeu	r7,r2,26d0 <calculate_checksum+0x28>
+    {
+        temp += *buffer++;
+    26bc:	3200000b 	ldhu	r8,0(r6)
+        length -= 2;
+    26c0:	10bfff84 	addi	r2,r2,-2
+    26c4:	31800084 	addi	r6,r6,2
+    alt_u16* buffer = (alt_u16 *)data;
+    alt_u16 temp = 0;
+
+    while (length > 1)
+    {
+        temp += *buffer++;
+    26c8:	40c7883a 	add	r3,r8,r3
+    26cc:	003ffa06 	br	26b8 <_gp+0xffff7258>
+    26d0:	2804d07a 	srli	r2,r5,1
+        length -= 2;
+    }
+
+    if (length == 1) temp += *(alt_u8 *)buffer << 8;
+    26d4:	288bc83a 	sub	r5,r5,r2
+    26d8:	108d883a 	add	r6,r2,r2
+    26dc:	288bc83a 	sub	r5,r5,r2
+    26e0:	00800044 	movi	r2,1
+    26e4:	2189883a 	add	r4,r4,r6
+    26e8:	2880031e 	bne	r5,r2,26f8 <calculate_checksum+0x50>
+    26ec:	20800003 	ldbu	r2,0(r4)
+    26f0:	1004923a 	slli	r2,r2,8
+    26f4:	10c7883a 	add	r3,r2,r3
+    while (temp >> 16) temp = (temp & 0xFFFF) + (temp >> 16);
+    return ~((temp >> 8) | (temp << 8));
+    26f8:	1804923a 	slli	r2,r3,8
+    26fc:	18ffffcc 	andi	r3,r3,65535
+    2700:	1806d23a 	srli	r3,r3,8
+}
+    2704:	10c4303a 	nor	r2,r2,r3
+    2708:	f800283a 	ret
+
+0000270c <create_icmp>:
+	memcpy(ip->ip_dest, "\xC0\xA8\x01\x05", 4);
+}
+
+// Create ICMP packet
+void create_icmp(struct icmp_packet *icmp, alt_u16 id, alt_u16 seq, alt_u8 *data)
+{
+    270c:	defffe04 	addi	sp,sp,-8
+	icmp->type = 0;
+	icmp->code = 0;
+	icmp->checksum = 0;
+	icmp->id = id;
+    2710:	2140010d 	sth	r5,4(r4)
+}
+
+// Create ICMP packet
+void create_icmp(struct icmp_packet *icmp, alt_u16 id, alt_u16 seq, alt_u8 *data)
+{
+	icmp->type = 0;
+    2714:	20000005 	stb	zero,0(r4)
+	icmp->code = 0;
+    2718:	20000045 	stb	zero,1(r4)
+	icmp->checksum = 0;
+    271c:	2000008d 	sth	zero,2(r4)
+	icmp->id = id;
+	icmp->sequence = seq;
+    2720:	2180018d 	sth	r6,6(r4)
+	icmp->data = data;
+    2724:	21c00215 	stw	r7,8(r4)
+	icmp->checksum = calculate_checksum((alt_u8 *)icmp, sizeof(icmp));
+    2728:	01400104 	movi	r5,4
+	memcpy(ip->ip_dest, "\xC0\xA8\x01\x05", 4);
+}
+
+// Create ICMP packet
+void create_icmp(struct icmp_packet *icmp, alt_u16 id, alt_u16 seq, alt_u8 *data)
+{
+    272c:	dc000015 	stw	r16,0(sp)
+    2730:	dfc00115 	stw	ra,4(sp)
+    2734:	2021883a 	mov	r16,r4
+	icmp->code = 0;
+	icmp->checksum = 0;
+	icmp->id = id;
+	icmp->sequence = seq;
+	icmp->data = data;
+	icmp->checksum = calculate_checksum((alt_u8 *)icmp, sizeof(icmp));
+    2738:	00026a80 	call	26a8 <calculate_checksum>
+    273c:	8080008d 	sth	r2,2(r16)
+}
+    2740:	dfc00117 	ldw	ra,4(sp)
+    2744:	dc000017 	ldw	r16,0(sp)
+    2748:	dec00204 	addi	sp,sp,8
+    274c:	f800283a 	ret
+
+00002750 <sgdma_rx_irq_handler>:
+	return(0);
+}
+
+// Handler of SGDMA Receive interrupt
+void sgdma_rx_irq_handler(void *context)
+{
+    2750:	defff904 	addi	sp,sp,-28
+    2754:	dfc00615 	stw	ra,24(sp)
+    2758:	dc400515 	stw	r17,20(sp)
+    275c:	dc000415 	stw	r16,16(sp)
+	while (alt_avalon_sgdma_check_descriptor_status(&rx_descriptor) != 0);
+    2760:	01000034 	movhi	r4,0
+    2764:	210d6104 	addi	r4,r4,13700
+    2768:	0002db80 	call	2db8 <alt_avalon_sgdma_check_descriptor_status>
+    276c:	103ffc1e 	bne	r2,zero,2760 <_gp+0xffff7300>
+
+	alt_u8 *frame_pc = (alt_u8 *)(HEADER_RAM_BASE + 100);
+	if ((memcmp(frame_pc + 12, "\x08\x06", 2) == 0) && frame_pc[21] == 0x02)
+    2770:	04000084 	movi	r16,2
+    2774:	01400034 	movhi	r5,0
+    2778:	800d883a 	mov	r6,r16
+    277c:	294cff04 	addi	r5,r5,13308
+    2780:	01151c04 	movi	r4,21616
+    2784:	00029340 	call	2934 <memcmp>
+    2788:	1000081e 	bne	r2,zero,27ac <sgdma_rx_irq_handler+0x5c>
+    278c:	00951e44 	movi	r2,21625
+    2790:	10800003 	ldbu	r2,0(r2)
+    2794:	1400051e 	bne	r2,r16,27ac <sgdma_rx_irq_handler+0x5c>
+	{
+		fl_proto = 0;  // Заглушка
+
+		memcpy(eth->mac_dest, (frame_pc + 22), 6);
+    2798:	d1200517 	ldw	r4,-32748(gp)
+    279c:	01800184 	movi	r6,6
+    27a0:	01551e84 	movi	r5,21626
+	while (alt_avalon_sgdma_check_descriptor_status(&rx_descriptor) != 0);
+
+	alt_u8 *frame_pc = (alt_u8 *)(HEADER_RAM_BASE + 100);
+	if ((memcmp(frame_pc + 12, "\x08\x06", 2) == 0) && frame_pc[21] == 0x02)
+	{
+		fl_proto = 0;  // Заглушка
+    27a4:	d0203005 	stb	zero,-32576(gp)
+
+		memcpy(eth->mac_dest, (frame_pc + 22), 6);
+    27a8:	00029640 	call	2964 <memcpy>
+//
+//		// Frequency of send UDP-packet (3900 - 32000 frame per second)
+//		timer_init(3890);
+	}
+	// && (memcmp(frame_pc + 30, ip->ip_src, 4) == 0) && frame_pc[23] == 0x1 && frame_pc[34] == 0x8
+	if ((memcmp(frame_pc, "\xDE\xAD\xBE\xEF\xCA\xFE", 6) == 0))
+    27ac:	01400034 	movhi	r5,0
+    27b0:	01800184 	movi	r6,6
+    27b4:	294cf904 	addi	r5,r5,13284
+    27b8:	01151904 	movi	r4,21604
+    27bc:	00029340 	call	2934 <memcmp>
+    27c0:	10001526 	beq	r2,zero,2818 <sgdma_rx_irq_handler+0xc8>
+		while (alt_avalon_sgdma_check_descriptor_status(&tx_descriptor_header) != 0);
+
+//		timer_init(0);
+	}
+
+	alt_dcache_flush_all();
+    27c4:	00029ac0 	call	29ac <alt_dcache_flush_all>
+	alt_avalon_sgdma_construct_stream_to_mem_desc(&rx_descriptor, &rx_descriptor_end, (alt_u32 *)(HEADER_RAM_BASE + 100), 0, 0);
+    27c8:	01400034 	movhi	r5,0
+    27cc:	01000034 	movhi	r4,0
+    27d0:	000f883a 	mov	r7,zero
+    27d4:	01951904 	movi	r6,21604
+    27d8:	d8000015 	stw	zero,0(sp)
+    27dc:	294d5904 	addi	r5,r5,13668
+    27e0:	210d6104 	addi	r4,r4,13700
+    27e4:	000305c0 	call	305c <alt_avalon_sgdma_construct_stream_to_mem_desc>
+	alt_avalon_sgdma_do_async_transfer(sgdma_rx_dev, &rx_descriptor);
+    27e8:	d1203217 	ldw	r4,-32568(gp)
+    27ec:	01400034 	movhi	r5,0
+    27f0:	294d6104 	addi	r5,r5,13700
+    27f4:	0002c780 	call	2c78 <alt_avalon_sgdma_do_async_transfer>
+
+	memset(frame_pc, 0, 100);
+    27f8:	01801904 	movi	r6,100
+    27fc:	000b883a 	mov	r5,zero
+    2800:	01151904 	movi	r4,21604
+}
+    2804:	dfc00617 	ldw	ra,24(sp)
+    2808:	dc400517 	ldw	r17,20(sp)
+    280c:	dc000417 	ldw	r16,16(sp)
+    2810:	dec00704 	addi	sp,sp,28
+
+	alt_dcache_flush_all();
+	alt_avalon_sgdma_construct_stream_to_mem_desc(&rx_descriptor, &rx_descriptor_end, (alt_u32 *)(HEADER_RAM_BASE + 100), 0, 0);
+	alt_avalon_sgdma_do_async_transfer(sgdma_rx_dev, &rx_descriptor);
+
+	memset(frame_pc, 0, 100);
+    2814:	000298c1 	jmpi	298c <memset>
+//		timer_init(3890);
+	}
+	// && (memcmp(frame_pc + 30, ip->ip_src, 4) == 0) && frame_pc[23] == 0x1 && frame_pc[34] == 0x8
+	if ((memcmp(frame_pc, "\xDE\xAD\xBE\xEF\xCA\xFE", 6) == 0))
+	{
+		alt_u16 length_descriptor = frame_pc[17] << 8 | frame_pc[16];
+    2818:	00951d44 	movi	r2,21621
+    281c:	14000003 	ldbu	r16,0(r2)
+    2820:	00951d04 	movi	r2,21620
+    2824:	10800003 	ldbu	r2,0(r2)
+    2828:	8020923a 	slli	r16,r16,8
+		alt_u8 *pointer_to_data = frame_pc + 42;
+
+		seq = frame_pc[40] << 8 | frame_pc[41];
+		id = frame_pc[38] << 8 | frame_pc[39];
+
+		create_icmp(icmp, id, seq, pointer_to_data);
+    282c:	011522c4 	movi	r4,21643
+    2830:	21400003 	ldbu	r5,0(r4)
+//		timer_init(3890);
+	}
+	// && (memcmp(frame_pc + 30, ip->ip_src, 4) == 0) && frame_pc[23] == 0x1 && frame_pc[34] == 0x8
+	if ((memcmp(frame_pc, "\xDE\xAD\xBE\xEF\xCA\xFE", 6) == 0))
+	{
+		alt_u16 length_descriptor = frame_pc[17] << 8 | frame_pc[16];
+    2834:	80a0b03a 	or	r16,r16,r2
+
+		alt_u16 seq = 0;
+		alt_u16 id = 0;
+		alt_u8 *pointer_to_data = frame_pc + 42;
+
+		seq = frame_pc[40] << 8 | frame_pc[41];
+    2838:	00952304 	movi	r2,21644
+		id = frame_pc[38] << 8 | frame_pc[39];
+
+		create_icmp(icmp, id, seq, pointer_to_data);
+    283c:	10c00003 	ldbu	r3,0(r2)
+    2840:	00952344 	movi	r2,21645
+    2844:	11800003 	ldbu	r6,0(r2)
+		alt_u16 seq = 0;
+		alt_u16 id = 0;
+		alt_u8 *pointer_to_data = frame_pc + 42;
+
+		seq = frame_pc[40] << 8 | frame_pc[41];
+		id = frame_pc[38] << 8 | frame_pc[39];
+    2848:	00952284 	movi	r2,21642
+
+		create_icmp(icmp, id, seq, pointer_to_data);
+    284c:	10800003 	ldbu	r2,0(r2)
+    2850:	1806923a 	slli	r3,r3,8
+    2854:	d1200217 	ldw	r4,-32760(gp)
+    2858:	1004923a 	slli	r2,r2,8
+    285c:	198cb03a 	or	r6,r3,r6
+    2860:	01d52384 	movi	r7,21646
+    2864:	114ab03a 	or	r5,r2,r5
+    2868:	000270c0 	call	270c <create_icmp>
+
+		create_ip(ip, 0x1, sizeof(icmp));
+    286c:	d1200317 	ldw	r4,-32756(gp)
+    2870:	04400044 	movi	r17,1
+    2874:	01800104 	movi	r6,4
+    2878:	880b883a 	mov	r5,r17
+    287c:	00025d80 	call	25d8 <create_ip>
+
+		alt_dcache_flush_all();
+    2880:	00029ac0 	call	29ac <alt_dcache_flush_all>
+		alt_avalon_sgdma_construct_mem_to_stream_desc(&tx_descriptor_header, &tx_descriptor_data, (alt_u32 *)HEADER_RAM_BASE, length_descriptor, 0, 1, 1, 0);
+    2884:	81c00384 	addi	r7,r16,14
+    2888:	01400034 	movhi	r5,0
+    288c:	01000034 	movhi	r4,0
+    2890:	294d7104 	addi	r5,r5,13764
+    2894:	210d5104 	addi	r4,r4,13636
+    2898:	d8000315 	stw	zero,12(sp)
+    289c:	dc400215 	stw	r17,8(sp)
+    28a0:	dc400115 	stw	r17,4(sp)
+    28a4:	d8000015 	stw	zero,0(sp)
+    28a8:	39ffffcc 	andi	r7,r7,65535
+    28ac:	01950004 	movi	r6,21504
+    28b0:	00030d40 	call	30d4 <alt_avalon_sgdma_construct_mem_to_stream_desc>
+
+		alt_avalon_sgdma_do_async_transfer(sgdma_tx_dev, &tx_descriptor_header);
+    28b4:	d1203117 	ldw	r4,-32572(gp)
+    28b8:	01400034 	movhi	r5,0
+    28bc:	294d5104 	addi	r5,r5,13636
+    28c0:	0002c780 	call	2c78 <alt_avalon_sgdma_do_async_transfer>
+		while (alt_avalon_sgdma_check_descriptor_status(&tx_descriptor_header) != 0);
+    28c4:	01000034 	movhi	r4,0
+    28c8:	210d5104 	addi	r4,r4,13636
+    28cc:	0002db80 	call	2db8 <alt_avalon_sgdma_check_descriptor_status>
+    28d0:	103ffc1e 	bne	r2,zero,28c4 <_gp+0xffff7464>
+    28d4:	003fbb06 	br	27c4 <_gp+0xffff7364>
+
+000028d8 <main>:
+alt_u8 fl_proto = 0;
+
+/****************** Main block ******************/
+int main(void)
+{
+	create_eth(eth);
+    28d8:	d1200517 	ldw	r4,-32748(gp)
+// Flag to set MAC-address of PC
+alt_u8 fl_proto = 0;
+
+/****************** Main block ******************/
+int main(void)
+{
+    28dc:	defffe04 	addi	sp,sp,-8
+    28e0:	dfc00115 	stw	ra,4(sp)
+    28e4:	dc000015 	stw	r16,0(sp)
+	create_eth(eth);
+    28e8:	00024dc0 	call	24dc <create_eth>
+	create_arp(arp, 0x0001);
+    28ec:	d1200417 	ldw	r4,-32752(gp)
+    28f0:	04000044 	movi	r16,1
+    28f4:	800b883a 	mov	r5,r16
+    28f8:	000251c0 	call	251c <create_arp>
+
+	tse_init();
+    28fc:	00022dc0 	call	22dc <tse_init>
+
+	alt_u8 sdgma_status = open_sgdma();
+    2900:	00024440 	call	2444 <open_sgdma>
+	if (sdgma_status == 1 || sdgma_status == 2) return(0);
+    2904:	10bfffc4 	addi	r2,r2,-1
+    2908:	10803fcc 	andi	r2,r2,255
+    290c:	8080042e 	bgeu	r16,r2,2920 <main+0x48>
+
+	timer_init(125000000);
+    2910:	0101dcf4 	movhi	r4,1907
+    2914:	21165004 	addi	r4,r4,22848
+    2918:	00023e40 	call	23e4 <timer_init>
+    291c:	003fff06 	br	291c <_gp+0xffff74bc>
+
+	while (1);
+
+	return 0;
+}
+    2920:	0005883a 	mov	r2,zero
+    2924:	dfc00117 	ldw	ra,4(sp)
+    2928:	dc000017 	ldw	r16,0(sp)
+    292c:	dec00204 	addi	sp,sp,8
+    2930:	f800283a 	ret
+
+00002934 <memcmp>:
+    2934:	218d883a 	add	r6,r4,r6
+    2938:	21800826 	beq	r4,r6,295c <memcmp+0x28>
+    293c:	20800003 	ldbu	r2,0(r4)
+    2940:	28c00003 	ldbu	r3,0(r5)
+    2944:	10c00226 	beq	r2,r3,2950 <memcmp+0x1c>
+    2948:	10c5c83a 	sub	r2,r2,r3
+    294c:	f800283a 	ret
+    2950:	21000044 	addi	r4,r4,1
+    2954:	29400044 	addi	r5,r5,1
+    2958:	003ff706 	br	2938 <_gp+0xffff74d8>
+    295c:	0005883a 	mov	r2,zero
+    2960:	f800283a 	ret
+
+00002964 <memcpy>:
+    2964:	2005883a 	mov	r2,r4
+    2968:	2007883a 	mov	r3,r4
+    296c:	218d883a 	add	r6,r4,r6
+    2970:	19800526 	beq	r3,r6,2988 <memcpy+0x24>
+    2974:	29000003 	ldbu	r4,0(r5)
+    2978:	18c00044 	addi	r3,r3,1
+    297c:	29400044 	addi	r5,r5,1
+    2980:	193fffc5 	stb	r4,-1(r3)
+    2984:	003ffa06 	br	2970 <_gp+0xffff7510>
+    2988:	f800283a 	ret
+
+0000298c <memset>:
+    298c:	2005883a 	mov	r2,r4
+    2990:	2007883a 	mov	r3,r4
+    2994:	218d883a 	add	r6,r4,r6
+    2998:	19800326 	beq	r3,r6,29a8 <memset+0x1c>
+    299c:	19400005 	stb	r5,0(r3)
+    29a0:	18c00044 	addi	r3,r3,1
+    29a4:	003ffc06 	br	2998 <_gp+0xffff7538>
+    29a8:	f800283a 	ret
+
+000029ac <alt_dcache_flush_all>:
+    29ac:	0005883a 	mov	r2,zero
+    29b0:	00c20004 	movi	r3,2048
+    29b4:	1000003b 	flushd	0(r2)
+    29b8:	10800804 	addi	r2,r2,32
+    29bc:	10fffd1e 	bne	r2,r3,29b4 <_gp+0xffff7554>
+    29c0:	f800283a 	ret
+
+000029c4 <alt_ic_isr_register>:
+    29c4:	0002a501 	jmpi	2a50 <alt_iic_isr_register>
+
+000029c8 <alt_ic_irq_enable>:
+    29c8:	0009303a 	rdctl	r4,status
+    29cc:	00bfff84 	movi	r2,-2
+    29d0:	2084703a 	and	r2,r4,r2
+    29d4:	1001703a 	wrctl	status,r2
+    29d8:	00c00044 	movi	r3,1
+    29dc:	d0a03317 	ldw	r2,-32564(gp)
+    29e0:	194a983a 	sll	r5,r3,r5
+    29e4:	288ab03a 	or	r5,r5,r2
+    29e8:	d1603315 	stw	r5,-32564(gp)
+    29ec:	d0a03317 	ldw	r2,-32564(gp)
+    29f0:	100170fa 	wrctl	ienable,r2
+    29f4:	2001703a 	wrctl	status,r4
+    29f8:	0005883a 	mov	r2,zero
+    29fc:	f800283a 	ret
+
+00002a00 <alt_ic_irq_disable>:
+    2a00:	0009303a 	rdctl	r4,status
+    2a04:	00bfff84 	movi	r2,-2
+    2a08:	2084703a 	and	r2,r4,r2
+    2a0c:	1001703a 	wrctl	status,r2
+    2a10:	00ffff84 	movi	r3,-2
+    2a14:	d0a03317 	ldw	r2,-32564(gp)
+    2a18:	194a183a 	rol	r5,r3,r5
+    2a1c:	288a703a 	and	r5,r5,r2
+    2a20:	d1603315 	stw	r5,-32564(gp)
+    2a24:	d0a03317 	ldw	r2,-32564(gp)
+    2a28:	100170fa 	wrctl	ienable,r2
+    2a2c:	2001703a 	wrctl	status,r4
+    2a30:	0005883a 	mov	r2,zero
+    2a34:	f800283a 	ret
+
+00002a38 <alt_ic_irq_enabled>:
+    2a38:	000730fa 	rdctl	r3,ienable
+    2a3c:	00800044 	movi	r2,1
+    2a40:	1144983a 	sll	r2,r2,r5
+    2a44:	10c4703a 	and	r2,r2,r3
+    2a48:	1004c03a 	cmpne	r2,r2,zero
+    2a4c:	f800283a 	ret
+
+00002a50 <alt_iic_isr_register>:
+    2a50:	00c007c4 	movi	r3,31
+    2a54:	19401616 	blt	r3,r5,2ab0 <alt_iic_isr_register+0x60>
+    2a58:	defffe04 	addi	sp,sp,-8
+    2a5c:	dfc00115 	stw	ra,4(sp)
+    2a60:	dc000015 	stw	r16,0(sp)
+    2a64:	0021303a 	rdctl	r16,status
+    2a68:	00ffff84 	movi	r3,-2
+    2a6c:	80c6703a 	and	r3,r16,r3
+    2a70:	1801703a 	wrctl	status,r3
+    2a74:	280490fa 	slli	r2,r5,3
+    2a78:	00c00034 	movhi	r3,0
+    2a7c:	18cd7904 	addi	r3,r3,13796
+    2a80:	1885883a 	add	r2,r3,r2
+    2a84:	11800015 	stw	r6,0(r2)
+    2a88:	11c00115 	stw	r7,4(r2)
+    2a8c:	30000226 	beq	r6,zero,2a98 <alt_iic_isr_register+0x48>
+    2a90:	00029c80 	call	29c8 <alt_ic_irq_enable>
+    2a94:	00000106 	br	2a9c <alt_iic_isr_register+0x4c>
+    2a98:	0002a000 	call	2a00 <alt_ic_irq_disable>
+    2a9c:	8001703a 	wrctl	status,r16
+    2aa0:	dfc00117 	ldw	ra,4(sp)
+    2aa4:	dc000017 	ldw	r16,0(sp)
+    2aa8:	dec00204 	addi	sp,sp,8
+    2aac:	f800283a 	ret
+    2ab0:	00bffa84 	movi	r2,-22
+    2ab4:	f800283a 	ret
+
+00002ab8 <alt_load>:
+    2ab8:	deffff04 	addi	sp,sp,-4
+    2abc:	01000034 	movhi	r4,0
+    2ac0:	01400034 	movhi	r5,0
+    2ac4:	dfc00015 	stw	ra,0(sp)
+    2ac8:	210d0004 	addi	r4,r4,13312
+    2acc:	294d2404 	addi	r5,r5,13456
+    2ad0:	2140061e 	bne	r4,r5,2aec <alt_load+0x34>
+    2ad4:	01000034 	movhi	r4,0
+    2ad8:	01400034 	movhi	r5,0
+    2adc:	21080804 	addi	r4,r4,8224
+    2ae0:	29480804 	addi	r5,r5,8224
+    2ae4:	2140121e 	bne	r4,r5,2b30 <alt_load+0x78>
+    2ae8:	00000b06 	br	2b18 <alt_load+0x60>
+    2aec:	00c00034 	movhi	r3,0
+    2af0:	18cd2404 	addi	r3,r3,13456
+    2af4:	1907c83a 	sub	r3,r3,r4
+    2af8:	0005883a 	mov	r2,zero
+    2afc:	10fff526 	beq	r2,r3,2ad4 <_gp+0xffff7674>
+    2b00:	114f883a 	add	r7,r2,r5
+    2b04:	39c00017 	ldw	r7,0(r7)
+    2b08:	110d883a 	add	r6,r2,r4
+    2b0c:	10800104 	addi	r2,r2,4
+    2b10:	31c00015 	stw	r7,0(r6)
+    2b14:	003ff906 	br	2afc <_gp+0xffff769c>
+    2b18:	01000034 	movhi	r4,0
+    2b1c:	01400034 	movhi	r5,0
+    2b20:	210cf104 	addi	r4,r4,13252
+    2b24:	294cf104 	addi	r5,r5,13252
+    2b28:	2140101e 	bne	r4,r5,2b6c <alt_load+0xb4>
+    2b2c:	00000b06 	br	2b5c <alt_load+0xa4>
+    2b30:	00c00034 	movhi	r3,0
+    2b34:	18c86204 	addi	r3,r3,8584
+    2b38:	1907c83a 	sub	r3,r3,r4
+    2b3c:	0005883a 	mov	r2,zero
+    2b40:	10fff526 	beq	r2,r3,2b18 <_gp+0xffff76b8>
+    2b44:	114f883a 	add	r7,r2,r5
+    2b48:	39c00017 	ldw	r7,0(r7)
+    2b4c:	110d883a 	add	r6,r2,r4
+    2b50:	10800104 	addi	r2,r2,4
+    2b54:	31c00015 	stw	r7,0(r6)
+    2b58:	003ff906 	br	2b40 <_gp+0xffff76e0>
+    2b5c:	00029ac0 	call	29ac <alt_dcache_flush_all>
+    2b60:	dfc00017 	ldw	ra,0(sp)
+    2b64:	dec00104 	addi	sp,sp,4
+    2b68:	00032e81 	jmpi	32e8 <alt_icache_flush_all>
+    2b6c:	00c00034 	movhi	r3,0
+    2b70:	18cd0004 	addi	r3,r3,13312
+    2b74:	1907c83a 	sub	r3,r3,r4
+    2b78:	0005883a 	mov	r2,zero
+    2b7c:	18bff726 	beq	r3,r2,2b5c <_gp+0xffff76fc>
+    2b80:	114f883a 	add	r7,r2,r5
+    2b84:	39c00017 	ldw	r7,0(r7)
+    2b88:	110d883a 	add	r6,r2,r4
+    2b8c:	10800104 	addi	r2,r2,4
+    2b90:	31c00015 	stw	r7,0(r6)
+    2b94:	003ff906 	br	2b7c <_gp+0xffff771c>
+
+00002b98 <alt_main>:
+    2b98:	deffff04 	addi	sp,sp,-4
+    2b9c:	0009883a 	mov	r4,zero
+    2ba0:	dfc00015 	stw	ra,0(sp)
+    2ba4:	0002bc40 	call	2bc4 <alt_irq_init>
+    2ba8:	0002be40 	call	2be4 <alt_sys_init>
+    2bac:	d1a03417 	ldw	r6,-32560(gp)
+    2bb0:	d1603517 	ldw	r5,-32556(gp)
+    2bb4:	d1203617 	ldw	r4,-32552(gp)
+    2bb8:	dfc00017 	ldw	ra,0(sp)
+    2bbc:	dec00104 	addi	sp,sp,4
+    2bc0:	00028d81 	jmpi	28d8 <main>
+
+00002bc4 <alt_irq_init>:
+    2bc4:	deffff04 	addi	sp,sp,-4
+    2bc8:	dfc00015 	stw	ra,0(sp)
+    2bcc:	00033680 	call	3368 <altera_nios2_gen2_irq_init>
+    2bd0:	00800044 	movi	r2,1
+    2bd4:	1001703a 	wrctl	status,r2
+    2bd8:	dfc00017 	ldw	ra,0(sp)
+    2bdc:	dec00104 	addi	sp,sp,4
+    2be0:	f800283a 	ret
+
+00002be4 <alt_sys_init>:
+    2be4:	01000034 	movhi	r4,0
+    2be8:	deffff04 	addi	sp,sp,-4
+    2bec:	000d883a 	mov	r6,zero
+    2bf0:	000b883a 	mov	r5,zero
+    2bf4:	210d0c04 	addi	r4,r4,13360
+    2bf8:	dfc00015 	stw	ra,0(sp)
+    2bfc:	000315c0 	call	315c <alt_avalon_sgdma_init>
+    2c00:	01000034 	movhi	r4,0
+    2c04:	01800044 	movi	r6,1
+    2c08:	000b883a 	mov	r5,zero
+    2c0c:	210d0004 	addi	r4,r4,13312
+    2c10:	dfc00017 	ldw	ra,0(sp)
+    2c14:	dec00104 	addi	sp,sp,4
+    2c18:	000315c1 	jmpi	315c <alt_avalon_sgdma_init>
+
+00002c1c <alt_avalon_sgdma_irq>:
+    2c1c:	20800317 	ldw	r2,12(r4)
+    2c20:	10800404 	addi	r2,r2,16
+    2c24:	10c00037 	ldwio	r3,0(r2)
+    2c28:	18e00034 	orhi	r3,r3,32768
+    2c2c:	10c00035 	stwio	r3,0(r2)
+    2c30:	20800317 	ldw	r2,12(r4)
+    2c34:	10800437 	ldwio	r2,16(r2)
+    2c38:	20c00917 	ldw	r3,36(r4)
+    2c3c:	18000d26 	beq	r3,zero,2c74 <alt_avalon_sgdma_irq+0x58>
+    2c40:	defffe04 	addi	sp,sp,-8
+    2c44:	dfc00115 	stw	ra,4(sp)
+    2c48:	dc000015 	stw	r16,0(sp)
+    2c4c:	0021303a 	rdctl	r16,status
+    2c50:	00bfff84 	movi	r2,-2
+    2c54:	8084703a 	and	r2,r16,r2
+    2c58:	1001703a 	wrctl	status,r2
+    2c5c:	21000a17 	ldw	r4,40(r4)
+    2c60:	183ee83a 	callr	r3
+    2c64:	8001703a 	wrctl	status,r16
+    2c68:	dfc00117 	ldw	ra,4(sp)
+    2c6c:	dc000017 	ldw	r16,0(sp)
+    2c70:	dec00204 	addi	sp,sp,8
+    2c74:	f800283a 	ret
+
+00002c78 <alt_avalon_sgdma_do_async_transfer>:
+    2c78:	20c00317 	ldw	r3,12(r4)
+    2c7c:	18800037 	ldwio	r2,0(r3)
+    2c80:	1080040c 	andi	r2,r2,16
+    2c84:	1000191e 	bne	r2,zero,2cec <alt_avalon_sgdma_do_async_transfer+0x74>
+    2c88:	18c00404 	addi	r3,r3,16
+    2c8c:	19c00037 	ldwio	r7,0(r3)
+    2c90:	01bff7c4 	movi	r6,-33
+    2c94:	398c703a 	and	r6,r7,r6
+    2c98:	19800035 	stwio	r6,0(r3)
+    2c9c:	20c00317 	ldw	r3,12(r4)
+    2ca0:	01803fc4 	movi	r6,255
+    2ca4:	19800035 	stwio	r6,0(r3)
+    2ca8:	20c00317 	ldw	r3,12(r4)
+    2cac:	19400835 	stwio	r5,32(r3)
+    2cb0:	20c00317 	ldw	r3,12(r4)
+    2cb4:	21400917 	ldw	r5,36(r4)
+    2cb8:	18c00404 	addi	r3,r3,16
+    2cbc:	28000526 	beq	r5,zero,2cd4 <alt_avalon_sgdma_do_async_transfer+0x5c>
+    2cc0:	19400037 	ldwio	r5,0(r3)
+    2cc4:	21000b17 	ldw	r4,44(r4)
+    2cc8:	21001814 	ori	r4,r4,96
+    2ccc:	2148b03a 	or	r4,r4,r5
+    2cd0:	00000406 	br	2ce4 <alt_avalon_sgdma_do_async_transfer+0x6c>
+    2cd4:	19400037 	ldwio	r5,0(r3)
+    2cd8:	013ffbc4 	movi	r4,-17
+    2cdc:	2908703a 	and	r4,r5,r4
+    2ce0:	21001814 	ori	r4,r4,96
+    2ce4:	19000035 	stwio	r4,0(r3)
+    2ce8:	f800283a 	ret
+    2cec:	00bffc04 	movi	r2,-16
+    2cf0:	f800283a 	ret
+
+00002cf4 <alt_avalon_sgdma_do_sync_transfer>:
+    2cf4:	20c00317 	ldw	r3,12(r4)
+    2cf8:	18800037 	ldwio	r2,0(r3)
+    2cfc:	1080040c 	andi	r2,r2,16
+    2d00:	103ffc1e 	bne	r2,zero,2cf4 <_gp+0xffff7894>
+    2d04:	18c00404 	addi	r3,r3,16
+    2d08:	19800037 	ldwio	r6,0(r3)
+    2d0c:	00bff7c4 	movi	r2,-33
+    2d10:	308c703a 	and	r6,r6,r2
+    2d14:	19800035 	stwio	r6,0(r3)
+    2d18:	20c00317 	ldw	r3,12(r4)
+    2d1c:	01803fc4 	movi	r6,255
+    2d20:	19800035 	stwio	r6,0(r3)
+    2d24:	20c00317 	ldw	r3,12(r4)
+    2d28:	19400835 	stwio	r5,32(r3)
+    2d2c:	20c00317 	ldw	r3,12(r4)
+    2d30:	18c00404 	addi	r3,r3,16
+    2d34:	19400037 	ldwio	r5,0(r3)
+    2d38:	29401814 	ori	r5,r5,96
+    2d3c:	19400035 	stwio	r5,0(r3)
+    2d40:	20c00317 	ldw	r3,12(r4)
+    2d44:	19400037 	ldwio	r5,0(r3)
+    2d48:	2940040c 	andi	r5,r5,16
+    2d4c:	283ffc1e 	bne	r5,zero,2d40 <_gp+0xffff78e0>
+    2d50:	18c00404 	addi	r3,r3,16
+    2d54:	19400037 	ldwio	r5,0(r3)
+    2d58:	2884703a 	and	r2,r5,r2
+    2d5c:	18800035 	stwio	r2,0(r3)
+    2d60:	20c00317 	ldw	r3,12(r4)
+    2d64:	18800037 	ldwio	r2,0(r3)
+    2d68:	01003fc4 	movi	r4,255
+    2d6c:	19000035 	stwio	r4,0(r3)
+    2d70:	f800283a 	ret
+
+00002d74 <alt_avalon_sgdma_register_callback>:
+    2d74:	21400915 	stw	r5,36(r4)
+    2d78:	21c00a15 	stw	r7,40(r4)
+    2d7c:	21800b15 	stw	r6,44(r4)
+    2d80:	f800283a 	ret
+
+00002d84 <alt_avalon_sgdma_start>:
+    2d84:	20800317 	ldw	r2,12(r4)
+    2d88:	10800404 	addi	r2,r2,16
+    2d8c:	10c00037 	ldwio	r3,0(r2)
+    2d90:	18c00814 	ori	r3,r3,32
+    2d94:	10c00035 	stwio	r3,0(r2)
+    2d98:	f800283a 	ret
+
+00002d9c <alt_avalon_sgdma_stop>:
+    2d9c:	20800317 	ldw	r2,12(r4)
+    2da0:	10800404 	addi	r2,r2,16
+    2da4:	11000037 	ldwio	r4,0(r2)
+    2da8:	00fff7c4 	movi	r3,-33
+    2dac:	20c6703a 	and	r3,r4,r3
+    2db0:	10c00035 	stwio	r3,0(r2)
+    2db4:	f800283a 	ret
+
+00002db8 <alt_avalon_sgdma_check_descriptor_status>:
+    2db8:	208007a3 	ldbuio	r2,30(r4)
+    2dbc:	10801fcc 	andi	r2,r2,127
+    2dc0:	1000041e 	bne	r2,zero,2dd4 <alt_avalon_sgdma_check_descriptor_status+0x1c>
+    2dc4:	208007e3 	ldbuio	r2,31(r4)
+    2dc8:	1080200c 	andi	r2,r2,128
+    2dcc:	1000031e 	bne	r2,zero,2ddc <alt_avalon_sgdma_check_descriptor_status+0x24>
+    2dd0:	f800283a 	ret
+    2dd4:	00bffec4 	movi	r2,-5
+    2dd8:	f800283a 	ret
+    2ddc:	00bfe244 	movi	r2,-119
+    2de0:	f800283a 	ret
+
+00002de4 <alt_avalon_sgdma_open>:
+    2de4:	defffe04 	addi	sp,sp,-8
+    2de8:	d1600904 	addi	r5,gp,-32732
+    2dec:	dc000015 	stw	r16,0(sp)
+    2df0:	dfc00115 	stw	ra,4(sp)
+    2df4:	00032740 	call	3274 <alt_find_dev>
+    2df8:	1021883a 	mov	r16,r2
+    2dfc:	1000071e 	bne	r2,zero,2e1c <alt_avalon_sgdma_open+0x38>
+    2e00:	d0a00b17 	ldw	r2,-32724(gp)
+    2e04:	10000226 	beq	r2,zero,2e10 <alt_avalon_sgdma_open+0x2c>
+    2e08:	103ee83a 	callr	r2
+    2e0c:	00000106 	br	2e14 <alt_avalon_sgdma_open+0x30>
+    2e10:	d0a03804 	addi	r2,gp,-32544
+    2e14:	00c004c4 	movi	r3,19
+    2e18:	10c00015 	stw	r3,0(r2)
+    2e1c:	8005883a 	mov	r2,r16
+    2e20:	dfc00117 	ldw	ra,4(sp)
+    2e24:	dc000017 	ldw	r16,0(sp)
+    2e28:	dec00204 	addi	sp,sp,8
+    2e2c:	f800283a 	ret
+
+00002e30 <alt_avalon_sgdma_enable_desc_poll>:
+    2e30:	20c00317 	ldw	r3,12(r4)
+    2e34:	18c00404 	addi	r3,r3,16
+    2e38:	19000037 	ldwio	r4,0(r3)
+    2e3c:	00a00434 	movhi	r2,32784
+    2e40:	280a953a 	slli	r5,r5,20
+    2e44:	10bfffc4 	addi	r2,r2,-1
+    2e48:	2084703a 	and	r2,r4,r2
+    2e4c:	295ffc2c 	andhi	r5,r5,32752
+    2e50:	29400134 	orhi	r5,r5,4
+    2e54:	288ab03a 	or	r5,r5,r2
+    2e58:	19400035 	stwio	r5,0(r3)
+    2e5c:	f800283a 	ret
+
+00002e60 <alt_avalon_sgdma_disable_desc_poll>:
+    2e60:	20800317 	ldw	r2,12(r4)
+    2e64:	10800404 	addi	r2,r2,16
+    2e68:	11000037 	ldwio	r4,0(r2)
+    2e6c:	00ffff34 	movhi	r3,65532
+    2e70:	18ffffc4 	addi	r3,r3,-1
+    2e74:	20c6703a 	and	r3,r4,r3
+    2e78:	10c00035 	stwio	r3,0(r2)
+    2e7c:	f800283a 	ret
+
+00002e80 <alt_avalon_sgdma_construct_descriptor_burst>:
+    2e80:	288007c3 	ldbu	r2,31(r5)
+    2e84:	d8c00617 	ldw	r3,24(sp)
+    2e88:	10801fcc 	andi	r2,r2,127
+    2e8c:	288007e5 	stbio	r2,31(r5)
+    2e90:	3004d23a 	srli	r2,r6,8
+    2e94:	21800005 	stb	r6,0(r4)
+    2e98:	21c00205 	stb	r7,8(r4)
+    2e9c:	20800045 	stb	r2,1(r4)
+    2ea0:	3004d43a 	srli	r2,r6,16
+    2ea4:	21400405 	stb	r5,16(r4)
+    2ea8:	300cd63a 	srli	r6,r6,24
+    2eac:	20800085 	stb	r2,2(r4)
+    2eb0:	3804d23a 	srli	r2,r7,8
+    2eb4:	218000c5 	stb	r6,3(r4)
+    2eb8:	20000105 	stb	zero,4(r4)
+    2ebc:	20800245 	stb	r2,9(r4)
+    2ec0:	3804d43a 	srli	r2,r7,16
+    2ec4:	380ed63a 	srli	r7,r7,24
+    2ec8:	20000145 	stb	zero,5(r4)
+    2ecc:	20800285 	stb	r2,10(r4)
+    2ed0:	2804d23a 	srli	r2,r5,8
+    2ed4:	21c002c5 	stb	r7,11(r4)
+    2ed8:	20000185 	stb	zero,6(r4)
+    2edc:	20800445 	stb	r2,17(r4)
+    2ee0:	2804d43a 	srli	r2,r5,16
+    2ee4:	280ad63a 	srli	r5,r5,24
+    2ee8:	200001c5 	stb	zero,7(r4)
+    2eec:	20800485 	stb	r2,18(r4)
+    2ef0:	d880000b 	ldhu	r2,0(sp)
+    2ef4:	214004c5 	stb	r5,19(r4)
+    2ef8:	20000305 	stb	zero,12(r4)
+    2efc:	20800605 	stb	r2,24(r4)
+    2f00:	1004d23a 	srli	r2,r2,8
+    2f04:	20000345 	stb	zero,13(r4)
+    2f08:	20000385 	stb	zero,14(r4)
+    2f0c:	20800645 	stb	r2,25(r4)
+    2f10:	d8800417 	ldw	r2,16(sp)
+    2f14:	200003c5 	stb	zero,15(r4)
+    2f18:	20000505 	stb	zero,20(r4)
+    2f1c:	20000545 	stb	zero,21(r4)
+    2f20:	20000585 	stb	zero,22(r4)
+    2f24:	200005c5 	stb	zero,23(r4)
+    2f28:	20000705 	stb	zero,28(r4)
+    2f2c:	20000745 	stb	zero,29(r4)
+    2f30:	20000785 	stb	zero,30(r4)
+    2f34:	20800685 	stb	r2,26(r4)
+    2f38:	d8800517 	ldw	r2,20(sp)
+    2f3c:	d9400117 	ldw	r5,4(sp)
+    2f40:	208006c5 	stb	r2,27(r4)
+    2f44:	d8800217 	ldw	r2,8(sp)
+    2f48:	280ac03a 	cmpne	r5,r5,zero
+    2f4c:	297fe004 	addi	r5,r5,-128
+    2f50:	1004c03a 	cmpne	r2,r2,zero
+    2f54:	1004907a 	slli	r2,r2,1
+    2f58:	2884b03a 	or	r2,r5,r2
+    2f5c:	d9400317 	ldw	r5,12(sp)
+    2f60:	280ac03a 	cmpne	r5,r5,zero
+    2f64:	280a90ba 	slli	r5,r5,2
+    2f68:	114ab03a 	or	r5,r2,r5
+    2f6c:	18803fcc 	andi	r2,r3,255
+    2f70:	10000326 	beq	r2,zero,2f80 <alt_avalon_sgdma_construct_descriptor_burst+0x100>
+    2f74:	18c003cc 	andi	r3,r3,15
+    2f78:	180490fa 	slli	r2,r3,3
+    2f7c:	00000106 	br	2f84 <alt_avalon_sgdma_construct_descriptor_burst+0x104>
+    2f80:	0005883a 	mov	r2,zero
+    2f84:	2884b03a 	or	r2,r5,r2
+    2f88:	01400804 	movi	r5,32
+    2f8c:	208007c5 	stb	r2,31(r4)
+    2f90:	00031e01 	jmpi	31e0 <alt_dcache_flush>
+
+00002f94 <alt_avalon_sgdma_construct_mem_to_mem_desc_burst>:
+    2f94:	defff804 	addi	sp,sp,-32
+    2f98:	d8800c17 	ldw	r2,48(sp)
+    2f9c:	d8000615 	stw	zero,24(sp)
+    2fa0:	d8000115 	stw	zero,4(sp)
+    2fa4:	d8800515 	stw	r2,20(sp)
+    2fa8:	d8800b17 	ldw	r2,44(sp)
+    2fac:	dfc00715 	stw	ra,28(sp)
+    2fb0:	d8800415 	stw	r2,16(sp)
+    2fb4:	d8800a17 	ldw	r2,40(sp)
+    2fb8:	d8800315 	stw	r2,12(sp)
+    2fbc:	d8800917 	ldw	r2,36(sp)
+    2fc0:	d8800215 	stw	r2,8(sp)
+    2fc4:	d880080b 	ldhu	r2,32(sp)
+    2fc8:	d8800015 	stw	r2,0(sp)
+    2fcc:	0002e800 	call	2e80 <alt_avalon_sgdma_construct_descriptor_burst>
+    2fd0:	dfc00717 	ldw	ra,28(sp)
+    2fd4:	dec00804 	addi	sp,sp,32
+    2fd8:	f800283a 	ret
+
+00002fdc <alt_avalon_sgdma_construct_mem_to_mem_desc>:
+    2fdc:	defffa04 	addi	sp,sp,-24
+    2fe0:	d8800817 	ldw	r2,32(sp)
+    2fe4:	d8000415 	stw	zero,16(sp)
+    2fe8:	d8000315 	stw	zero,12(sp)
+    2fec:	d8800215 	stw	r2,8(sp)
+    2ff0:	d8800717 	ldw	r2,28(sp)
+    2ff4:	dfc00515 	stw	ra,20(sp)
+    2ff8:	d8800115 	stw	r2,4(sp)
+    2ffc:	d880060b 	ldhu	r2,24(sp)
+    3000:	d8800015 	stw	r2,0(sp)
+    3004:	0002f940 	call	2f94 <alt_avalon_sgdma_construct_mem_to_mem_desc_burst>
+    3008:	dfc00517 	ldw	ra,20(sp)
+    300c:	dec00604 	addi	sp,sp,24
+    3010:	f800283a 	ret
+
+00003014 <alt_avalon_sgdma_construct_stream_to_mem_desc_burst>:
+    3014:	defff804 	addi	sp,sp,-32
+    3018:	d8800917 	ldw	r2,36(sp)
+    301c:	39ffffcc 	andi	r7,r7,65535
+    3020:	d9c00015 	stw	r7,0(sp)
+    3024:	d8800515 	stw	r2,20(sp)
+    3028:	d8800817 	ldw	r2,32(sp)
+    302c:	300f883a 	mov	r7,r6
+    3030:	d8000615 	stw	zero,24(sp)
+    3034:	d8000415 	stw	zero,16(sp)
+    3038:	d8800315 	stw	r2,12(sp)
+    303c:	d8000215 	stw	zero,8(sp)
+    3040:	d8000115 	stw	zero,4(sp)
+    3044:	000d883a 	mov	r6,zero
+    3048:	dfc00715 	stw	ra,28(sp)
+    304c:	0002e800 	call	2e80 <alt_avalon_sgdma_construct_descriptor_burst>
+    3050:	dfc00717 	ldw	ra,28(sp)
+    3054:	dec00804 	addi	sp,sp,32
+    3058:	f800283a 	ret
+
+0000305c <alt_avalon_sgdma_construct_stream_to_mem_desc>:
+    305c:	defffd04 	addi	sp,sp,-12
+    3060:	d8800317 	ldw	r2,12(sp)
+    3064:	d8000115 	stw	zero,4(sp)
+    3068:	39ffffcc 	andi	r7,r7,65535
+    306c:	d8800015 	stw	r2,0(sp)
+    3070:	dfc00215 	stw	ra,8(sp)
+    3074:	00030140 	call	3014 <alt_avalon_sgdma_construct_stream_to_mem_desc_burst>
+    3078:	dfc00217 	ldw	ra,8(sp)
+    307c:	dec00304 	addi	sp,sp,12
+    3080:	f800283a 	ret
+
+00003084 <alt_avalon_sgdma_construct_mem_to_stream_desc_burst>:
+    3084:	defff804 	addi	sp,sp,-32
+    3088:	d8800c03 	ldbu	r2,48(sp)
+    308c:	39ffffcc 	andi	r7,r7,65535
+    3090:	d9c00015 	stw	r7,0(sp)
+    3094:	d8800615 	stw	r2,24(sp)
+    3098:	d8800b17 	ldw	r2,44(sp)
+    309c:	d8000515 	stw	zero,20(sp)
+    30a0:	000f883a 	mov	r7,zero
+    30a4:	d8800415 	stw	r2,16(sp)
+    30a8:	d8800917 	ldw	r2,36(sp)
+    30ac:	dfc00715 	stw	ra,28(sp)
+    30b0:	d8800315 	stw	r2,12(sp)
+    30b4:	d8800817 	ldw	r2,32(sp)
+    30b8:	d8800215 	stw	r2,8(sp)
+    30bc:	d8800a17 	ldw	r2,40(sp)
+    30c0:	d8800115 	stw	r2,4(sp)
+    30c4:	0002e800 	call	2e80 <alt_avalon_sgdma_construct_descriptor_burst>
+    30c8:	dfc00717 	ldw	ra,28(sp)
+    30cc:	dec00804 	addi	sp,sp,32
+    30d0:	f800283a 	ret
+
+000030d4 <alt_avalon_sgdma_construct_mem_to_stream_desc>:
+    30d4:	defffa04 	addi	sp,sp,-24
+    30d8:	d8800903 	ldbu	r2,36(sp)
+    30dc:	d8000315 	stw	zero,12(sp)
+    30e0:	39ffffcc 	andi	r7,r7,65535
+    30e4:	d8800415 	stw	r2,16(sp)
+    30e8:	d8800817 	ldw	r2,32(sp)
+    30ec:	dfc00515 	stw	ra,20(sp)
+    30f0:	d8800215 	stw	r2,8(sp)
+    30f4:	d8800717 	ldw	r2,28(sp)
+    30f8:	d8800115 	stw	r2,4(sp)
+    30fc:	d8800617 	ldw	r2,24(sp)
+    3100:	d8800015 	stw	r2,0(sp)
+    3104:	00030840 	call	3084 <alt_avalon_sgdma_construct_mem_to_stream_desc_burst>
+    3108:	dfc00517 	ldw	ra,20(sp)
+    310c:	dec00604 	addi	sp,sp,24
+    3110:	f800283a 	ret
+
+00003114 <alt_avalon_sgdma_construct_descriptor>:
+    3114:	defff804 	addi	sp,sp,-32
+    3118:	d8800c03 	ldbu	r2,48(sp)
+    311c:	d8000515 	stw	zero,20(sp)
+    3120:	d8000415 	stw	zero,16(sp)
+    3124:	d8800615 	stw	r2,24(sp)
+    3128:	d8800b17 	ldw	r2,44(sp)
+    312c:	dfc00715 	stw	ra,28(sp)
+    3130:	d8800315 	stw	r2,12(sp)
+    3134:	d8800a17 	ldw	r2,40(sp)
+    3138:	d8800215 	stw	r2,8(sp)
+    313c:	d8800917 	ldw	r2,36(sp)
+    3140:	d8800115 	stw	r2,4(sp)
+    3144:	d880080b 	ldhu	r2,32(sp)
+    3148:	d8800015 	stw	r2,0(sp)
+    314c:	0002e800 	call	2e80 <alt_avalon_sgdma_construct_descriptor_burst>
+    3150:	dfc00717 	ldw	ra,28(sp)
+    3154:	dec00804 	addi	sp,sp,32
+    3158:	f800283a 	ret
+
+0000315c <alt_avalon_sgdma_init>:
+    315c:	20c00317 	ldw	r3,12(r4)
+    3160:	defffb04 	addi	sp,sp,-20
+    3164:	dc800315 	stw	r18,12(sp)
+    3168:	dc400215 	stw	r17,8(sp)
+    316c:	dc000115 	stw	r16,4(sp)
+    3170:	dfc00415 	stw	ra,16(sp)
+    3174:	2021883a 	mov	r16,r4
+    3178:	2823883a 	mov	r17,r5
+    317c:	3025883a 	mov	r18,r6
+    3180:	00800074 	movhi	r2,1
+    3184:	18800435 	stwio	r2,16(r3)
+    3188:	20c00317 	ldw	r3,12(r4)
+    318c:	18800435 	stwio	r2,16(r3)
+    3190:	20800317 	ldw	r2,12(r4)
+    3194:	10000435 	stwio	zero,16(r2)
+    3198:	20800317 	ldw	r2,12(r4)
+    319c:	00c03fc4 	movi	r3,255
+    31a0:	10c00035 	stwio	r3,0(r2)
+    31a4:	d1600904 	addi	r5,gp,-32732
+    31a8:	00032080 	call	3208 <alt_dev_llist_insert>
+    31ac:	01800034 	movhi	r6,0
+    31b0:	d8000015 	stw	zero,0(sp)
+    31b4:	800f883a 	mov	r7,r16
+    31b8:	318b0704 	addi	r6,r6,11292
+    31bc:	900b883a 	mov	r5,r18
+    31c0:	8809883a 	mov	r4,r17
+    31c4:	00029c40 	call	29c4 <alt_ic_isr_register>
+    31c8:	dfc00417 	ldw	ra,16(sp)
+    31cc:	dc800317 	ldw	r18,12(sp)
+    31d0:	dc400217 	ldw	r17,8(sp)
+    31d4:	dc000117 	ldw	r16,4(sp)
+    31d8:	dec00504 	addi	sp,sp,20
+    31dc:	f800283a 	ret
+
+000031e0 <alt_dcache_flush>:
+    31e0:	214b883a 	add	r5,r4,r5
+    31e4:	2005883a 	mov	r2,r4
+    31e8:	1140032e 	bgeu	r2,r5,31f8 <alt_dcache_flush+0x18>
+    31ec:	1000001b 	flushda	0(r2)
+    31f0:	10800804 	addi	r2,r2,32
+    31f4:	003ffc06 	br	31e8 <_gp+0xffff7d88>
+    31f8:	210007cc 	andi	r4,r4,31
+    31fc:	20000126 	beq	r4,zero,3204 <alt_dcache_flush+0x24>
+    3200:	1000001b 	flushda	0(r2)
+    3204:	f800283a 	ret
+
+00003208 <alt_dev_llist_insert>:
+    3208:	20000226 	beq	r4,zero,3214 <alt_dev_llist_insert+0xc>
+    320c:	20800217 	ldw	r2,8(r4)
+    3210:	1000101e 	bne	r2,zero,3254 <alt_dev_llist_insert+0x4c>
+    3214:	d0a00b17 	ldw	r2,-32724(gp)
+    3218:	10000926 	beq	r2,zero,3240 <alt_dev_llist_insert+0x38>
+    321c:	deffff04 	addi	sp,sp,-4
+    3220:	dfc00015 	stw	ra,0(sp)
+    3224:	103ee83a 	callr	r2
+    3228:	00c00584 	movi	r3,22
+    322c:	10c00015 	stw	r3,0(r2)
+    3230:	00bffa84 	movi	r2,-22
+    3234:	dfc00017 	ldw	ra,0(sp)
+    3238:	dec00104 	addi	sp,sp,4
+    323c:	f800283a 	ret
+    3240:	d0a03804 	addi	r2,gp,-32544
+    3244:	00c00584 	movi	r3,22
+    3248:	10c00015 	stw	r3,0(r2)
+    324c:	00bffa84 	movi	r2,-22
+    3250:	f800283a 	ret
+    3254:	28800017 	ldw	r2,0(r5)
+    3258:	21400115 	stw	r5,4(r4)
+    325c:	20800015 	stw	r2,0(r4)
+    3260:	28800017 	ldw	r2,0(r5)
+    3264:	11000115 	stw	r4,4(r2)
+    3268:	29000015 	stw	r4,0(r5)
+    326c:	0005883a 	mov	r2,zero
+    3270:	f800283a 	ret
+
+00003274 <alt_find_dev>:
+    3274:	defffb04 	addi	sp,sp,-20
+    3278:	dcc00315 	stw	r19,12(sp)
+    327c:	dc800215 	stw	r18,8(sp)
+    3280:	dc400115 	stw	r17,4(sp)
+    3284:	dc000015 	stw	r16,0(sp)
+    3288:	dfc00415 	stw	ra,16(sp)
+    328c:	2027883a 	mov	r19,r4
+    3290:	2823883a 	mov	r17,r5
+    3294:	2c000017 	ldw	r16,0(r5)
+    3298:	00033a80 	call	33a8 <strlen>
+    329c:	14800044 	addi	r18,r2,1
+    32a0:	84400726 	beq	r16,r17,32c0 <alt_find_dev+0x4c>
+    32a4:	81000217 	ldw	r4,8(r16)
+    32a8:	900d883a 	mov	r6,r18
+    32ac:	980b883a 	mov	r5,r19
+    32b0:	00029340 	call	2934 <memcmp>
+    32b4:	10000426 	beq	r2,zero,32c8 <alt_find_dev+0x54>
+    32b8:	84000017 	ldw	r16,0(r16)
+    32bc:	003ff806 	br	32a0 <_gp+0xffff7e40>
+    32c0:	0005883a 	mov	r2,zero
+    32c4:	00000106 	br	32cc <alt_find_dev+0x58>
+    32c8:	8005883a 	mov	r2,r16
+    32cc:	dfc00417 	ldw	ra,16(sp)
+    32d0:	dcc00317 	ldw	r19,12(sp)
+    32d4:	dc800217 	ldw	r18,8(sp)
+    32d8:	dc400117 	ldw	r17,4(sp)
+    32dc:	dc000017 	ldw	r16,0(sp)
+    32e0:	dec00504 	addi	sp,sp,20
+    32e4:	f800283a 	ret
+
+000032e8 <alt_icache_flush_all>:
+    32e8:	01440004 	movi	r5,4096
+    32ec:	0009883a 	mov	r4,zero
+    32f0:	00033701 	jmpi	3370 <alt_icache_flush>
+
+000032f4 <alt_exception_cause_generated_bad_addr>:
+    32f4:	213ffe84 	addi	r4,r4,-6
+    32f8:	008003c4 	movi	r2,15
+    32fc:	11001636 	bltu	r2,r4,3358 <alt_exception_cause_generated_bad_addr+0x64>
+    3300:	200890ba 	slli	r4,r4,2
+    3304:	00800034 	movhi	r2,0
+    3308:	108cc604 	addi	r2,r2,13080
+    330c:	2089883a 	add	r4,r4,r2
+    3310:	20800017 	ldw	r2,0(r4)
+    3314:	1000683a 	jmp	r2
+    3318:	00003360 	cmpeqi	zero,zero,205
+    331c:	00003360 	cmpeqi	zero,zero,205
+    3320:	00003358 	cmpnei	zero,zero,205
+    3324:	00003358 	cmpnei	zero,zero,205
+    3328:	00003358 	cmpnei	zero,zero,205
+    332c:	00003360 	cmpeqi	zero,zero,205
+    3330:	00003358 	cmpnei	zero,zero,205
+    3334:	00003358 	cmpnei	zero,zero,205
+    3338:	00003360 	cmpeqi	zero,zero,205
+    333c:	00003360 	cmpeqi	zero,zero,205
+    3340:	00003358 	cmpnei	zero,zero,205
+    3344:	00003360 	cmpeqi	zero,zero,205
+    3348:	00003358 	cmpnei	zero,zero,205
+    334c:	00003358 	cmpnei	zero,zero,205
+    3350:	00003358 	cmpnei	zero,zero,205
+    3354:	00003360 	cmpeqi	zero,zero,205
+    3358:	0005883a 	mov	r2,zero
+    335c:	f800283a 	ret
+    3360:	00800044 	movi	r2,1
+    3364:	f800283a 	ret
+
+00003368 <altera_nios2_gen2_irq_init>:
+    3368:	000170fa 	wrctl	ienable,zero
+    336c:	f800283a 	ret
+
+00003370 <alt_icache_flush>:
+    3370:	00840004 	movi	r2,4096
+    3374:	1140012e 	bgeu	r2,r5,337c <alt_icache_flush+0xc>
+    3378:	100b883a 	mov	r5,r2
+    337c:	214b883a 	add	r5,r4,r5
+    3380:	2005883a 	mov	r2,r4
+    3384:	1140032e 	bgeu	r2,r5,3394 <alt_icache_flush+0x24>
+    3388:	1000603a 	flushi	r2
+    338c:	10800804 	addi	r2,r2,32
+    3390:	003ffc06 	br	3384 <_gp+0xffff7f24>
+    3394:	210007cc 	andi	r4,r4,31
+    3398:	20000126 	beq	r4,zero,33a0 <alt_icache_flush+0x30>
+    339c:	1000603a 	flushi	r2
+    33a0:	0000203a 	flushp
+    33a4:	f800283a 	ret
+
+000033a8 <strlen>:
+    33a8:	2005883a 	mov	r2,r4
+    33ac:	10c00007 	ldb	r3,0(r2)
+    33b0:	18000226 	beq	r3,zero,33bc <strlen+0x14>
+    33b4:	10800044 	addi	r2,r2,1
+    33b8:	003ffc06 	br	33ac <_gp+0xffff7f4c>
+    33bc:	1105c83a 	sub	r2,r2,r4
+    33c0:	f800283a 	ret

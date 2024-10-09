@@ -1,0 +1,35 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst eth_nios_v2.nios2_gen2_0.cpu -pg 1
+preplace inst eth_nios_v2.jtag_uart_0 -pg 1 -lvl 5 -y 110
+preplace inst eth_nios_v2 -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst eth_nios_v2.rx_dma -pg 1 -lvl 3 -y 210
+preplace inst eth_nios_v2.nios2_gen2_0 -pg 1 -lvl 4 -y 70
+preplace inst eth_nios_v2.tse -pg 1 -lvl 2 -y 170
+preplace inst eth_nios_v2.nios2_gen2_0.clock_bridge -pg 1
+preplace inst eth_nios_v2.tse.i_tse_mac -pg 1
+preplace inst eth_nios_v2.nios2_gen2_0.reset_bridge -pg 1
+preplace inst eth_nios_v2.system_ram -pg 1 -lvl 5 -y 490
+preplace inst eth_nios_v2.tx_dma -pg 1 -lvl 1 -y 50
+preplace inst eth_nios_v2.timer_0 -pg 1 -lvl 5 -y 210
+preplace inst eth_nios_v2.header_ram -pg 1 -lvl 5 -y 410
+preplace inst eth_nios_v2.clk_0 -pg 1 -lvl 5 -y 310
+preplace inst eth_nios_v2.rx_tx_buf -pg 1 -lvl 5 -y 570
+preplace netloc INTERCONNECT<net_container>eth_nios_v2</net_container>(SLAVE)jtag_uart_0.reset,(SLAVE)tx_dma.reset,(SLAVE)rx_tx_buf.reset1,(SLAVE)clk_0.clk_in_reset,(SLAVE)system_ram.reset1,(SLAVE)rx_dma.reset,(SLAVE)header_ram.reset1,(MASTER)nios2_gen2_0.debug_reset_request,(SLAVE)timer_0.reset,(MASTER)clk_0.clk_reset,(SLAVE)tse.reset_connection,(SLAVE)nios2_gen2_0.reset) 1 0 6 250 340 520 130 890 140 1210 250 1590 400 1870
+preplace netloc POINT_TO_POINT<net_container>eth_nios_v2</net_container>(MASTER)tx_dma.out,(SLAVE)tse.transmit) 1 1 1 480
+preplace netloc EXPORT<net_container>eth_nios_v2</net_container>(SLAVE)eth_nios_v2.eth_tse_0_pcs_mac_tx_clock_connection,(SLAVE)tse.pcs_mac_tx_clock_connection) 1 0 2 NJ 320 NJ
+preplace netloc FAN_OUT<net_container>eth_nios_v2</net_container>(SLAVE)timer_0.clk,(SLAVE)tse.control_port_clock_connection,(SLAVE)jtag_uart_0.clk,(SLAVE)tx_dma.clk,(MASTER)clk_0.clk,(SLAVE)header_ram.clk1,(SLAVE)rx_dma.clk,(SLAVE)rx_tx_buf.clk1,(SLAVE)nios2_gen2_0.clk,(SLAVE)tse.receive_clock_connection,(SLAVE)tse.transmit_clock_connection,(SLAVE)system_ram.clk1) 1 0 6 230 200 560 110 950 100 1170 30 1650 380 1890
+preplace netloc EXPORT<net_container>eth_nios_v2</net_container>(SLAVE)rx_tx_buf.reset2,(SLAVE)eth_nios_v2.rx_tx_buf_reset2) 1 0 5 NJ 640 NJ 640 NJ 640 NJ 640 NJ
+preplace netloc EXPORT<net_container>eth_nios_v2</net_container>(SLAVE)tse.pcs_mac_rx_clock_connection,(SLAVE)eth_nios_v2.eth_tse_0_pcs_mac_rx_clock_connection) 1 0 2 NJ 300 NJ
+preplace netloc EXPORT<net_container>eth_nios_v2</net_container>(SLAVE)tse.mac_status_connection,(SLAVE)eth_nios_v2.eth_tse_0_mac_status_connection) 1 0 2 NJ 280 NJ
+preplace netloc EXPORT<net_container>eth_nios_v2</net_container>(SLAVE)eth_nios_v2.eth_tse_0_mac_mdio_connection,(SLAVE)tse.mac_mdio_connection) 1 0 2 NJ 220 NJ
+preplace netloc POINT_TO_POINT<net_container>eth_nios_v2</net_container>(SLAVE)rx_dma.in,(MASTER)tse.receive) 1 2 1 N
+preplace netloc EXPORT<net_container>eth_nios_v2</net_container>(SLAVE)eth_nios_v2.eth_tse_0_mac_rgmii_connection,(SLAVE)tse.mac_rgmii_connection) 1 0 2 NJ 260 NJ
+preplace netloc EXPORT<net_container>eth_nios_v2</net_container>(SLAVE)eth_nios_v2.eth_tse_0_mac_misc_connection,(SLAVE)tse.mac_misc_connection) 1 0 2 NJ 240 NJ
+preplace netloc EXPORT<net_container>eth_nios_v2</net_container>(SLAVE)eth_nios_v2.clk,(SLAVE)clk_0.clk_in) 1 0 5 NJ 450 NJ 450 NJ 450 NJ 320 NJ
+preplace netloc INTERCONNECT<net_container>eth_nios_v2</net_container>(MASTER)nios2_gen2_0.instruction_master,(MASTER)rx_dma.descriptor_write,(SLAVE)header_ram.s1,(SLAVE)tse.control_port,(SLAVE)nios2_gen2_0.debug_mem_slave,(SLAVE)rx_dma.csr,(SLAVE)rx_tx_buf.s1,(MASTER)rx_dma.descriptor_read,(MASTER)tx_dma.m_read,(SLAVE)jtag_uart_0.avalon_jtag_slave,(MASTER)nios2_gen2_0.data_master,(MASTER)tx_dma.descriptor_read,(SLAVE)system_ram.s1,(SLAVE)timer_0.s1,(MASTER)tx_dma.descriptor_write,(MASTER)rx_dma.m_write,(SLAVE)tx_dma.csr) 1 0 5 270 160 500 90 910 120 1170 230 1610
+preplace netloc EXPORT<net_container>eth_nios_v2</net_container>(SLAVE)eth_nios_v2.rx_tx_buf_s2,(SLAVE)rx_tx_buf.s2) 1 0 5 NJ 680 NJ 680 NJ 680 NJ 680 NJ
+preplace netloc EXPORT<net_container>eth_nios_v2</net_container>(SLAVE)rx_tx_buf.clk2,(SLAVE)eth_nios_v2.rx_tx_buf_clk2) 1 0 5 NJ 600 NJ 600 NJ 600 NJ 600 NJ
+preplace netloc FAN_OUT<net_container>eth_nios_v2</net_container>(SLAVE)rx_dma.csr_irq,(SLAVE)tx_dma.csr_irq,(SLAVE)timer_0.irq,(SLAVE)jtag_uart_0.irq,(MASTER)nios2_gen2_0.irq) 1 0 5 290 180 NJ 70 930 200 NJ 210 1630
+levelinfo -pg 1 0 200 1930
+levelinfo -hier eth_nios_v2 210 320 760 980 1350 1700 1910
