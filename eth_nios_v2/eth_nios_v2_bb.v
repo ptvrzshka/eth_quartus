@@ -35,7 +35,8 @@ module eth_nios_v2 (
 	rx_tx_buf_s2_clken,
 	rx_tx_buf_s2_write,
 	rx_tx_buf_s2_readdata,
-	rx_tx_buf_s2_writedata);	
+	rx_tx_buf_s2_writedata,
+	irq_eth_input_export);	
 
 	input		clk_clk;
 	output		eth_tse_0_mac_mdio_connection_mdc;
@@ -73,4 +74,5 @@ module eth_nios_v2 (
 	input		rx_tx_buf_s2_write;
 	output	[7:0]	rx_tx_buf_s2_readdata;
 	input	[7:0]	rx_tx_buf_s2_writedata;
+	input		irq_eth_input_export;
 endmodule

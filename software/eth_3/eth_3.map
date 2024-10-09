@@ -68,7 +68,8 @@ Memory Configuration
 Name             Origin             Length             Attributes
 reset            0x0000000000002000 0x0000000000000020
 system_ram       0x0000000000002020 0x0000000000001fdf
-header_ram       0x0000000000005400 0x0000000000000100
+rx_buf_ram       0x0000000000005400 0x0000000000000200
+header_ram       0x0000000000005600 0x0000000000000100
 *default*        0x0000000000000000 0xffffffffffffffff
 
 Linker script and memory map
@@ -86,7 +87,8 @@ LOAD d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-el
 END GROUP
 LOAD d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0\libgcc.a
                 0x0000000000002000                __alt_mem_system_ram = 0x2000
-                0x0000000000005400                __alt_mem_header_ram = 0x5400
+                0x0000000000005400                __alt_mem_rx_buf_ram = 0x5400
+                0x0000000000005600                __alt_mem_header_ram = 0x5600
 
 .entry          0x0000000000002000       0x20
  *(.entry)
@@ -461,10 +463,17 @@ LOAD d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-el
                 0x00000000000036e4                __alt_stack_base = ABSOLUTE (.)
                 [!provide]                        PROVIDE (_alt_partition_system_ram_load_addr, LOADADDR (.system_ram))
 
-.header_ram     0x0000000000005400        0x0 load address 0x00000000000036e4
+.rx_buf_ram     0x0000000000005400        0x0 load address 0x00000000000036e4
+                [!provide]                        PROVIDE (_alt_partition_rx_buf_ram_start, ABSOLUTE (.))
+ *(.rx_buf_ram .rx_buf_ram. rx_buf_ram.*)
+                0x0000000000005400                . = ALIGN (0x4)
+                [!provide]                        PROVIDE (_alt_partition_rx_buf_ram_end, ABSOLUTE (.))
+                [!provide]                        PROVIDE (_alt_partition_rx_buf_ram_load_addr, LOADADDR (.rx_buf_ram))
+
+.header_ram     0x0000000000005600        0x0 load address 0x00000000000036e4
                 [!provide]                        PROVIDE (_alt_partition_header_ram_start, ABSOLUTE (.))
  *(.header_ram .header_ram. header_ram.*)
-                0x0000000000005400                . = ALIGN (0x4)
+                0x0000000000005600                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (_alt_partition_header_ram_end, ABSOLUTE (.))
                 [!provide]                        PROVIDE (_alt_partition_header_ram_load_addr, LOADADDR (.header_ram))
 
@@ -583,34 +592,34 @@ LOAD d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-el
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x3adf
+.debug_info     0x0000000000000000     0x3af7
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x0000000000000000       0x71 ../eth_3_bsp//obj/HAL/src/crt0.o
- .debug_info    0x0000000000000071      0xdb1 obj/default/hello_world_small.o
- .debug_info    0x0000000000000e22       0xf4 d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcmp.o)
- .debug_info    0x0000000000000f16      0x119 d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcpy.o)
- .debug_info    0x000000000000102f       0xdc d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memset.o)
- .debug_info    0x000000000000110b       0xa6 ../eth_3_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_info    0x00000000000011b1      0x38a ../eth_3_bsp/\libhal_bsp.a(alt_iic.o)
- .debug_info    0x000000000000153b      0x232 ../eth_3_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
- .debug_info    0x000000000000176d       0x7a ../eth_3_bsp/\libhal_bsp.a(alt_irq_entry.o)
- .debug_info    0x00000000000017e7      0x184 ../eth_3_bsp/\libhal_bsp.a(alt_irq_handler.o)
- .debug_info    0x000000000000196b       0x88 ../eth_3_bsp/\libhal_bsp.a(alt_irq_vars.o)
- .debug_info    0x00000000000019f3      0x1c9 ../eth_3_bsp/\libhal_bsp.a(alt_load.o)
- .debug_info    0x0000000000001bbc      0x169 ../eth_3_bsp/\libhal_bsp.a(alt_main.o)
- .debug_info    0x0000000000001d25      0x396 ../eth_3_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_info    0x00000000000020bb      0xdcd ../eth_3_bsp/\libhal_bsp.a(altera_avalon_sgdma.o)
- .debug_info    0x0000000000002e88       0xde ../eth_3_bsp/\libhal_bsp.a(alt_dcache_flush.o)
- .debug_info    0x0000000000002f66      0x1b3 ../eth_3_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
- .debug_info    0x0000000000003119       0xa6 ../eth_3_bsp/\libhal_bsp.a(alt_errno.o)
- .debug_info    0x00000000000031bf       0x80 ../eth_3_bsp/\libhal_bsp.a(alt_exception_entry.o)
- .debug_info    0x000000000000323f      0x32d ../eth_3_bsp/\libhal_bsp.a(alt_find_dev.o)
- .debug_info    0x000000000000356c       0xb8 ../eth_3_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .debug_info    0x0000000000003624      0x1f8 ../eth_3_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
- .debug_info    0x000000000000381c       0x92 ../eth_3_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
- .debug_info    0x00000000000038ae       0xde ../eth_3_bsp/\libhal_bsp.a(alt_icache_flush.o)
- .debug_info    0x000000000000398c       0x8a d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-int_errno.o)
- .debug_info    0x0000000000003a16       0xc9 d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
+ .debug_info    0x0000000000000000       0x79 ../eth_3_bsp//obj/HAL/src/crt0.o
+ .debug_info    0x0000000000000079      0xdb1 obj/default/hello_world_small.o
+ .debug_info    0x0000000000000e2a       0xf4 d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcmp.o)
+ .debug_info    0x0000000000000f1e      0x119 d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcpy.o)
+ .debug_info    0x0000000000001037       0xdc d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memset.o)
+ .debug_info    0x0000000000001113       0xa6 ../eth_3_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_info    0x00000000000011b9      0x38a ../eth_3_bsp/\libhal_bsp.a(alt_iic.o)
+ .debug_info    0x0000000000001543      0x232 ../eth_3_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+ .debug_info    0x0000000000001775       0x82 ../eth_3_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .debug_info    0x00000000000017f7      0x184 ../eth_3_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .debug_info    0x000000000000197b       0x88 ../eth_3_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .debug_info    0x0000000000001a03      0x1c9 ../eth_3_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_info    0x0000000000001bcc      0x169 ../eth_3_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_info    0x0000000000001d35      0x396 ../eth_3_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_info    0x00000000000020cb      0xdcd ../eth_3_bsp/\libhal_bsp.a(altera_avalon_sgdma.o)
+ .debug_info    0x0000000000002e98       0xde ../eth_3_bsp/\libhal_bsp.a(alt_dcache_flush.o)
+ .debug_info    0x0000000000002f76      0x1b3 ../eth_3_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_info    0x0000000000003129       0xa6 ../eth_3_bsp/\libhal_bsp.a(alt_errno.o)
+ .debug_info    0x00000000000031cf       0x88 ../eth_3_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .debug_info    0x0000000000003257      0x32d ../eth_3_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .debug_info    0x0000000000003584       0xb8 ../eth_3_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_info    0x000000000000363c      0x1f8 ../eth_3_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .debug_info    0x0000000000003834       0x92 ../eth_3_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_info    0x00000000000038c6       0xde ../eth_3_bsp/\libhal_bsp.a(alt_icache_flush.o)
+ .debug_info    0x00000000000039a4       0x8a d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-int_errno.o)
+ .debug_info    0x0000000000003a2e       0xc9 d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
 
 .debug_abbrev   0x0000000000000000     0x156f
  *(.debug_abbrev)
@@ -693,7 +702,7 @@ LOAD d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-el
  .debug_frame   0x0000000000000610       0x20 ../eth_3_bsp/\libhal_bsp.a(alt_icache_flush.o)
  .debug_frame   0x0000000000000630       0x20 d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
 
-.debug_str      0x0000000000000000     0x1579
+.debug_str      0x0000000000000000     0x15be
  *(.debug_str)
  .debug_str     0x0000000000000000      0x60a obj/default/hello_world_small.o
                                         0x68b (size before relaxing)
@@ -703,43 +712,43 @@ LOAD d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-el
                                         0x1d9 (size before relaxing)
  .debug_str     0x0000000000000778       0x3a d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memset.o)
                                         0x1c5 (size before relaxing)
- .debug_str     0x00000000000007b2       0x5c ../eth_3_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
-                                        0x155 (size before relaxing)
- .debug_str     0x000000000000080e       0xf5 ../eth_3_bsp/\libhal_bsp.a(alt_iic.o)
-                                        0x253 (size before relaxing)
- .debug_str     0x0000000000000903       0x37 ../eth_3_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
-                                        0x20d (size before relaxing)
- .debug_str     0x000000000000093a       0x3a ../eth_3_bsp/\libhal_bsp.a(alt_irq_handler.o)
-                                        0x197 (size before relaxing)
- .debug_str     0x0000000000000974       0x17 ../eth_3_bsp/\libhal_bsp.a(alt_irq_vars.o)
-                                        0x13a (size before relaxing)
- .debug_str     0x000000000000098b       0xfe ../eth_3_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_str     0x00000000000007b2       0x64 ../eth_3_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+                                        0x15d (size before relaxing)
+ .debug_str     0x0000000000000816       0xf5 ../eth_3_bsp/\libhal_bsp.a(alt_iic.o)
+                                        0x25b (size before relaxing)
+ .debug_str     0x000000000000090b       0x37 ../eth_3_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+                                        0x215 (size before relaxing)
+ .debug_str     0x0000000000000942       0x3a ../eth_3_bsp/\libhal_bsp.a(alt_irq_handler.o)
+                                        0x19f (size before relaxing)
+ .debug_str     0x000000000000097c       0x17 ../eth_3_bsp/\libhal_bsp.a(alt_irq_vars.o)
+                                        0x142 (size before relaxing)
+ .debug_str     0x0000000000000993      0x13b ../eth_3_bsp/\libhal_bsp.a(alt_load.o)
                                         0x23c (size before relaxing)
- .debug_str     0x0000000000000a89       0x5e ../eth_3_bsp/\libhal_bsp.a(alt_main.o)
-                                        0x1b5 (size before relaxing)
- .debug_str     0x0000000000000ae7      0x109 ../eth_3_bsp/\libhal_bsp.a(alt_sys_init.o)
-                                        0x3db (size before relaxing)
- .debug_str     0x0000000000000bf0      0x2bd ../eth_3_bsp/\libhal_bsp.a(altera_avalon_sgdma.o)
-                                        0x6d7 (size before relaxing)
- .debug_str     0x0000000000000ead       0x1b ../eth_3_bsp/\libhal_bsp.a(alt_dcache_flush.o)
-                                        0x15b (size before relaxing)
- .debug_str     0x0000000000000ec8       0x30 ../eth_3_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_str     0x0000000000000ace       0x5e ../eth_3_bsp/\libhal_bsp.a(alt_main.o)
+                                        0x1bd (size before relaxing)
+ .debug_str     0x0000000000000b2c      0x109 ../eth_3_bsp/\libhal_bsp.a(alt_sys_init.o)
+                                        0x3e3 (size before relaxing)
+ .debug_str     0x0000000000000c35      0x2bd ../eth_3_bsp/\libhal_bsp.a(altera_avalon_sgdma.o)
+                                        0x6df (size before relaxing)
+ .debug_str     0x0000000000000ef2       0x1b ../eth_3_bsp/\libhal_bsp.a(alt_dcache_flush.o)
+                                        0x163 (size before relaxing)
+ .debug_str     0x0000000000000f0d       0x30 ../eth_3_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
                                         0x1cc (size before relaxing)
- .debug_str     0x0000000000000ef8       0x14 ../eth_3_bsp/\libhal_bsp.a(alt_errno.o)
+ .debug_str     0x0000000000000f3d       0x14 ../eth_3_bsp/\libhal_bsp.a(alt_errno.o)
                                         0x145 (size before relaxing)
- .debug_str     0x0000000000000f0c       0x78 ../eth_3_bsp/\libhal_bsp.a(alt_find_dev.o)
-                                        0x1fa (size before relaxing)
- .debug_str     0x0000000000000f84       0x30 ../eth_3_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
-                                        0x166 (size before relaxing)
- .debug_str     0x0000000000000fb4      0x48b ../eth_3_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
-                                        0x5a0 (size before relaxing)
- .debug_str     0x000000000000143f       0x20 ../eth_3_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
-                                        0x15c (size before relaxing)
- .debug_str     0x000000000000145f       0x1b ../eth_3_bsp/\libhal_bsp.a(alt_icache_flush.o)
-                                        0x15b (size before relaxing)
- .debug_str     0x000000000000147a       0xc5 d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-int_errno.o)
+ .debug_str     0x0000000000000f51       0x78 ../eth_3_bsp/\libhal_bsp.a(alt_find_dev.o)
+                                        0x202 (size before relaxing)
+ .debug_str     0x0000000000000fc9       0x30 ../eth_3_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+                                        0x16e (size before relaxing)
+ .debug_str     0x0000000000000ff9      0x48b ../eth_3_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+                                        0x5a8 (size before relaxing)
+ .debug_str     0x0000000000001484       0x20 ../eth_3_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+                                        0x164 (size before relaxing)
+ .debug_str     0x00000000000014a4       0x1b ../eth_3_bsp/\libhal_bsp.a(alt_icache_flush.o)
+                                        0x163 (size before relaxing)
+ .debug_str     0x00000000000014bf       0xc5 d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-int_errno.o)
                                         0x1be (size before relaxing)
- .debug_str     0x000000000000153f       0x3a d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
+ .debug_str     0x0000000000001584       0x3a d:/intelfpga/18.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
                                         0x1cb (size before relaxing)
 
 .debug_loc      0x0000000000000000     0x1780

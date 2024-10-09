@@ -2,9 +2,9 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>30.09.2024 11:52:56</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1727682776035</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>C:\Users\main\Desktop\NIOS_II\eth_ver_2_1\software\eth_3_bsp</BspGeneratedLocation>
+        <BspGeneratedTimeStamp>09.10.2024 15:29:18</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1728473358442</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>D:\__PROJECTS\001_Granulit\2._QUARTUS\eth_quartus\software\eth_3_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\eth_nios_v2.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
@@ -935,6 +935,12 @@
                 <Group xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
         </Setting>
         <MemoryMap>
+                <slaveDescriptor>eth_irq_pio</slaveDescriptor>
+                <addressRange>0x00000000 - 0x0000000F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>system_ram</slaveDescriptor>
                 <addressRange>0x00002000 - 0x00003FFE</addressRange>
                 <addressSpan>8191</addressSpan>
@@ -947,32 +953,38 @@
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>rx_buf_ram</slaveDescriptor>
+                <addressRange>0x00005400 - 0x000055FF</addressRange>
+                <addressSpan>512</addressSpan>
+                <attributes>memory</attributes>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>header_ram</slaveDescriptor>
-                <addressRange>0x00005400 - 0x000054FF</addressRange>
+                <addressRange>0x00005600 - 0x000056FF</addressRange>
                 <addressSpan>256</addressSpan>
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>rx_dma</slaveDescriptor>
-                <addressRange>0x00005500 - 0x0000553F</addressRange>
+                <addressRange>0x00005700 - 0x0000573F</addressRange>
                 <addressSpan>64</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>tx_dma</slaveDescriptor>
-                <addressRange>0x00005540 - 0x0000557F</addressRange>
+                <addressRange>0x00005740 - 0x0000577F</addressRange>
                 <addressSpan>64</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>timer_0</slaveDescriptor>
-                <addressRange>0x00005580 - 0x0000559F</addressRange>
+                <addressRange>0x00005780 - 0x0000579F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>jtag_uart_0</slaveDescriptor>
-                <addressRange>0x000055A0 - 0x000055A7</addressRange>
+                <addressRange>0x000057A0 - 0x000057A7</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>

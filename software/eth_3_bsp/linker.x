@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'eth_nios_v2'
  * SOPC Builder design path: ../../eth_nios_v2.sopcinfo
  *
- * Generated: Mon Sep 30 11:35:12 MSK 2024
+ * Generated: Wed Oct 09 15:29:18 MSK 2024
  */
 
 /*
@@ -52,12 +52,14 @@ MEMORY
 {
     reset : ORIGIN = 0x2000, LENGTH = 32
     system_ram : ORIGIN = 0x2020, LENGTH = 8159
-    header_ram : ORIGIN = 0x5400, LENGTH = 256
+    rx_buf_ram : ORIGIN = 0x5400, LENGTH = 512
+    header_ram : ORIGIN = 0x5600, LENGTH = 256
 }
 
 /* Define symbols for each memory base-address */
 __alt_mem_system_ram = 0x2000;
-__alt_mem_header_ram = 0x5400;
+__alt_mem_rx_buf_ram = 0x5400;
+__alt_mem_header_ram = 0x5600;
 
 OUTPUT_FORMAT( "elf32-littlenios2",
                "elf32-littlenios2",
@@ -329,7 +331,24 @@ SECTIONS
      *
      */
 
-    .header_ram : AT ( LOADADDR (.system_ram) + SIZEOF (.system_ram) )
+    .rx_buf_ram : AT ( LOADADDR (.system_ram) + SIZEOF (.system_ram) )
+    {
+        PROVIDE (_alt_partition_rx_buf_ram_start = ABSOLUTE(.));
+        *(.rx_buf_ram .rx_buf_ram. rx_buf_ram.*)
+        . = ALIGN(4);
+        PROVIDE (_alt_partition_rx_buf_ram_end = ABSOLUTE(.));
+    } > rx_buf_ram
+
+    PROVIDE (_alt_partition_rx_buf_ram_load_addr = LOADADDR(.rx_buf_ram));
+
+    /*
+     *
+     * This section's LMA is set to the .text region.
+     * crt0 will copy to this section's specified mapped region virtual memory address (VMA)
+     *
+     */
+
+    .header_ram : AT ( LOADADDR (.rx_buf_ram) + SIZEOF (.rx_buf_ram) )
     {
         PROVIDE (_alt_partition_header_ram_start = ABSOLUTE(.));
         *(.header_ram .header_ram. header_ram.*)

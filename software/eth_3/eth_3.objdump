@@ -31,49 +31,51 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC, SMALL_DATA
   6 .system_ram   00000000  000036e4  000036e4  00002490  2**0
                   CONTENTS
-  7 .header_ram   00000000  00005400  00005400  00002490  2**0
+  7 .rx_buf_ram   00000000  00005400  00005400  00002490  2**0
                   CONTENTS
-  8 .comment      00000023  00000000  00000000  00002490  2**0
+  8 .header_ram   00000000  00005600  00005600  00002490  2**0
+                  CONTENTS
+  9 .comment      00000023  00000000  00000000  00002490  2**0
                   CONTENTS, READONLY
-  9 .debug_aranges 00000368  00000000  00000000  000024b8  2**3
+ 10 .debug_aranges 00000368  00000000  00000000  000024b8  2**3
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_info   00003adf  00000000  00000000  00002820  2**0
+ 11 .debug_info   00003af7  00000000  00000000  00002820  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_abbrev 0000156f  00000000  00000000  000062ff  2**0
+ 12 .debug_abbrev 0000156f  00000000  00000000  00006317  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_line   000016ee  00000000  00000000  0000786e  2**0
+ 13 .debug_line   000016ee  00000000  00000000  00007886  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_frame  00000650  00000000  00000000  00008f5c  2**2
+ 14 .debug_frame  00000650  00000000  00000000  00008f74  2**2
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_str    00001579  00000000  00000000  000095ac  2**0
+ 15 .debug_str    000015be  00000000  00000000  000095c4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_loc    00001780  00000000  00000000  0000ab25  2**0
+ 16 .debug_loc    00001780  00000000  00000000  0000ab82  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_alt_sim_info 00000030  00000000  00000000  0000c2a8  2**2
+ 17 .debug_alt_sim_info 00000030  00000000  00000000  0000c304  2**2
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_ranges 00000170  00000000  00000000  0000c2d8  2**3
+ 18 .debug_ranges 00000170  00000000  00000000  0000c338  2**3
                   CONTENTS, READONLY, DEBUGGING
- 18 .thread_model 00000003  00000000  00000000  0000dd52  2**0
+ 19 .thread_model 00000003  00000000  00000000  0000de1a  2**0
                   CONTENTS, READONLY
- 19 .cpu          0000000c  00000000  00000000  0000dd55  2**0
+ 20 .cpu          0000000c  00000000  00000000  0000de1d  2**0
                   CONTENTS, READONLY
- 20 .qsys         00000001  00000000  00000000  0000dd61  2**0
+ 21 .qsys         00000001  00000000  00000000  0000de29  2**0
                   CONTENTS, READONLY
- 21 .simulation_enabled 00000001  00000000  00000000  0000dd62  2**0
+ 22 .simulation_enabled 00000001  00000000  00000000  0000de2a  2**0
                   CONTENTS, READONLY
- 22 .stderr_dev   0000000b  00000000  00000000  0000dd63  2**0
+ 23 .stderr_dev   0000000b  00000000  00000000  0000de2b  2**0
                   CONTENTS, READONLY
- 23 .stdin_dev    0000000b  00000000  00000000  0000dd6e  2**0
+ 24 .stdin_dev    0000000b  00000000  00000000  0000de36  2**0
                   CONTENTS, READONLY
- 24 .stdout_dev   0000000b  00000000  00000000  0000dd79  2**0
+ 25 .stdout_dev   0000000b  00000000  00000000  0000de41  2**0
                   CONTENTS, READONLY
- 25 .sopc_system_name 0000000b  00000000  00000000  0000dd84  2**0
+ 26 .sopc_system_name 0000000b  00000000  00000000  0000de4c  2**0
                   CONTENTS, READONLY
- 26 .quartus_project_dir 00000031  00000000  00000000  0000dd8f  2**0
+ 27 .quartus_project_dir 00000031  00000000  00000000  0000de57  2**0
                   CONTENTS, READONLY
- 27 .jdi          00005554  00000000  00000000  0000ddc0  2**0
+ 28 .jdi          00005554  00000000  00000000  0000de88  2**0
                   CONTENTS, READONLY
- 28 .sopcinfo     0007536c  00000000  00000000  00013314  2**0
+ 29 .sopcinfo     00084b6f  00000000  00000000  000133dc  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 00002000 l    d  .entry	00000000 .entry
@@ -83,7 +85,8 @@ SYMBOL TABLE:
 00003400 l    d  .rwdata	00000000 .rwdata
 00003520 l    d  .bss	00000000 .bss
 000036e4 l    d  .system_ram	00000000 .system_ram
-00005400 l    d  .header_ram	00000000 .header_ram
+00005400 l    d  .rx_buf_ram	00000000 .rx_buf_ram
+00005600 l    d  .header_ram	00000000 .header_ram
 00000000 l    d  .comment	00000000 .comment
 00000000 l    d  .debug_aranges	00000000 .debug_aranges
 00000000 l    d  .debug_info	00000000 .debug_info
@@ -127,7 +130,7 @@ SYMBOL TABLE:
 000035e4 g     O .bss	00000100 alt_irq
 00003490 g       *ABS*	00000000 __flash_rwdata_start
 00002cf4 g     F .text	00000080 alt_avalon_sgdma_do_sync_transfer
-00005400 g       *ABS*	00000000 __alt_mem_header_ram
+00005600 g       *ABS*	00000000 __alt_mem_header_ram
 0000346c g     O .rwdata	00000004 ip
 00002e80 g     F .text	00000114 alt_avalon_sgdma_construct_descriptor_burst
 00003368 g     F .text	00000008 altera_nios2_gen2_irq_init
@@ -149,6 +152,7 @@ SYMBOL TABLE:
 00003460 g     O .rwdata	00000004 tse
 00003370 g     F .text	00000038 alt_icache_flush
 00003474 g     O .rwdata	00000004 eth
+00005400 g       *ABS*	00000000 __alt_mem_rx_buf_ram
 00003544 g     O .bss	00000020 tx_descriptor_header
 00002d9c g     F .text	0000001c alt_avalon_sgdma_stop
 00003470 g     O .rwdata	00000004 arp
@@ -232,12 +236,32 @@ SYMBOL TABLE:
 Disassembly of section .entry:
 
 00002000 <__reset>:
+#if NIOS2_ICACHE_SIZE > 0 && defined(ALT_ALLOW_CODE_AT_RESET) && (!defined(ALT_SIM_OPTIMIZE) || defined(NIOS2_ECC_PRESENT))
+    /* Assume the instruction cache size is always a power of two. */
+#if NIOS2_ICACHE_SIZE > 0x8000
+    movhi r2, %hi(NIOS2_ICACHE_SIZE)
+#else
+    movui r2, NIOS2_ICACHE_SIZE
     2000:	00840014 	movui	r2,4096
+#endif
+
+0:
+    initi r2
     2004:	1001483a 	initi	r2
+    addi r2, r2, -NIOS2_ICACHE_LINE_SIZE
     2008:	10bff804 	addi	r2,r2,-32
+    bgt r2, zero, 0b
     200c:	00bffd16 	blt	zero,r2,2004 <_gp+0xffff6ba4>
+ * Jump to the _start entry point in the .text section if reset code
+ * is allowed or if optimizing for RTL simulation.
+ */
+#if defined(ALT_ALLOW_CODE_AT_RESET) || defined(ALT_SIM_OPTIMIZE)
+    /* Jump to the _start entry point in the .text section. */
+    movhi r1, %hi(_start)
     2010:	00400034 	movhi	at,0
+    ori r1, r1, %lo(_start)
     2014:	08486214 	ori	at,at,8584
+    jmp r1
     2018:	0800683a 	jmp	at
 
 0000201c <_exit>:
@@ -246,124 +270,409 @@ Disassembly of section .entry:
 Disassembly of section .exceptions:
 
 00002020 <alt_exception>:
+
+#else /* ALT_EXCEPTION_STACK disabled */
+        /* 
+         * Reserve space on normal stack for registers about to be pushed.
+         */
+        addi  sp, sp, -76
     2020:	deffed04 	addi	sp,sp,-76
+         * documentation for details).
+         *
+         * Leave a gap in the stack frame at 4(sp) for the muldiv handler to
+         * store zero into.
+         */
+        stw   ra,  0(sp)
     2024:	dfc00015 	stw	ra,0(sp)
+        stw   r1,   8(sp)
     2028:	d8400215 	stw	at,8(sp)
+        stw   r2,  12(sp)
     202c:	d8800315 	stw	r2,12(sp)
+        stw   r3,  16(sp)
     2030:	d8c00415 	stw	r3,16(sp)
+        stw   r4,  20(sp)
     2034:	d9000515 	stw	r4,20(sp)
+        stw   r5,  24(sp)
     2038:	d9400615 	stw	r5,24(sp)
+        stw   r6,  28(sp)
     203c:	d9800715 	stw	r6,28(sp)
+        stw   r7,  32(sp)
     2040:	d9c00815 	stw	r7,32(sp)
+        rdctl r5, estatus   /* Read early to avoid usage stall */
     2044:	000b307a 	rdctl	r5,estatus
+        stw   r8,  36(sp)
     2048:	da000915 	stw	r8,36(sp)
+        stw   r9,  40(sp)
     204c:	da400a15 	stw	r9,40(sp)
+        stw   r10, 44(sp)
     2050:	da800b15 	stw	r10,44(sp)
+        stw   r11, 48(sp)
     2054:	dac00c15 	stw	r11,48(sp)
+        stw   r12, 52(sp)
     2058:	db000d15 	stw	r12,52(sp)
+        stw   r13, 56(sp)
     205c:	db400e15 	stw	r13,56(sp)
+        stw   r14, 60(sp)
     2060:	db800f15 	stw	r14,60(sp)
+        stw   r15, 64(sp)
     2064:	dbc01015 	stw	r15,64(sp)
+        /*
+         * ea-4 contains the address of the instruction being executed
+         * when the exception occured. For interrupt exceptions, we will
+         * will be re-issue the isntruction. Store it in 72(sp)
+         */
+        stw   r5,  68(sp)  /* estatus */
     2068:	d9401115 	stw	r5,68(sp)
+        addi  r15, ea, -4  /* instruction that caused exception */
     206c:	ebffff04 	addi	r15,ea,-4
+        stw   r15,  72(sp)
     2070:	dbc01215 	stw	r15,72(sp)
+#else
+        /*
+         * Test to see if the exception was a software exception or caused 
+         * by an external interrupt, and vector accordingly.
+         */
+        rdctl r4, ipending
     2074:	0009313a 	rdctl	r4,ipending
+        andi  r2, r5, 1
     2078:	2880004c 	andi	r2,r5,1
+        beq   r2, zero, .Lnot_irq
     207c:	10000326 	beq	r2,zero,208c <alt_exception+0x6c>
+        beq   r4, zero, .Lnot_irq
     2080:	20000226 	beq	r4,zero,208c <alt_exception+0x6c>
+        /*
+         * Now that all necessary registers have been preserved, call 
+         * alt_irq_handler() to process the interrupts.
+         */
+
+        call alt_irq_handler
     2084:	00020fc0 	call	20fc <alt_irq_handler>
+
+        .section .exceptions.irqreturn, "xa"
+
+        br    .Lexception_exit
     2088:	00000706 	br	20a8 <alt_exception+0x88>
+         * upon completion, so we write ea (address of instruction *after*
+         * the one where the exception occured) into 72(sp). The actual
+         * instruction that caused the exception is written in r2, which these
+         * handlers will utilize.
+         */
+        stw ea, 72(sp) /* EA is PC+4 so will skip over instruction causing exception */
     208c:	df401215 	stw	ea,72(sp)
+.Lunknown_16bit:
+        addi.n r4, r4, 2 /* Need PC+2 to skip over instruction causing exception */
+        stw r4, 72(sp)
+
+#else /* CDX is not Enabled and all instructions are 32bits */
+        ldw r2, -4(ea) /* Instruction value that caused exception */
     2090:	e8bfff17 	ldw	r2,-4(ea)
+         * debugger is present) or go into an infinite loop since the
+         * handling behavior is undefined; in that case we will not return here.
+         */
+
+        /* Load exception-causing address as first argument (r4) */
+        addi   r4, ea, -4
     2094:	e93fff04 	addi	r4,ea,-4
+
+        /* Call the instruction-exception entry */
+        call   alt_instruction_exception_entry
     2098:	000215c0 	call	215c <alt_instruction_exception_entry>
+         * instruction
+         *
+         * Return code was 0: Skip. The instruction after the exception is
+         * already stored in 72(sp).
+         */
+        bne   r2, r0, .Lexception_exit
     209c:	1000021e 	bne	r2,zero,20a8 <alt_exception+0x88>
+
+        /*
+         * Otherwise, modify 72(sp) to re-issue the instruction that caused the
+         * exception.
+         */
+        addi  r15, ea, -4  /* instruction that caused exception */
     20a0:	ebffff04 	addi	r15,ea,-4
+        stw   r15,  72(sp)
     20a4:	dbc01215 	stw	r15,72(sp)
+        /* 
+         * Restore the saved registers, so that all general purpose registers 
+         * have been restored to their state at the time the interrupt occured.
+         */
+
+        ldw   r5,  68(sp)
     20a8:	d9401117 	ldw	r5,68(sp)
+        ldw   ea,  72(sp)  /* This becomes the PC once eret is executed */
     20ac:	df401217 	ldw	ea,72(sp)
+        ldw   ra,   0(sp)
     20b0:	dfc00017 	ldw	ra,0(sp)
+
+        wrctl estatus, r5
     20b4:	2801707a 	wrctl	estatus,r5
+
+        ldw   r1,   8(sp)
     20b8:	d8400217 	ldw	at,8(sp)
+        ldw   r2,  12(sp)
     20bc:	d8800317 	ldw	r2,12(sp)
+        ldw   r3,  16(sp)
     20c0:	d8c00417 	ldw	r3,16(sp)
+        ldw   r4,  20(sp)
     20c4:	d9000517 	ldw	r4,20(sp)
+        ldw   r5,  24(sp)
     20c8:	d9400617 	ldw	r5,24(sp)
+        ldw   r6,  28(sp)
     20cc:	d9800717 	ldw	r6,28(sp)
+        ldw   r7,  32(sp)
     20d0:	d9c00817 	ldw	r7,32(sp)
+
+#if defined(ALT_EXCEPTION_STACK) && defined(ALT_STACK_CHECK)
+        ldw   et, %gprel(alt_exception_old_stack_limit)(gp)
+#endif
+
+        ldw   r8,  36(sp)
     20d4:	da000917 	ldw	r8,36(sp)
+        ldw   r9,  40(sp)
     20d8:	da400a17 	ldw	r9,40(sp)
+        ldw   r10, 44(sp)
     20dc:	da800b17 	ldw	r10,44(sp)
+        ldw   r11, 48(sp)
     20e0:	dac00c17 	ldw	r11,48(sp)
+        ldw   r12, 52(sp)
     20e4:	db000d17 	ldw	r12,52(sp)
+        ldw   r13, 56(sp)
     20e8:	db400e17 	ldw	r13,56(sp)
+        ldw   r14, 60(sp)
     20ec:	db800f17 	ldw	r14,60(sp)
+        ldw   r15, 64(sp)
     20f0:	dbc01017 	ldw	r15,64(sp)
+        stw   et, %gprel(alt_stack_limit_value)(gp)
+        stw   zero, %gprel(alt_exception_old_stack_limit)(gp)
+#endif /* ALT_STACK_CHECK */
+        ldw   sp,  76(sp)
+#else /* ALT_EXCEPTION_STACK disabled */
+        addi  sp, sp, 76
     20f4:	dec01304 	addi	sp,sp,76
+
+        /*
+         * Return to the interrupted instruction.
+         */
+
+        eret
     20f8:	ef80083a 	eret
 
 000020fc <alt_irq_handler>:
+ * instruction is present if the macro ALT_CI_INTERRUPT_VECTOR defined.
+ */
+
+void alt_irq_handler (void) __attribute__ ((section (".exceptions")));
+void alt_irq_handler (void)
+{
     20fc:	defffe04 	addi	sp,sp,-8
     2100:	dfc00115 	stw	ra,4(sp)
     2104:	dc000015 	stw	r16,0(sp)
+#ifndef NIOS2_EIC_PRESENT
+static ALT_INLINE alt_u32 ALT_ALWAYS_INLINE alt_irq_pending (void)
+{
+  alt_u32 active;
+
+  NIOS2_READ_IPENDING (active);
     2108:	0009313a 	rdctl	r4,ipending
+    do
+    {
+      if (active & mask)
+      { 
+#ifdef ALT_ENHANCED_INTERRUPT_API_PRESENT
+        alt_irq[i].handler(alt_irq[i].context); 
     210c:	04000034 	movhi	r16,0
     2110:	840d7904 	addi	r16,r16,13796
+
+  active = alt_irq_pending ();
+
+  do
+  {
+    i = 0;
     2114:	0005883a 	mov	r2,zero
+    mask = 1;
     2118:	00c00044 	movi	r3,1
+     * called to clear the interrupt condition.
+     */
+
+    do
+    {
+      if (active & mask)
     211c:	20ca703a 	and	r5,r4,r3
     2120:	28000b26 	beq	r5,zero,2150 <alt_irq_handler+0x54>
+      { 
+#ifdef ALT_ENHANCED_INTERRUPT_API_PRESENT
+        alt_irq[i].handler(alt_irq[i].context); 
     2124:	100490fa 	slli	r2,r2,3
     2128:	8085883a 	add	r2,r16,r2
     212c:	10c00017 	ldw	r3,0(r2)
     2130:	11000117 	ldw	r4,4(r2)
     2134:	183ee83a 	callr	r3
     2138:	0009313a 	rdctl	r4,ipending
+
+    } while (1);
+
+    active = alt_irq_pending ();
+    
+  } while (active);
     213c:	203ff51e 	bne	r4,zero,2114 <_gp+0xffff6cb4>
+  /*
+   * Notify the operating system that interrupt processing is complete.
+   */ 
+
+  ALT_OS_INT_EXIT();
+}
     2140:	dfc00117 	ldw	ra,4(sp)
     2144:	dc000017 	ldw	r16,0(sp)
     2148:	dec00204 	addi	sp,sp,8
     214c:	f800283a 	ret
+#else
+        alt_irq[i].handler(alt_irq[i].context, i); 
+#endif
+        break;
+      }
+      mask <<= 1;
     2150:	18c7883a 	add	r3,r3,r3
+      i++;
     2154:	10800044 	addi	r2,r2,1
+
+    } while (1);
     2158:	003ff006 	br	211c <_gp+0xffff6cbc>
 
 0000215c <alt_instruction_exception_entry>:
+ * NIOS2_EXCEPTION_CAUSE_NOT_PRESENT. Your handling routine should
+ * check the validity of the cause argument before proceeding.
+ */
+#ifdef NIOS2_HAS_EXTRA_EXCEPTION_INFO
+  /* Get exception cause & "badaddr" */
+  NIOS2_READ_EXCEPTION(cause);
     215c:	000531fa 	rdctl	r2,exception
+  cause = ( (cause & NIOS2_EXCEPTION_REG_CAUSE_MASK) >>
+              NIOS2_EXCEPTION_REG_CAUSE_OFST );
+
+  NIOS2_READ_BADADDR(badaddr);
     2160:	000d333a 	rdctl	r6,badaddr
+#else
+  cause = NIOS2_EXCEPTION_CAUSE_NOT_PRESENT;
+  badaddr = 0;
+#endif /* NIOS2_HAS_EXTRA_EXCEPTION_INFO */
+
+  if(alt_instruction_exception_handler) {
     2164:	d0e03717 	ldw	r3,-32548(gp)
     2168:	18000426 	beq	r3,zero,217c <alt_instruction_exception_entry+0x20>
+ * check the validity of the cause argument before proceeding.
+ */
+#ifdef NIOS2_HAS_EXTRA_EXCEPTION_INFO
+  /* Get exception cause & "badaddr" */
+  NIOS2_READ_EXCEPTION(cause);
+  cause = ( (cause & NIOS2_EXCEPTION_REG_CAUSE_MASK) >>
     216c:	10801f0c 	andi	r2,r2,124
+     * Call handler. Its return value indicates whether the exception-causing
+     * instruction should be re-issued. The code that called us,
+     * alt_eceptions_entry.S, will look at this value and adjust the ea
+     * register as necessary
+     */
+    return alt_instruction_exception_handler(cause, exception_pc, badaddr);
     2170:	200b883a 	mov	r5,r4
     2174:	1008d0ba 	srli	r4,r2,2
     2178:	1800683a 	jmp	r3
+   *    (a peripheral which negates its interrupt output before its
+   *    interrupt handler has been executed will cause spurious interrupts)
+   */
+  else {
+#ifdef NIOS2_HAS_DEBUG_STUB
+    NIOS2_BREAK();
     217c:	003da03a 	break	0
+#endif /* NIOS2_HAS_DEBUG_STUB */
+  }
+
+  /* We should not get here. Remove compiler warning. */
+  return NIOS2_EXCEPTION_RETURN_REISSUE_INST;
+}
     2180:	0005883a 	mov	r2,zero
     2184:	f800283a 	ret
 
 Disassembly of section .text:
 
 00002188 <_start>:
+
+    /* Assume the data cache size is always a power of two. */
+#if NIOS2_DCACHE_SIZE > 0x8000
+    movhi r2, %hi(NIOS2_DCACHE_SIZE)
+#else
+    movui r2, NIOS2_DCACHE_SIZE
     2188:	00820014 	movui	r2,2048
+#endif
+
+0:
+    initd 0(r2)
     218c:	10000033 	initd	0(r2)
+#ifdef NIOS2_ECC_PRESENT
+    addi r2, r2, -4
+#else
+    addi r2, r2, -NIOS2_DCACHE_LINE_SIZE
     2190:	10bff804 	addi	r2,r2,-32
+#endif
+    bgt r2, zero, 0b
     2194:	00bffd16 	blt	zero,r2,218c <_gp+0xffff6d2c>
+
+    /*
+     * Now that the caches are initialized, set up the stack pointer and global pointer.
+     * The values provided by the linker are assumed to be correctly aligned.
+     */
+    movhi sp, %hi(__alt_stack_pointer)
     2198:	06c00034 	movhi	sp,0
+    ori sp, sp, %lo(__alt_stack_pointer)
     219c:	decfff14 	ori	sp,sp,16380
+    movhi gp, %hi(_gp)
     21a0:	06800034 	movhi	gp,0
+    ori gp, gp, %lo(_gp)
     21a4:	d6ad1814 	ori	gp,gp,46176
+ */
+#ifndef ALT_SIM_OPTIMIZE
+    /* Log that the BSS is about to be cleared. */
+    ALT_LOG_PUTS(alt_log_msg_bss)
+
+    movhi r2, %hi(__bss_start)
     21a8:	00800034 	movhi	r2,0
+    ori r2, r2, %lo(__bss_start)
     21ac:	108d4814 	ori	r2,r2,13600
+
+    movhi r3, %hi(__bss_end)
     21b0:	00c00034 	movhi	r3,0
+    ori r3, r3, %lo(__bss_end)
     21b4:	18cdb914 	ori	r3,r3,14052
+
+    beq r2, r3, 1f
     21b8:	10c00326 	beq	r2,r3,21c8 <_start+0x40>
+
+0:
+    stw zero, (r2)
     21bc:	10000015 	stw	zero,0(r2)
+    addi r2, r2, 4
     21c0:	10800104 	addi	r2,r2,4
+    bltu r2, r3, 0b
     21c4:	10fffd36 	bltu	r2,r3,21bc <_gp+0xffff6d5c>
+     * section aren't defined until alt_load() has been called).
+     */
+    mov   et, zero
+#endif
+
+    call alt_load
     21c8:	0002ab80 	call	2ab8 <alt_load>
+
+    /* Log that alt_main is about to be called. */
+    ALT_LOG_PUTS(alt_log_msg_alt_main)
+
+    /* Call the C entry point. It should never return. */
+    call alt_main
     21cc:	0002b980 	call	2b98 <alt_main>
 
 000021d0 <alt_after_alt_main>:
+
+    /* Wait in infinite loop in case alt_main does return. */
+alt_after_alt_main:
+    br alt_after_alt_main
     21d0:	003fff06 	br	21d0 <_gp+0xffff6d70>
 
 000021d4 <timer_irq_handler>:
@@ -379,7 +688,7 @@ void timer_irq_handler(void *context)
     21e0:	dc000415 	stw	r16,16(sp)
     // Clear flag of interrupt
     IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
-    21e4:	00956004 	movi	r2,21888
+    21e4:	0095e004 	movi	r2,22400
     21e8:	10000035 	stwio	zero,0(r2)
 
     if (fl_proto == 1)
@@ -393,7 +702,7 @@ void timer_irq_handler(void *context)
     21fc:	01400034 	movhi	r5,0
     2200:	01000034 	movhi	r4,0
     2204:	01c00d84 	movi	r7,54
-    2208:	01950004 	movi	r6,21504
+    2208:	01958004 	movi	r6,22016
     220c:	294d7104 	addi	r5,r5,13764
     2210:	210d5104 	addi	r4,r4,13636
     2214:	d8000315 	stw	zero,12(sp)
@@ -401,7 +710,7 @@ void timer_irq_handler(void *context)
     221c:	dc400115 	stw	r17,4(sp)
     2220:	d8000015 	stw	zero,0(sp)
     2224:	00030d40 	call	30d4 <alt_avalon_sgdma_construct_mem_to_stream_desc>
-		alt_avalon_sgdma_construct_mem_to_stream_desc(&tx_descriptor_data, &tx_descriptor_end, RX_DMA_M_WRITE_RX_TX_BUF_BASE, 1280, 0, 0, 1, 0);
+		alt_avalon_sgdma_construct_mem_to_stream_desc(&tx_descriptor_data, &tx_descriptor_end, TX_DMA_M_READ_TX_BUFF_RAM_BASE, 1280, 0, 0, 1, 0);
     2228:	01400034 	movhi	r5,0
     222c:	01000034 	movhi	r4,0
     2230:	294d6904 	addi	r5,r5,13732
@@ -440,7 +749,7 @@ void timer_irq_handler(void *context)
     2294:	dc000115 	stw	r16,4(sp)
     2298:	d8000015 	stw	zero,0(sp)
     229c:	01c00a84 	movi	r7,42
-    22a0:	01950004 	movi	r6,21504
+    22a0:	01958004 	movi	r6,22016
     22a4:	00030d40 	call	30d4 <alt_avalon_sgdma_construct_mem_to_stream_desc>
 		alt_avalon_sgdma_do_async_transfer(sgdma_tx_dev, &tx_descriptor_header);
     22a8:	d1203117 	ldw	r4,-32572(gp)
@@ -587,16 +896,16 @@ void timer_init(alt_u32 timer_period)
     23ec:	dfc00215 	stw	ra,8(sp)
 	// Disable timer before configuration
 	IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE, 0);
-    23f0:	04156104 	movi	r16,21892
+    23f0:	0415e104 	movi	r16,22404
     23f4:	80000035 	stwio	zero,0(r16)
 
 	IOWR_ALTERA_AVALON_TIMER_PERIODL(TIMER_0_BASE, (timer_period & 0xFFFF));
     23f8:	20ffffcc 	andi	r3,r4,65535
-    23fc:	00956204 	movi	r2,21896
+    23fc:	0095e204 	movi	r2,22408
     2400:	10c00035 	stwio	r3,0(r2)
 	IOWR_ALTERA_AVALON_TIMER_PERIODH(TIMER_0_BASE, (timer_period >> 16) & 0xFFFF);
     2404:	2008d43a 	srli	r4,r4,16
-    2408:	00956304 	movi	r2,21900
+    2408:	0095e304 	movi	r2,22412
     240c:	11000035 	stwio	r4,0(r2)
 
 	// Register of interrupt
@@ -674,7 +983,7 @@ alt_u8 open_sgdma(void)
     248c:	01400034 	movhi	r5,0
     2490:	01000034 	movhi	r4,0
     2494:	000f883a 	mov	r7,zero
-    2498:	01951904 	movi	r6,21604
+    2498:	01959904 	movi	r6,22116
     249c:	294d5904 	addi	r5,r5,13668
     24a0:	210d6104 	addi	r4,r4,13700
     24a4:	d8000015 	stw	zero,0(sp)
@@ -1158,10 +1467,10 @@ void sgdma_rx_irq_handler(void *context)
     2774:	01400034 	movhi	r5,0
     2778:	800d883a 	mov	r6,r16
     277c:	294cff04 	addi	r5,r5,13308
-    2780:	01151c04 	movi	r4,21616
+    2780:	01159c04 	movi	r4,22128
     2784:	00029340 	call	2934 <memcmp>
     2788:	1000081e 	bne	r2,zero,27ac <sgdma_rx_irq_handler+0x5c>
-    278c:	00951e44 	movi	r2,21625
+    278c:	00959e44 	movi	r2,22137
     2790:	10800003 	ldbu	r2,0(r2)
     2794:	1400051e 	bne	r2,r16,27ac <sgdma_rx_irq_handler+0x5c>
 	{
@@ -1170,7 +1479,7 @@ void sgdma_rx_irq_handler(void *context)
 		memcpy(eth->mac_dest, (frame_pc + 22), 6);
     2798:	d1200517 	ldw	r4,-32748(gp)
     279c:	01800184 	movi	r6,6
-    27a0:	01551e84 	movi	r5,21626
+    27a0:	01559e84 	movi	r5,22138
 	while (alt_avalon_sgdma_check_descriptor_status(&rx_descriptor) != 0);
 
 	alt_u8 *frame_pc = (alt_u8 *)(HEADER_RAM_BASE + 100);
@@ -1190,7 +1499,7 @@ void sgdma_rx_irq_handler(void *context)
     27ac:	01400034 	movhi	r5,0
     27b0:	01800184 	movi	r6,6
     27b4:	294cf904 	addi	r5,r5,13284
-    27b8:	01151904 	movi	r4,21604
+    27b8:	01159904 	movi	r4,22116
     27bc:	00029340 	call	2934 <memcmp>
     27c0:	10001526 	beq	r2,zero,2818 <sgdma_rx_irq_handler+0xc8>
 		while (alt_avalon_sgdma_check_descriptor_status(&tx_descriptor_header) != 0);
@@ -1204,7 +1513,7 @@ void sgdma_rx_irq_handler(void *context)
     27c8:	01400034 	movhi	r5,0
     27cc:	01000034 	movhi	r4,0
     27d0:	000f883a 	mov	r7,zero
-    27d4:	01951904 	movi	r6,21604
+    27d4:	01959904 	movi	r6,22116
     27d8:	d8000015 	stw	zero,0(sp)
     27dc:	294d5904 	addi	r5,r5,13668
     27e0:	210d6104 	addi	r4,r4,13700
@@ -1218,7 +1527,7 @@ void sgdma_rx_irq_handler(void *context)
 	memset(frame_pc, 0, 100);
     27f8:	01801904 	movi	r6,100
     27fc:	000b883a 	mov	r5,zero
-    2800:	01151904 	movi	r4,21604
+    2800:	01159904 	movi	r4,22116
 }
     2804:	dfc00617 	ldw	ra,24(sp)
     2808:	dc400517 	ldw	r17,20(sp)
@@ -1237,9 +1546,9 @@ void sgdma_rx_irq_handler(void *context)
 	if ((memcmp(frame_pc, "\xDE\xAD\xBE\xEF\xCA\xFE", 6) == 0))
 	{
 		alt_u16 length_descriptor = frame_pc[17] << 8 | frame_pc[16];
-    2818:	00951d44 	movi	r2,21621
+    2818:	00959d44 	movi	r2,22133
     281c:	14000003 	ldbu	r16,0(r2)
-    2820:	00951d04 	movi	r2,21620
+    2820:	00959d04 	movi	r2,22132
     2824:	10800003 	ldbu	r2,0(r2)
     2828:	8020923a 	slli	r16,r16,8
 		alt_u8 *pointer_to_data = frame_pc + 42;
@@ -1248,7 +1557,7 @@ void sgdma_rx_irq_handler(void *context)
 		id = frame_pc[38] << 8 | frame_pc[39];
 
 		create_icmp(icmp, id, seq, pointer_to_data);
-    282c:	011522c4 	movi	r4,21643
+    282c:	0115a2c4 	movi	r4,22155
     2830:	21400003 	ldbu	r5,0(r4)
 //		timer_init(3890);
 	}
@@ -1263,12 +1572,12 @@ void sgdma_rx_irq_handler(void *context)
 		alt_u8 *pointer_to_data = frame_pc + 42;
 
 		seq = frame_pc[40] << 8 | frame_pc[41];
-    2838:	00952304 	movi	r2,21644
+    2838:	0095a304 	movi	r2,22156
 		id = frame_pc[38] << 8 | frame_pc[39];
 
 		create_icmp(icmp, id, seq, pointer_to_data);
     283c:	10c00003 	ldbu	r3,0(r2)
-    2840:	00952344 	movi	r2,21645
+    2840:	0095a344 	movi	r2,22157
     2844:	11800003 	ldbu	r6,0(r2)
 		alt_u16 seq = 0;
 		alt_u16 id = 0;
@@ -1276,7 +1585,7 @@ void sgdma_rx_irq_handler(void *context)
 
 		seq = frame_pc[40] << 8 | frame_pc[41];
 		id = frame_pc[38] << 8 | frame_pc[39];
-    2848:	00952284 	movi	r2,21642
+    2848:	0095a284 	movi	r2,22154
 
 		create_icmp(icmp, id, seq, pointer_to_data);
     284c:	10800003 	ldbu	r2,0(r2)
@@ -1284,7 +1593,7 @@ void sgdma_rx_irq_handler(void *context)
     2854:	d1200217 	ldw	r4,-32760(gp)
     2858:	1004923a 	slli	r2,r2,8
     285c:	198cb03a 	or	r6,r3,r6
-    2860:	01d52384 	movi	r7,21646
+    2860:	01d5a384 	movi	r7,22158
     2864:	114ab03a 	or	r5,r2,r5
     2868:	000270c0 	call	270c <create_icmp>
 
@@ -1308,7 +1617,7 @@ void sgdma_rx_irq_handler(void *context)
     28a0:	dc400115 	stw	r17,4(sp)
     28a4:	d8000015 	stw	zero,0(sp)
     28a8:	39ffffcc 	andi	r7,r7,65535
-    28ac:	01950004 	movi	r6,21504
+    28ac:	01958004 	movi	r6,22016
     28b0:	00030d40 	call	30d4 <alt_avalon_sgdma_construct_mem_to_stream_desc>
 
 		alt_avalon_sgdma_do_async_transfer(sgdma_tx_dev, &tx_descriptor_header);
@@ -1411,81 +1720,216 @@ int main(void)
     29a8:	f800283a 	ret
 
 000029ac <alt_dcache_flush_all>:
+void alt_dcache_flush_all (void)
+{
+#if NIOS2_DCACHE_SIZE > 0
+  char* i;
+  
+  for (i = (char*) 0; i < (char*) NIOS2_DCACHE_SIZE; i+= NIOS2_DCACHE_LINE_SIZE)
     29ac:	0005883a 	mov	r2,zero
     29b0:	00c20004 	movi	r3,2048
+  { 
+    __asm__ volatile ("flushd (%0)" :: "r" (i));
     29b4:	1000003b 	flushd	0(r2)
+void alt_dcache_flush_all (void)
+{
+#if NIOS2_DCACHE_SIZE > 0
+  char* i;
+  
+  for (i = (char*) 0; i < (char*) NIOS2_DCACHE_SIZE; i+= NIOS2_DCACHE_LINE_SIZE)
     29b8:	10800804 	addi	r2,r2,32
     29bc:	10fffd1e 	bne	r2,r3,29b4 <_gp+0xffff7554>
+  { 
+    __asm__ volatile ("flushd (%0)" :: "r" (i));
+  }
+#endif /* NIOS2_DCACHE_SIZE > 0 */
+}
     29c0:	f800283a 	ret
 
 000029c4 <alt_ic_isr_register>:
+  * @return                 0 if successful, else error (-1)
+  */
+int alt_ic_isr_register(alt_u32 ic_id, alt_u32 irq, alt_isr_func isr, 
+  void *isr_context, void *flags)
+{
+    return alt_iic_isr_register(ic_id, irq, isr, isr_context, flags);
     29c4:	0002a501 	jmpi	2a50 <alt_iic_isr_register>
 
 000029c8 <alt_ic_irq_enable>:
+static ALT_INLINE alt_irq_context ALT_ALWAYS_INLINE 
+       alt_irq_disable_all (void)
+{
+  alt_irq_context context;
+
+  NIOS2_READ_STATUS (context);
     29c8:	0009303a 	rdctl	r4,status
+
+  NIOS2_WRITE_STATUS (context & ~NIOS2_STATUS_PIE_MSK);
     29cc:	00bfff84 	movi	r2,-2
     29d0:	2084703a 	and	r2,r4,r2
     29d4:	1001703a 	wrctl	status,r2
+  alt_irq_context  status;
+  extern volatile alt_u32 alt_irq_active;
+
+  status = alt_irq_disable_all ();
+
+  alt_irq_active |= (1 << id);
     29d8:	00c00044 	movi	r3,1
     29dc:	d0a03317 	ldw	r2,-32564(gp)
     29e0:	194a983a 	sll	r5,r3,r5
     29e4:	288ab03a 	or	r5,r5,r2
     29e8:	d1603315 	stw	r5,-32564(gp)
+  NIOS2_WRITE_IENABLE (alt_irq_active);
     29ec:	d0a03317 	ldw	r2,-32564(gp)
     29f0:	100170fa 	wrctl	ienable,r2
+  status &= ~NIOS2_STATUS_PIE_MSK;
+  status |= (context & NIOS2_STATUS_PIE_MSK);
+  
+  NIOS2_WRITE_STATUS (status);
+#else
+  NIOS2_WRITE_STATUS (context);
     29f4:	2001703a 	wrctl	status,r4
+  * @return                 0 if successful, else error (-1)
+  */
+int alt_ic_irq_enable (alt_u32 ic_id, alt_u32 irq)
+{
+    return alt_irq_enable(irq);
+}
     29f8:	0005883a 	mov	r2,zero
     29fc:	f800283a 	ret
 
 00002a00 <alt_ic_irq_disable>:
+static ALT_INLINE alt_irq_context ALT_ALWAYS_INLINE 
+       alt_irq_disable_all (void)
+{
+  alt_irq_context context;
+
+  NIOS2_READ_STATUS (context);
     2a00:	0009303a 	rdctl	r4,status
+
+  NIOS2_WRITE_STATUS (context & ~NIOS2_STATUS_PIE_MSK);
     2a04:	00bfff84 	movi	r2,-2
     2a08:	2084703a 	and	r2,r4,r2
     2a0c:	1001703a 	wrctl	status,r2
+  alt_irq_context  status;
+  extern volatile alt_u32 alt_irq_active;
+
+  status = alt_irq_disable_all ();
+
+  alt_irq_active &= ~(1 << id);
     2a10:	00ffff84 	movi	r3,-2
     2a14:	d0a03317 	ldw	r2,-32564(gp)
     2a18:	194a183a 	rol	r5,r3,r5
     2a1c:	288a703a 	and	r5,r5,r2
     2a20:	d1603315 	stw	r5,-32564(gp)
+  NIOS2_WRITE_IENABLE (alt_irq_active);
     2a24:	d0a03317 	ldw	r2,-32564(gp)
     2a28:	100170fa 	wrctl	ienable,r2
+  status &= ~NIOS2_STATUS_PIE_MSK;
+  status |= (context & NIOS2_STATUS_PIE_MSK);
+  
+  NIOS2_WRITE_STATUS (status);
+#else
+  NIOS2_WRITE_STATUS (context);
     2a2c:	2001703a 	wrctl	status,r4
+  * @return                 0 if successful, else error (-1)
+  */
+int alt_ic_irq_disable(alt_u32 ic_id, alt_u32 irq)
+{
+    return alt_irq_disable(irq);
+}
     2a30:	0005883a 	mov	r2,zero
     2a34:	f800283a 	ret
 
 00002a38 <alt_ic_irq_enabled>:
+  */
+alt_u32 alt_ic_irq_enabled(alt_u32 ic_id, alt_u32 irq)
+{
+    alt_u32 irq_enabled;
+
+    NIOS2_READ_IENABLE(irq_enabled);
     2a38:	000730fa 	rdctl	r3,ienable
+
+    return (irq_enabled & (1 << irq)) ? 1: 0;
     2a3c:	00800044 	movi	r2,1
     2a40:	1144983a 	sll	r2,r2,r5
     2a44:	10c4703a 	and	r2,r2,r3
+}
     2a48:	1004c03a 	cmpne	r2,r2,zero
     2a4c:	f800283a 	ret
 
 00002a50 <alt_iic_isr_register>:
+{
+  int rc = -EINVAL;  
+  int id = irq;             /* IRQ interpreted as the interrupt ID. */
+  alt_irq_context status;
+
+  if (id < ALT_NIRQ)
     2a50:	00c007c4 	movi	r3,31
     2a54:	19401616 	blt	r3,r5,2ab0 <alt_iic_isr_register+0x60>
+  * @param flags            
+  * @return                 0 if successful, else error (-1)
+  */
+int alt_iic_isr_register(alt_u32 ic_id, alt_u32 irq, alt_isr_func isr, 
+  void *isr_context, void *flags)
+{
     2a58:	defffe04 	addi	sp,sp,-8
     2a5c:	dfc00115 	stw	ra,4(sp)
     2a60:	dc000015 	stw	r16,0(sp)
+static ALT_INLINE alt_irq_context ALT_ALWAYS_INLINE 
+       alt_irq_disable_all (void)
+{
+  alt_irq_context context;
+
+  NIOS2_READ_STATUS (context);
     2a64:	0021303a 	rdctl	r16,status
+
+  NIOS2_WRITE_STATUS (context & ~NIOS2_STATUS_PIE_MSK);
     2a68:	00ffff84 	movi	r3,-2
     2a6c:	80c6703a 	and	r3,r16,r3
     2a70:	1801703a 	wrctl	status,r3
+     * state.
+     */
+
+    status = alt_irq_disable_all();
+
+    alt_irq[id].handler = isr;
     2a74:	280490fa 	slli	r2,r5,3
     2a78:	00c00034 	movhi	r3,0
     2a7c:	18cd7904 	addi	r3,r3,13796
     2a80:	1885883a 	add	r2,r3,r2
     2a84:	11800015 	stw	r6,0(r2)
+    alt_irq[id].context = isr_context;
     2a88:	11c00115 	stw	r7,4(r2)
+
+    rc = (isr) ? alt_ic_irq_enable(ic_id, id) : alt_ic_irq_disable(ic_id, id);
     2a8c:	30000226 	beq	r6,zero,2a98 <alt_iic_isr_register+0x48>
     2a90:	00029c80 	call	29c8 <alt_ic_irq_enable>
     2a94:	00000106 	br	2a9c <alt_iic_isr_register+0x4c>
     2a98:	0002a000 	call	2a00 <alt_ic_irq_disable>
+  status &= ~NIOS2_STATUS_PIE_MSK;
+  status |= (context & NIOS2_STATUS_PIE_MSK);
+  
+  NIOS2_WRITE_STATUS (status);
+#else
+  NIOS2_WRITE_STATUS (context);
     2a9c:	8001703a 	wrctl	status,r16
+
+    alt_irq_enable_all(status);
+  }
+
+  return rc; 
+}
     2aa0:	dfc00117 	ldw	ra,4(sp)
     2aa4:	dc000017 	ldw	r16,0(sp)
     2aa8:	dec00204 	addi	sp,sp,8
     2aac:	f800283a 	ret
+  * @return                 0 if successful, else error (-1)
+  */
+int alt_iic_isr_register(alt_u32 ic_id, alt_u32 irq, alt_isr_func isr, 
+  void *isr_context, void *flags)
+{
+  int rc = -EINVAL;  
     2ab0:	00bffa84 	movi	r2,-22
     2ab4:	f800283a 	ret
 
@@ -1548,187 +1992,520 @@ int main(void)
     2b94:	003ff906 	br	2b7c <_gp+0xffff771c>
 
 00002b98 <alt_main>:
+ * devices/filesystems/components in the system; and call the entry point for
+ * the users application, i.e. main().
+ */
+
+void alt_main (void)
+{
     2b98:	deffff04 	addi	sp,sp,-4
+#endif
+
+  /* ALT LOG - please see HAL/sys/alt_log_printf.h for details */
+  ALT_LOG_PRINT_BOOT("[alt_main.c] Entering alt_main, calling alt_irq_init.\r\n");
+  /* Initialize the interrupt controller. */
+  alt_irq_init (NULL);
     2b9c:	0009883a 	mov	r4,zero
+ * devices/filesystems/components in the system; and call the entry point for
+ * the users application, i.e. main().
+ */
+
+void alt_main (void)
+{
     2ba0:	dfc00015 	stw	ra,0(sp)
+#endif
+
+  /* ALT LOG - please see HAL/sys/alt_log_printf.h for details */
+  ALT_LOG_PRINT_BOOT("[alt_main.c] Entering alt_main, calling alt_irq_init.\r\n");
+  /* Initialize the interrupt controller. */
+  alt_irq_init (NULL);
     2ba4:	0002bc40 	call	2bc4 <alt_irq_init>
+  ALT_LOG_PRINT_BOOT("[alt_main.c] Done OS Init, calling alt_sem_create.\r\n");
+  ALT_SEM_CREATE (&alt_fd_list_lock, 1);
+
+  /* Initialize the device drivers/software components. */
+  ALT_LOG_PRINT_BOOT("[alt_main.c] Calling alt_sys_init.\r\n");
+  alt_sys_init();
     2ba8:	0002be40 	call	2be4 <alt_sys_init>
+   */
+
+  ALT_LOG_PRINT_BOOT("[alt_main.c] Calling main.\r\n");
+
+#ifdef ALT_NO_EXIT
+  main (alt_argc, alt_argv, alt_envp);
     2bac:	d1a03417 	ldw	r6,-32560(gp)
     2bb0:	d1603517 	ldw	r5,-32556(gp)
     2bb4:	d1203617 	ldw	r4,-32552(gp)
+  close(STDOUT_FILENO);
+  exit (result);
+#endif
+
+  ALT_LOG_PRINT_BOOT("[alt_main.c] After main - we should not be here?.\r\n");
+}
     2bb8:	dfc00017 	ldw	ra,0(sp)
     2bbc:	dec00104 	addi	sp,sp,4
+   */
+
+  ALT_LOG_PRINT_BOOT("[alt_main.c] Calling main.\r\n");
+
+#ifdef ALT_NO_EXIT
+  main (alt_argc, alt_argv, alt_envp);
     2bc0:	00028d81 	jmpi	28d8 <main>
 
 00002bc4 <alt_irq_init>:
+ * The "base" parameter is ignored and only
+ * present for backwards-compatibility.
+ */
+
+void alt_irq_init ( const void* base )
+{
     2bc4:	deffff04 	addi	sp,sp,-4
     2bc8:	dfc00015 	stw	ra,0(sp)
+    ALTERA_NIOS2_GEN2_IRQ_INIT ( NIOS2_GEN2_0, nios2_gen2_0);
     2bcc:	00033680 	call	3368 <altera_nios2_gen2_irq_init>
+ * alt_irq_cpu_enable_interrupts() enables the CPU to start taking interrupts.
+ */
+static ALT_INLINE void ALT_ALWAYS_INLINE 
+       alt_irq_cpu_enable_interrupts (void)
+{
+    NIOS2_WRITE_STATUS(NIOS2_STATUS_PIE_MSK
     2bd0:	00800044 	movi	r2,1
     2bd4:	1001703a 	wrctl	status,r2
+    alt_irq_cpu_enable_interrupts();
+}
     2bd8:	dfc00017 	ldw	ra,0(sp)
     2bdc:	dec00104 	addi	sp,sp,4
     2be0:	f800283a 	ret
 
 00002be4 <alt_sys_init>:
+
+void alt_sys_init( void )
+{
+    ALTERA_AVALON_TIMER_INIT ( TIMER_0, timer_0);
+    ALTERA_AVALON_JTAG_UART_INIT ( JTAG_UART_0, jtag_uart_0);
+    ALTERA_AVALON_SGDMA_INIT ( RX_DMA, rx_dma);
     2be4:	01000034 	movhi	r4,0
+ * Initialize the non-interrupt controller devices.
+ * Called after alt_irq_init().
+ */
+
+void alt_sys_init( void )
+{
     2be8:	deffff04 	addi	sp,sp,-4
+    ALTERA_AVALON_TIMER_INIT ( TIMER_0, timer_0);
+    ALTERA_AVALON_JTAG_UART_INIT ( JTAG_UART_0, jtag_uart_0);
+    ALTERA_AVALON_SGDMA_INIT ( RX_DMA, rx_dma);
     2bec:	000d883a 	mov	r6,zero
     2bf0:	000b883a 	mov	r5,zero
     2bf4:	210d0c04 	addi	r4,r4,13360
+ * Initialize the non-interrupt controller devices.
+ * Called after alt_irq_init().
+ */
+
+void alt_sys_init( void )
+{
     2bf8:	dfc00015 	stw	ra,0(sp)
+    ALTERA_AVALON_TIMER_INIT ( TIMER_0, timer_0);
+    ALTERA_AVALON_JTAG_UART_INIT ( JTAG_UART_0, jtag_uart_0);
+    ALTERA_AVALON_SGDMA_INIT ( RX_DMA, rx_dma);
     2bfc:	000315c0 	call	315c <alt_avalon_sgdma_init>
+    ALTERA_AVALON_SGDMA_INIT ( TX_DMA, tx_dma);
     2c00:	01000034 	movhi	r4,0
     2c04:	01800044 	movi	r6,1
     2c08:	000b883a 	mov	r5,zero
     2c0c:	210d0004 	addi	r4,r4,13312
+    ALTERA_ETH_TSE_INIT ( TSE, tse);
+}
     2c10:	dfc00017 	ldw	ra,0(sp)
     2c14:	dec00104 	addi	sp,sp,4
+void alt_sys_init( void )
+{
+    ALTERA_AVALON_TIMER_INIT ( TIMER_0, timer_0);
+    ALTERA_AVALON_JTAG_UART_INIT ( JTAG_UART_0, jtag_uart_0);
+    ALTERA_AVALON_SGDMA_INIT ( RX_DMA, rx_dma);
+    ALTERA_AVALON_SGDMA_INIT ( TX_DMA, tx_dma);
     2c18:	000315c1 	jmpi	315c <alt_avalon_sgdma_init>
 
 00002c1c <alt_avalon_sgdma_irq>:
+   * Note: This is explicitly done before calling user interrupt-handling
+   * code rather than after; if user ISR code initiates another SGDMA
+   * transfer which completes quickly, reading the control register after
+   * the callback routine may result in a lost interrupt.
+   */
+  IOWR_ALTERA_AVALON_SGDMA_CONTROL(dev->base, 
     2c1c:	20800317 	ldw	r2,12(r4)
     2c20:	10800404 	addi	r2,r2,16
     2c24:	10c00037 	ldwio	r3,0(r2)
     2c28:	18e00034 	orhi	r3,r3,32768
     2c2c:	10c00035 	stwio	r3,0(r2)
+    IORD_ALTERA_AVALON_SGDMA_CONTROL(dev->base) | 0x80000000);
+  
+  /* Dummy read to ensure IRQ is negated before the ISR returns */
+  IORD_ALTERA_AVALON_SGDMA_CONTROL(dev->base);
     2c30:	20800317 	ldw	r2,12(r4)
     2c34:	10800437 	ldwio	r2,16(r2)
+   * Other interrupts are explicitly disabled if callbacks
+   * are registered because there is no guarantee that they are 
+   * preemption-safe. This allows the driver to support 
+   * interrupt preemption.
+   */
+  if(dev->callback) {
     2c38:	20c00917 	ldw	r3,36(r4)
     2c3c:	18000d26 	beq	r3,zero,2c74 <alt_avalon_sgdma_irq+0x58>
+#ifdef ALT_ENHANCED_INTERRUPT_API_PRESENT
+static void alt_avalon_sgdma_irq(void *context)
+#else
+static void alt_avalon_sgdma_irq(void *context, alt_u32 id)
+#endif
+{
     2c40:	defffe04 	addi	sp,sp,-8
     2c44:	dfc00115 	stw	ra,4(sp)
     2c48:	dc000015 	stw	r16,0(sp)
+static ALT_INLINE alt_irq_context ALT_ALWAYS_INLINE 
+       alt_irq_disable_all (void)
+{
+  alt_irq_context context;
+
+  NIOS2_READ_STATUS (context);
     2c4c:	0021303a 	rdctl	r16,status
+
+  NIOS2_WRITE_STATUS (context & ~NIOS2_STATUS_PIE_MSK);
     2c50:	00bfff84 	movi	r2,-2
     2c54:	8084703a 	and	r2,r16,r2
     2c58:	1001703a 	wrctl	status,r2
+   * preemption-safe. This allows the driver to support 
+   * interrupt preemption.
+   */
+  if(dev->callback) {
+    cpu_sr = alt_irq_disable_all();
+    (dev->callback)(dev->callback_context);
     2c5c:	21000a17 	ldw	r4,40(r4)
     2c60:	183ee83a 	callr	r3
+  status &= ~NIOS2_STATUS_PIE_MSK;
+  status |= (context & NIOS2_STATUS_PIE_MSK);
+  
+  NIOS2_WRITE_STATUS (status);
+#else
+  NIOS2_WRITE_STATUS (context);
     2c64:	8001703a 	wrctl	status,r16
+    alt_irq_enable_all(cpu_sr);
+  }
+}
     2c68:	dfc00117 	ldw	ra,4(sp)
     2c6c:	dc000017 	ldw	r16,0(sp)
     2c70:	dec00204 	addi	sp,sp,8
     2c74:	f800283a 	ret
 
 00002c78 <alt_avalon_sgdma_do_async_transfer>:
+  alt_sgdma_descriptor *desc)
+{
+  alt_u32 control;
+
+  /* Return with error immediately if controller is busy */
+  if( (IORD_ALTERA_AVALON_SGDMA_STATUS(dev->base) &
     2c78:	20c00317 	ldw	r3,12(r4)
     2c7c:	18800037 	ldwio	r2,0(r3)
     2c80:	1080040c 	andi	r2,r2,16
     2c84:	1000191e 	bne	r2,zero,2cec <alt_avalon_sgdma_do_async_transfer+0x74>
+           ALTERA_AVALON_SGDMA_STATUS_BUSY_MSK) ) {
+    return -EBUSY;
+  }
+
+  /* Clear Run */
+  IOWR_ALTERA_AVALON_SGDMA_CONTROL(dev->base,
     2c88:	18c00404 	addi	r3,r3,16
     2c8c:	19c00037 	ldwio	r7,0(r3)
     2c90:	01bff7c4 	movi	r6,-33
     2c94:	398c703a 	and	r6,r7,r6
     2c98:	19800035 	stwio	r6,0(r3)
+
+  /*
+   * Clear any (previous) status register information
+   * that might occlude our error checking later.
+   */
+  IOWR_ALTERA_AVALON_SGDMA_STATUS(dev->base, 0xFF);
     2c9c:	20c00317 	ldw	r3,12(r4)
     2ca0:	01803fc4 	movi	r6,255
     2ca4:	19800035 	stwio	r6,0(r3)
+
+  /* Point the controller at the descriptor */
+  IOWR_ALTERA_AVALON_SGDMA_NEXT_DESC_POINTER(dev->base, (alt_u32) desc);
     2ca8:	20c00317 	ldw	r3,12(r4)
     2cac:	19400835 	stwio	r5,32(r3)
     2cb0:	20c00317 	ldw	r3,12(r4)
+   *  - Stop on an error with any particular descriptor
+   *  - Include any control register bits registered with along with
+   *    the callback routine (effectively, interrupts are controlled
+   *    via the control bits set during callback-register time).
+   */
+  if(dev->callback) {
     2cb4:	21400917 	ldw	r5,36(r4)
+    control = IORD_ALTERA_AVALON_SGDMA_CONTROL(dev->base);
     2cb8:	18c00404 	addi	r3,r3,16
+   *  - Stop on an error with any particular descriptor
+   *  - Include any control register bits registered with along with
+   *    the callback routine (effectively, interrupts are controlled
+   *    via the control bits set during callback-register time).
+   */
+  if(dev->callback) {
     2cbc:	28000526 	beq	r5,zero,2cd4 <alt_avalon_sgdma_do_async_transfer+0x5c>
+    control = IORD_ALTERA_AVALON_SGDMA_CONTROL(dev->base);
     2cc0:	19400037 	ldwio	r5,0(r3)
+
+    control |= (dev->chain_control                          |
+                ALTERA_AVALON_SGDMA_CONTROL_RUN_MSK         |
+                ALTERA_AVALON_SGDMA_CONTROL_STOP_DMA_ER_MSK  );
+
+    IOWR_ALTERA_AVALON_SGDMA_CONTROL(dev->base, control);
     2cc4:	21000b17 	ldw	r4,44(r4)
     2cc8:	21001814 	ori	r4,r4,96
     2ccc:	2148b03a 	or	r4,r4,r5
     2cd0:	00000406 	br	2ce4 <alt_avalon_sgdma_do_async_transfer+0x6c>
+   *   - Run
+   *   - Stop on an error with any particular descriptor
+   *   - Disable interrupt generation
+   */
+  else {
+    control = IORD_ALTERA_AVALON_SGDMA_CONTROL(dev->base);
     2cd4:	19400037 	ldwio	r5,0(r3)
     2cd8:	013ffbc4 	movi	r4,-17
     2cdc:	2908703a 	and	r4,r5,r4
+
+    control |= (ALTERA_AVALON_SGDMA_CONTROL_RUN_MSK         |
+                ALTERA_AVALON_SGDMA_CONTROL_STOP_DMA_ER_MSK );
+    control &= ~ALTERA_AVALON_SGDMA_CONTROL_IE_GLOBAL_MSK;
+
+    IOWR_ALTERA_AVALON_SGDMA_CONTROL(dev->base, control);
     2ce0:	21001814 	ori	r4,r4,96
     2ce4:	19000035 	stwio	r4,0(r3)
     2ce8:	f800283a 	ret
+  alt_u32 control;
+
+  /* Return with error immediately if controller is busy */
+  if( (IORD_ALTERA_AVALON_SGDMA_STATUS(dev->base) &
+           ALTERA_AVALON_SGDMA_STATUS_BUSY_MSK) ) {
+    return -EBUSY;
     2cec:	00bffc04 	movi	r2,-16
+  /*
+   * Error detection/handling should be performed at the application
+   * or callback level as appropriate.
+   */
+  return 0;
+}
     2cf0:	f800283a 	ret
 
 00002cf4 <alt_avalon_sgdma_do_sync_transfer>:
+  alt_sgdma_descriptor *desc)
+{
+  alt_u8 status;
+
+  /* Wait for any pending transfers to complete */
+  while ( (IORD_ALTERA_AVALON_SGDMA_STATUS(dev->base) &
     2cf4:	20c00317 	ldw	r3,12(r4)
     2cf8:	18800037 	ldwio	r2,0(r3)
     2cfc:	1080040c 	andi	r2,r2,16
     2d00:	103ffc1e 	bne	r2,zero,2cf4 <_gp+0xffff7894>
+           ALTERA_AVALON_SGDMA_STATUS_BUSY_MSK) );
+
+
+  /* Clear Run */
+  IOWR_ALTERA_AVALON_SGDMA_CONTROL(dev->base,
     2d04:	18c00404 	addi	r3,r3,16
     2d08:	19800037 	ldwio	r6,0(r3)
     2d0c:	00bff7c4 	movi	r2,-33
     2d10:	308c703a 	and	r6,r6,r2
     2d14:	19800035 	stwio	r6,0(r3)
+
+  /*
+   * Clear any (previous) status register information
+   * that might occlude our error checking later.
+   */
+  IOWR_ALTERA_AVALON_SGDMA_STATUS(dev->base, 0xFF);
     2d18:	20c00317 	ldw	r3,12(r4)
     2d1c:	01803fc4 	movi	r6,255
     2d20:	19800035 	stwio	r6,0(r3)
+
+  /* Point the controller at the descriptor */
+  IOWR_ALTERA_AVALON_SGDMA_NEXT_DESC_POINTER(dev->base, (alt_u32) desc);
     2d24:	20c00317 	ldw	r3,12(r4)
     2d28:	19400835 	stwio	r5,32(r3)
+   * Set up SGDMA controller to:
+   * - Disable interrupt generation
+   * - Run once a valid descriptor is written to controller
+   * - Stop on an error with any particular descriptor
+   */
+  IOWR_ALTERA_AVALON_SGDMA_CONTROL(dev->base,
     2d2c:	20c00317 	ldw	r3,12(r4)
     2d30:	18c00404 	addi	r3,r3,16
     2d34:	19400037 	ldwio	r5,0(r3)
     2d38:	29401814 	ori	r5,r5,96
     2d3c:	19400035 	stwio	r5,0(r3)
+    (ALTERA_AVALON_SGDMA_CONTROL_RUN_MSK |
+     ALTERA_AVALON_SGDMA_CONTROL_STOP_DMA_ER_MSK | 
+     IORD_ALTERA_AVALON_SGDMA_CONTROL(dev->base)) );
+
+  /* Wait for the descriptor (chain) to complete */
+  while ( (IORD_ALTERA_AVALON_SGDMA_STATUS(dev->base) &
     2d40:	20c00317 	ldw	r3,12(r4)
     2d44:	19400037 	ldwio	r5,0(r3)
     2d48:	2940040c 	andi	r5,r5,16
     2d4c:	283ffc1e 	bne	r5,zero,2d40 <_gp+0xffff78e0>
+           ALTERA_AVALON_SGDMA_STATUS_BUSY_MSK) );
+
+  /* Clear Run */
+  IOWR_ALTERA_AVALON_SGDMA_CONTROL(dev->base, 
     2d50:	18c00404 	addi	r3,r3,16
     2d54:	19400037 	ldwio	r5,0(r3)
     2d58:	2884703a 	and	r2,r5,r2
     2d5c:	18800035 	stwio	r2,0(r3)
+    (IORD_ALTERA_AVALON_SGDMA_CONTROL(dev->base) &
+     ~ALTERA_AVALON_SGDMA_CONTROL_RUN_MSK) );
+
+  /* Get & clear status register contents */
+  status = IORD_ALTERA_AVALON_SGDMA_STATUS(dev->base);
     2d60:	20c00317 	ldw	r3,12(r4)
     2d64:	18800037 	ldwio	r2,0(r3)
+  IOWR_ALTERA_AVALON_SGDMA_STATUS(dev->base, 0xFF);
     2d68:	01003fc4 	movi	r4,255
     2d6c:	19000035 	stwio	r4,0(r3)
+
+  return status;
+}
     2d70:	f800283a 	ret
 
 00002d74 <alt_avalon_sgdma_register_callback>:
+  alt_sgdma_dev *dev,
+  alt_avalon_sgdma_callback callback,
+  alt_u32 chain_control,
+  void *context)
+{
+  dev->callback         = callback;
     2d74:	21400915 	stw	r5,36(r4)
+  dev->callback_context = context;
     2d78:	21c00a15 	stw	r7,40(r4)
+  dev->chain_control    = chain_control;
     2d7c:	21800b15 	stw	r6,44(r4)
     2d80:	f800283a 	ret
 
 00002d84 <alt_avalon_sgdma_start>:
+ */
+void alt_avalon_sgdma_start(alt_sgdma_dev *dev)
+{
+  alt_u32 control;
+
+  control = IORD_ALTERA_AVALON_SGDMA_CONTROL(dev->base);
     2d84:	20800317 	ldw	r2,12(r4)
     2d88:	10800404 	addi	r2,r2,16
     2d8c:	10c00037 	ldwio	r3,0(r2)
+  control |= ALTERA_AVALON_SGDMA_CONTROL_RUN_MSK;
+  IOWR_ALTERA_AVALON_SGDMA_CONTROL(dev->base, control);
     2d90:	18c00814 	ori	r3,r3,32
     2d94:	10c00035 	stwio	r3,0(r2)
     2d98:	f800283a 	ret
 
 00002d9c <alt_avalon_sgdma_stop>:
+ */
+void alt_avalon_sgdma_stop(alt_sgdma_dev *dev)
+{
+  alt_u32 control;
+
+  control = IORD_ALTERA_AVALON_SGDMA_CONTROL(dev->base);
     2d9c:	20800317 	ldw	r2,12(r4)
     2da0:	10800404 	addi	r2,r2,16
     2da4:	11000037 	ldwio	r4,0(r2)
+  control &= ~ALTERA_AVALON_SGDMA_CONTROL_RUN_MSK;
+  IOWR_ALTERA_AVALON_SGDMA_CONTROL(dev->base, control);
     2da8:	00fff7c4 	movi	r3,-33
     2dac:	20c6703a 	and	r3,r4,r3
     2db0:	10c00035 	stwio	r3,0(r2)
     2db4:	f800283a 	ret
 
 00002db8 <alt_avalon_sgdma_check_descriptor_status>:
+ *   normally. Or, various error conditions defined in <errno.h>
+ */
+int alt_avalon_sgdma_check_descriptor_status(alt_sgdma_descriptor *desc)
+{
+  /* Errors take precedence */
+  if( IORD_8DIRECT(&desc->status, 0) &
     2db8:	208007a3 	ldbuio	r2,30(r4)
     2dbc:	10801fcc 	andi	r2,r2,127
     2dc0:	1000041e 	bne	r2,zero,2dd4 <alt_avalon_sgdma_check_descriptor_status+0x1c>
+        ALTERA_AVALON_SGDMA_DESCRIPTOR_STATUS_E_MEOP_MSK     |
+        ALTERA_AVALON_SGDMA_DESCRIPTOR_STATUS_E_MSOP_MSK ) ) {
+    return -EIO;
+  }
+
+  if( IORD_8DIRECT(&desc->control, 0) &
     2dc4:	208007e3 	ldbuio	r2,31(r4)
     2dc8:	1080200c 	andi	r2,r2,128
     2dcc:	1000031e 	bne	r2,zero,2ddc <alt_avalon_sgdma_check_descriptor_status+0x24>
     2dd0:	f800283a 	ret
+        ALTERA_AVALON_SGDMA_DESCRIPTOR_STATUS_E_OVERFLOW_MSK |
+        ALTERA_AVALON_SGDMA_DESCRIPTOR_STATUS_E_SYNC_MSK     |
+        ALTERA_AVALON_SGDMA_DESCRIPTOR_STATUS_E_UEOP_MSK     |
+        ALTERA_AVALON_SGDMA_DESCRIPTOR_STATUS_E_MEOP_MSK     |
+        ALTERA_AVALON_SGDMA_DESCRIPTOR_STATUS_E_MSOP_MSK ) ) {
+    return -EIO;
     2dd4:	00bffec4 	movi	r2,-5
     2dd8:	f800283a 	ret
+  }
+
+  if( IORD_8DIRECT(&desc->control, 0) &
+      ALTERA_AVALON_SGDMA_DESCRIPTOR_CONTROL_OWNED_BY_HW_MSK) {
+    return -EINPROGRESS;
     2ddc:	00bfe244 	movi	r2,-119
+  }
+
+    return 0;
+}
     2de0:	f800283a 	ret
 
 00002de4 <alt_avalon_sgdma_open>:
+ * Returns:
+ * - Pointer to SGDMA device instance struct, or null if the device
+ *   could not be opened.
+ */
+alt_sgdma_dev* alt_avalon_sgdma_open (const char* name)
+{
     2de4:	defffe04 	addi	sp,sp,-8
+  alt_sgdma_dev* dev;
+
+  dev = (alt_sgdma_dev*) alt_find_dev (name, &alt_sgdma_list);
     2de8:	d1600904 	addi	r5,gp,-32732
+ * Returns:
+ * - Pointer to SGDMA device instance struct, or null if the device
+ *   could not be opened.
+ */
+alt_sgdma_dev* alt_avalon_sgdma_open (const char* name)
+{
     2dec:	dc000015 	stw	r16,0(sp)
     2df0:	dfc00115 	stw	ra,4(sp)
+  alt_sgdma_dev* dev;
+
+  dev = (alt_sgdma_dev*) alt_find_dev (name, &alt_sgdma_list);
     2df4:	00032740 	call	3274 <alt_find_dev>
     2df8:	1021883a 	mov	r16,r2
+
+  if (NULL == dev) {
     2dfc:	1000071e 	bne	r2,zero,2e1c <alt_avalon_sgdma_open+0x38>
+
+extern int errno;
+
+static ALT_INLINE int* alt_get_errno(void)
+{
+  return ((alt_errno) ? alt_errno() : &errno);
     2e00:	d0a00b17 	ldw	r2,-32724(gp)
     2e04:	10000226 	beq	r2,zero,2e10 <alt_avalon_sgdma_open+0x2c>
     2e08:	103ee83a 	callr	r2
     2e0c:	00000106 	br	2e14 <alt_avalon_sgdma_open+0x30>
     2e10:	d0a03804 	addi	r2,gp,-32544
+    ALT_ERRNO = ENODEV;
     2e14:	00c004c4 	movi	r3,19
     2e18:	10c00015 	stw	r3,0(r2)
+  }
+
+  return dev;
+}
     2e1c:	8005883a 	mov	r2,r16
     2e20:	dfc00117 	ldw	ra,4(sp)
     2e24:	dc000017 	ldw	r16,0(sp)
@@ -1736,13 +2513,37 @@ int main(void)
     2e2c:	f800283a 	ret
 
 00002e30 <alt_avalon_sgdma_enable_desc_poll>:
+ */
+void alt_avalon_sgdma_enable_desc_poll(alt_sgdma_dev *dev, alt_u32 frequency)
+{
+  alt_u32 control;
+
+  control = IORD_ALTERA_AVALON_SGDMA_CONTROL(dev->base);
     2e30:	20c00317 	ldw	r3,12(r4)
     2e34:	18c00404 	addi	r3,r3,16
     2e38:	19000037 	ldwio	r4,0(r3)
+  /* Clear descriptor polling frequency */
+  control &= ~ALTERA_AVALON_SGDMA_CONTROL_DESC_POLL_FREQ_MSK;
     2e3c:	00a00434 	movhi	r2,32784
+  
+  control |= ALTERA_AVALON_SGDMA_CONTROL_DESC_POLL_EN_MSK | 
+            ((frequency << ALTERA_AVALON_SGDMA_CONTROL_DESC_POLL_FREQ_OFST) & 
+            ALTERA_AVALON_SGDMA_CONTROL_DESC_POLL_FREQ_MSK);
+  IOWR_ALTERA_AVALON_SGDMA_CONTROL(dev->base, control);
     2e40:	280a953a 	slli	r5,r5,20
+{
+  alt_u32 control;
+
+  control = IORD_ALTERA_AVALON_SGDMA_CONTROL(dev->base);
+  /* Clear descriptor polling frequency */
+  control &= ~ALTERA_AVALON_SGDMA_CONTROL_DESC_POLL_FREQ_MSK;
     2e44:	10bfffc4 	addi	r2,r2,-1
     2e48:	2084703a 	and	r2,r4,r2
+  
+  control |= ALTERA_AVALON_SGDMA_CONTROL_DESC_POLL_EN_MSK | 
+            ((frequency << ALTERA_AVALON_SGDMA_CONTROL_DESC_POLL_FREQ_OFST) & 
+            ALTERA_AVALON_SGDMA_CONTROL_DESC_POLL_FREQ_MSK);
+  IOWR_ALTERA_AVALON_SGDMA_CONTROL(dev->base, control);
     2e4c:	295ffc2c 	andhi	r5,r5,32752
     2e50:	29400134 	orhi	r5,r5,4
     2e54:	288ab03a 	or	r5,r5,r2
@@ -1750,9 +2551,18 @@ int main(void)
     2e5c:	f800283a 	ret
 
 00002e60 <alt_avalon_sgdma_disable_desc_poll>:
+ */
+void alt_avalon_sgdma_disable_desc_poll(alt_sgdma_dev *dev)
+{
+  alt_u32 control;
+
+  control = IORD_ALTERA_AVALON_SGDMA_CONTROL(dev->base);
     2e60:	20800317 	ldw	r2,12(r4)
     2e64:	10800404 	addi	r2,r2,16
     2e68:	11000037 	ldwio	r4,0(r2)
+  control &= ~ALTERA_AVALON_SGDMA_CONTROL_DESC_POLL_EN_MSK;
+
+  IOWR_ALTERA_AVALON_SGDMA_CONTROL(dev->base, control);
     2e6c:	00ffff34 	movhi	r3,65532
     2e70:	18ffffc4 	addi	r3,r3,-1
     2e74:	20c6703a 	and	r3,r4,r3
@@ -1760,55 +2570,196 @@ int main(void)
     2e7c:	f800283a 	ret
 
 00002e80 <alt_avalon_sgdma_construct_descriptor_burst>:
+   * The SGDMA controller from continuing to process the chain. This is
+   * done as a single IO write to bypass cache, without flushing
+   * the entire descriptor, since only the 8-bit descriptor status must
+   * be flushed.
+   */
+  IOWR_8DIRECT(&next->control, 0,
     2e80:	288007c3 	ldbu	r2,31(r5)
+  int                   read_fixed,
+  int                   write_fixed_or_sop,
+  int                   read_burst,
+  int                   write_burst,
+  alt_u8                atlantic_channel)
+{
     2e84:	d8c00617 	ldw	r3,24(sp)
+   * The SGDMA controller from continuing to process the chain. This is
+   * done as a single IO write to bypass cache, without flushing
+   * the entire descriptor, since only the 8-bit descriptor status must
+   * be flushed.
+   */
+  IOWR_8DIRECT(&next->control, 0,
     2e88:	10801fcc 	andi	r2,r2,127
     2e8c:	288007e5 	stbio	r2,31(r5)
+    (next->control & ~ALTERA_AVALON_SGDMA_DESCRIPTOR_CONTROL_OWNED_BY_HW_MSK));
+
+  desc->read_addr                = read_addr;
     2e90:	3004d23a 	srli	r2,r6,8
     2e94:	21800005 	stb	r6,0(r4)
+  desc->write_addr               = write_addr;
     2e98:	21c00205 	stb	r7,8(r4)
+   * be flushed.
+   */
+  IOWR_8DIRECT(&next->control, 0,
+    (next->control & ~ALTERA_AVALON_SGDMA_DESCRIPTOR_CONTROL_OWNED_BY_HW_MSK));
+
+  desc->read_addr                = read_addr;
     2e9c:	20800045 	stb	r2,1(r4)
     2ea0:	3004d43a 	srli	r2,r6,16
+  desc->write_addr               = write_addr;
+  desc->next                     = (alt_u32 *) next;
     2ea4:	21400405 	stb	r5,16(r4)
+   * be flushed.
+   */
+  IOWR_8DIRECT(&next->control, 0,
+    (next->control & ~ALTERA_AVALON_SGDMA_DESCRIPTOR_CONTROL_OWNED_BY_HW_MSK));
+
+  desc->read_addr                = read_addr;
     2ea8:	300cd63a 	srli	r6,r6,24
     2eac:	20800085 	stb	r2,2(r4)
+  desc->write_addr               = write_addr;
     2eb0:	3804d23a 	srli	r2,r7,8
+   * be flushed.
+   */
+  IOWR_8DIRECT(&next->control, 0,
+    (next->control & ~ALTERA_AVALON_SGDMA_DESCRIPTOR_CONTROL_OWNED_BY_HW_MSK));
+
+  desc->read_addr                = read_addr;
     2eb4:	218000c5 	stb	r6,3(r4)
+  desc->write_addr               = write_addr;
+  desc->next                     = (alt_u32 *) next;
+  desc->read_addr_pad            = 0x0;
     2eb8:	20000105 	stb	zero,4(r4)
+   */
+  IOWR_8DIRECT(&next->control, 0,
+    (next->control & ~ALTERA_AVALON_SGDMA_DESCRIPTOR_CONTROL_OWNED_BY_HW_MSK));
+
+  desc->read_addr                = read_addr;
+  desc->write_addr               = write_addr;
     2ebc:	20800245 	stb	r2,9(r4)
     2ec0:	3804d43a 	srli	r2,r7,16
     2ec4:	380ed63a 	srli	r7,r7,24
+  desc->next                     = (alt_u32 *) next;
+  desc->read_addr_pad            = 0x0;
     2ec8:	20000145 	stb	zero,5(r4)
+   */
+  IOWR_8DIRECT(&next->control, 0,
+    (next->control & ~ALTERA_AVALON_SGDMA_DESCRIPTOR_CONTROL_OWNED_BY_HW_MSK));
+
+  desc->read_addr                = read_addr;
+  desc->write_addr               = write_addr;
     2ecc:	20800285 	stb	r2,10(r4)
+  desc->next                     = (alt_u32 *) next;
     2ed0:	2804d23a 	srli	r2,r5,8
+   */
+  IOWR_8DIRECT(&next->control, 0,
+    (next->control & ~ALTERA_AVALON_SGDMA_DESCRIPTOR_CONTROL_OWNED_BY_HW_MSK));
+
+  desc->read_addr                = read_addr;
+  desc->write_addr               = write_addr;
     2ed4:	21c002c5 	stb	r7,11(r4)
+  desc->next                     = (alt_u32 *) next;
+  desc->read_addr_pad            = 0x0;
     2ed8:	20000185 	stb	zero,6(r4)
+  IOWR_8DIRECT(&next->control, 0,
+    (next->control & ~ALTERA_AVALON_SGDMA_DESCRIPTOR_CONTROL_OWNED_BY_HW_MSK));
+
+  desc->read_addr                = read_addr;
+  desc->write_addr               = write_addr;
+  desc->next                     = (alt_u32 *) next;
     2edc:	20800445 	stb	r2,17(r4)
     2ee0:	2804d43a 	srli	r2,r5,16
     2ee4:	280ad63a 	srli	r5,r5,24
+  desc->read_addr_pad            = 0x0;
     2ee8:	200001c5 	stb	zero,7(r4)
+  IOWR_8DIRECT(&next->control, 0,
+    (next->control & ~ALTERA_AVALON_SGDMA_DESCRIPTOR_CONTROL_OWNED_BY_HW_MSK));
+
+  desc->read_addr                = read_addr;
+  desc->write_addr               = write_addr;
+  desc->next                     = (alt_u32 *) next;
     2eec:	20800485 	stb	r2,18(r4)
+  desc->read_addr_pad            = 0x0;
+  desc->write_addr_pad           = 0x0;
+  desc->next_pad                 = 0x0;
+  desc->bytes_to_transfer        = length_or_eop;
     2ef0:	d880000b 	ldhu	r2,0(sp)
+  IOWR_8DIRECT(&next->control, 0,
+    (next->control & ~ALTERA_AVALON_SGDMA_DESCRIPTOR_CONTROL_OWNED_BY_HW_MSK));
+
+  desc->read_addr                = read_addr;
+  desc->write_addr               = write_addr;
+  desc->next                     = (alt_u32 *) next;
     2ef4:	214004c5 	stb	r5,19(r4)
+  desc->read_addr_pad            = 0x0;
+  desc->write_addr_pad           = 0x0;
     2ef8:	20000305 	stb	zero,12(r4)
+  desc->next_pad                 = 0x0;
+  desc->bytes_to_transfer        = length_or_eop;
     2efc:	20800605 	stb	r2,24(r4)
     2f00:	1004d23a 	srli	r2,r2,8
+
+  desc->read_addr                = read_addr;
+  desc->write_addr               = write_addr;
+  desc->next                     = (alt_u32 *) next;
+  desc->read_addr_pad            = 0x0;
+  desc->write_addr_pad           = 0x0;
     2f04:	20000345 	stb	zero,13(r4)
     2f08:	20000385 	stb	zero,14(r4)
+  desc->next_pad                 = 0x0;
+  desc->bytes_to_transfer        = length_or_eop;
     2f0c:	20800645 	stb	r2,25(r4)
+  desc->actual_bytes_transferred = 0;
+  desc->status                   = 0x0;
+
+  /* SGDMA burst not currently supported */
+  desc->read_burst               = read_burst;
     2f10:	d8800417 	ldw	r2,16(sp)
+
+  desc->read_addr                = read_addr;
+  desc->write_addr               = write_addr;
+  desc->next                     = (alt_u32 *) next;
+  desc->read_addr_pad            = 0x0;
+  desc->write_addr_pad           = 0x0;
     2f14:	200003c5 	stb	zero,15(r4)
+  desc->next_pad                 = 0x0;
     2f18:	20000505 	stb	zero,20(r4)
     2f1c:	20000545 	stb	zero,21(r4)
     2f20:	20000585 	stb	zero,22(r4)
     2f24:	200005c5 	stb	zero,23(r4)
+  desc->bytes_to_transfer        = length_or_eop;
+  desc->actual_bytes_transferred = 0;
     2f28:	20000705 	stb	zero,28(r4)
     2f2c:	20000745 	stb	zero,29(r4)
+  desc->status                   = 0x0;
     2f30:	20000785 	stb	zero,30(r4)
+
+  /* SGDMA burst not currently supported */
+  desc->read_burst               = read_burst;
     2f34:	20800685 	stb	r2,26(r4)
+  desc->write_burst              = write_burst;
     2f38:	d8800517 	ldw	r2,20(sp)
+   * Note that this step is performed after all other descriptor information
+   * has been filled out so that, if the controller already happens to be
+   * pointing at this descriptor, it will not run (via the "owned by hardware"
+   * bit) until all other descriptor information has been set up.
+   */
+  desc->control = (
     2f3c:	d9400117 	ldw	r5,4(sp)
+  desc->actual_bytes_transferred = 0;
+  desc->status                   = 0x0;
+
+  /* SGDMA burst not currently supported */
+  desc->read_burst               = read_burst;
+  desc->write_burst              = write_burst;
     2f40:	208006c5 	stb	r2,27(r4)
+   * Note that this step is performed after all other descriptor information
+   * has been filled out so that, if the controller already happens to be
+   * pointing at this descriptor, it will not run (via the "owned by hardware"
+   * bit) until all other descriptor information has been set up.
+   */
+  desc->control = (
     2f44:	d8800217 	ldw	r2,8(sp)
     2f48:	280ac03a 	cmpne	r5,r5,zero
     2f4c:	297fe004 	addi	r5,r5,-128
@@ -1826,18 +2777,50 @@ int main(void)
     2f7c:	00000106 	br	2f84 <alt_avalon_sgdma_construct_descriptor_burst+0x104>
     2f80:	0005883a 	mov	r2,zero
     2f84:	2884b03a 	or	r2,r5,r2
+  /*
+   * Flush completed buffer out of cache. This is done rather than
+   * individual cache-bypassed writes to take advantage of any
+   * burst-capabilities in the memory we're writing to.
+   */
+  alt_dcache_flush(desc, sizeof(alt_sgdma_descriptor));
     2f88:	01400804 	movi	r5,32
+   * Note that this step is performed after all other descriptor information
+   * has been filled out so that, if the controller already happens to be
+   * pointing at this descriptor, it will not run (via the "owned by hardware"
+   * bit) until all other descriptor information has been set up.
+   */
+  desc->control = (
     2f8c:	208007c5 	stb	r2,31(r4)
+  /*
+   * Flush completed buffer out of cache. This is done rather than
+   * individual cache-bypassed writes to take advantage of any
+   * burst-capabilities in the memory we're writing to.
+   */
+  alt_dcache_flush(desc, sizeof(alt_sgdma_descriptor));
     2f90:	00031e01 	jmpi	31e0 <alt_dcache_flush>
 
 00002f94 <alt_avalon_sgdma_construct_mem_to_mem_desc_burst>:
+  alt_u16               length,
+  int                   read_fixed,
+  int                   write_fixed,
+  int                   read_burst,
+  int                   write_burst)
+{
     2f94:	defff804 	addi	sp,sp,-32
+  alt_avalon_sgdma_construct_descriptor_burst(
     2f98:	d8800c17 	ldw	r2,48(sp)
     2f9c:	d8000615 	stw	zero,24(sp)
     2fa0:	d8000115 	stw	zero,4(sp)
     2fa4:	d8800515 	stw	r2,20(sp)
     2fa8:	d8800b17 	ldw	r2,44(sp)
+  alt_u16               length,
+  int                   read_fixed,
+  int                   write_fixed,
+  int                   read_burst,
+  int                   write_burst)
+{
     2fac:	dfc00715 	stw	ra,28(sp)
+  alt_avalon_sgdma_construct_descriptor_burst(
     2fb0:	d8800415 	stw	r2,16(sp)
     2fb4:	d8800a17 	ldw	r2,40(sp)
     2fb8:	d8800315 	stw	r2,12(sp)
@@ -1846,28 +2829,57 @@ int main(void)
     2fc4:	d880080b 	ldhu	r2,32(sp)
     2fc8:	d8800015 	stw	r2,0(sp)
     2fcc:	0002e800 	call	2e80 <alt_avalon_sgdma_construct_descriptor_burst>
+    read_fixed,
+    write_fixed,
+    read_burst,
+    write_burst,
+    (alt_u8) 0x0);  // Atlantic channel: N/A in mem-to-mem mode
+}
     2fd0:	dfc00717 	ldw	ra,28(sp)
     2fd4:	dec00804 	addi	sp,sp,32
     2fd8:	f800283a 	ret
 
 00002fdc <alt_avalon_sgdma_construct_mem_to_mem_desc>:
+  alt_u32              *read_addr,
+  alt_u32              *write_addr,
+  alt_u16               length,
+  int                   read_fixed,
+  int                   write_fixed)
+{
     2fdc:	defffa04 	addi	sp,sp,-24
+  alt_avalon_sgdma_construct_mem_to_mem_desc_burst(desc, next, read_addr, 
     2fe0:	d8800817 	ldw	r2,32(sp)
     2fe4:	d8000415 	stw	zero,16(sp)
     2fe8:	d8000315 	stw	zero,12(sp)
     2fec:	d8800215 	stw	r2,8(sp)
     2ff0:	d8800717 	ldw	r2,28(sp)
+  alt_u32              *read_addr,
+  alt_u32              *write_addr,
+  alt_u16               length,
+  int                   read_fixed,
+  int                   write_fixed)
+{
     2ff4:	dfc00515 	stw	ra,20(sp)
+  alt_avalon_sgdma_construct_mem_to_mem_desc_burst(desc, next, read_addr, 
     2ff8:	d8800115 	stw	r2,4(sp)
     2ffc:	d880060b 	ldhu	r2,24(sp)
     3000:	d8800015 	stw	r2,0(sp)
     3004:	0002f940 	call	2f94 <alt_avalon_sgdma_construct_mem_to_mem_desc_burst>
+    write_addr, length, read_fixed, write_fixed, 0, 0);
+}
     3008:	dfc00517 	ldw	ra,20(sp)
     300c:	dec00604 	addi	sp,sp,24
     3010:	f800283a 	ret
 
 00003014 <alt_avalon_sgdma_construct_stream_to_mem_desc_burst>:
+  alt_sgdma_descriptor *next,
+  alt_u32              *write_addr,
+  alt_u16               length_or_eop,
+  int                   write_fixed,
+  int                   write_burst)
+{
     3014:	defff804 	addi	sp,sp,-32
+  alt_avalon_sgdma_construct_descriptor_burst(
     3018:	d8800917 	ldw	r2,36(sp)
     301c:	39ffffcc 	andi	r7,r7,65535
     3020:	d9c00015 	stw	r7,0(sp)
@@ -1880,26 +2892,62 @@ int main(void)
     303c:	d8000215 	stw	zero,8(sp)
     3040:	d8000115 	stw	zero,4(sp)
     3044:	000d883a 	mov	r6,zero
+  alt_sgdma_descriptor *next,
+  alt_u32              *write_addr,
+  alt_u16               length_or_eop,
+  int                   write_fixed,
+  int                   write_burst)
+{
     3048:	dfc00715 	stw	ra,28(sp)
+  alt_avalon_sgdma_construct_descriptor_burst(
     304c:	0002e800 	call	2e80 <alt_avalon_sgdma_construct_descriptor_burst>
+    0x0,            // Read fixed: N/A in stream-to-mem mode
+    write_fixed,
+    0,              // Read_burst : N/A in stream-to-mem mode
+    write_burst,
+    (alt_u8) 0x0);  // Atlantic channel: N/A in stream-to-mem mode
+}
     3050:	dfc00717 	ldw	ra,28(sp)
     3054:	dec00804 	addi	sp,sp,32
     3058:	f800283a 	ret
 
 0000305c <alt_avalon_sgdma_construct_stream_to_mem_desc>:
+  alt_sgdma_descriptor *desc,
+  alt_sgdma_descriptor *next,
+  alt_u32              *write_addr,
+  alt_u16               length_or_eop,
+  int                   write_fixed)
+{
     305c:	defffd04 	addi	sp,sp,-12
+  alt_avalon_sgdma_construct_stream_to_mem_desc_burst(desc, next, write_addr, 
     3060:	d8800317 	ldw	r2,12(sp)
     3064:	d8000115 	stw	zero,4(sp)
     3068:	39ffffcc 	andi	r7,r7,65535
     306c:	d8800015 	stw	r2,0(sp)
+  alt_sgdma_descriptor *desc,
+  alt_sgdma_descriptor *next,
+  alt_u32              *write_addr,
+  alt_u16               length_or_eop,
+  int                   write_fixed)
+{
     3070:	dfc00215 	stw	ra,8(sp)
+  alt_avalon_sgdma_construct_stream_to_mem_desc_burst(desc, next, write_addr, 
     3074:	00030140 	call	3014 <alt_avalon_sgdma_construct_stream_to_mem_desc_burst>
+    length_or_eop, write_fixed, 0);
+}
     3078:	dfc00217 	ldw	ra,8(sp)
     307c:	dec00304 	addi	sp,sp,12
     3080:	f800283a 	ret
 
 00003084 <alt_avalon_sgdma_construct_mem_to_stream_desc_burst>:
+  int                   read_fixed,
+  int                   generate_sop,
+  int                   generate_eop,
+  int                   read_burst,
+  alt_u8                atlantic_channel)
+{
     3084:	defff804 	addi	sp,sp,-32
+  alt_avalon_sgdma_construct_descriptor_burst(
     3088:	d8800c03 	ldbu	r2,48(sp)
     308c:	39ffffcc 	andi	r7,r7,65535
     3090:	d9c00015 	stw	r7,0(sp)
@@ -1909,43 +2957,87 @@ int main(void)
     30a0:	000f883a 	mov	r7,zero
     30a4:	d8800415 	stw	r2,16(sp)
     30a8:	d8800917 	ldw	r2,36(sp)
+  int                   read_fixed,
+  int                   generate_sop,
+  int                   generate_eop,
+  int                   read_burst,
+  alt_u8                atlantic_channel)
+{
     30ac:	dfc00715 	stw	ra,28(sp)
+  alt_avalon_sgdma_construct_descriptor_burst(
     30b0:	d8800315 	stw	r2,12(sp)
     30b4:	d8800817 	ldw	r2,32(sp)
     30b8:	d8800215 	stw	r2,8(sp)
     30bc:	d8800a17 	ldw	r2,40(sp)
     30c0:	d8800115 	stw	r2,4(sp)
     30c4:	0002e800 	call	2e80 <alt_avalon_sgdma_construct_descriptor_burst>
+    read_fixed,
+    generate_sop,
+    read_burst,
+    0,                 // Write_burst : N/A in mem-to-stream mode
+    atlantic_channel);
+}
     30c8:	dfc00717 	ldw	ra,28(sp)
     30cc:	dec00804 	addi	sp,sp,32
     30d0:	f800283a 	ret
 
 000030d4 <alt_avalon_sgdma_construct_mem_to_stream_desc>:
+  alt_u16               length,
+  int                   read_fixed,
+  int                   generate_sop,
+  int                   generate_eop,
+  alt_u8                atlantic_channel)
+{
     30d4:	defffa04 	addi	sp,sp,-24
+  alt_avalon_sgdma_construct_mem_to_stream_desc_burst(desc, next, read_addr, 
     30d8:	d8800903 	ldbu	r2,36(sp)
     30dc:	d8000315 	stw	zero,12(sp)
     30e0:	39ffffcc 	andi	r7,r7,65535
     30e4:	d8800415 	stw	r2,16(sp)
     30e8:	d8800817 	ldw	r2,32(sp)
+  alt_u16               length,
+  int                   read_fixed,
+  int                   generate_sop,
+  int                   generate_eop,
+  alt_u8                atlantic_channel)
+{
     30ec:	dfc00515 	stw	ra,20(sp)
+  alt_avalon_sgdma_construct_mem_to_stream_desc_burst(desc, next, read_addr, 
     30f0:	d8800215 	stw	r2,8(sp)
     30f4:	d8800717 	ldw	r2,28(sp)
     30f8:	d8800115 	stw	r2,4(sp)
     30fc:	d8800617 	ldw	r2,24(sp)
     3100:	d8800015 	stw	r2,0(sp)
     3104:	00030840 	call	3084 <alt_avalon_sgdma_construct_mem_to_stream_desc_burst>
+    length, read_fixed, generate_sop, generate_eop, 0, atlantic_channel);
+
+}
     3108:	dfc00517 	ldw	ra,20(sp)
     310c:	dec00604 	addi	sp,sp,24
     3110:	f800283a 	ret
 
 00003114 <alt_avalon_sgdma_construct_descriptor>:
+  alt_u16               length_or_eop,
+  int                   generate_eop,
+  int                   read_fixed,
+  int                   write_fixed_or_sop,
+  alt_u8                atlantic_channel)
+{
     3114:	defff804 	addi	sp,sp,-32
+  alt_avalon_sgdma_construct_descriptor_burst(desc, next, read_addr, 
     3118:	d8800c03 	ldbu	r2,48(sp)
     311c:	d8000515 	stw	zero,20(sp)
     3120:	d8000415 	stw	zero,16(sp)
     3124:	d8800615 	stw	r2,24(sp)
     3128:	d8800b17 	ldw	r2,44(sp)
+  alt_u16               length_or_eop,
+  int                   generate_eop,
+  int                   read_fixed,
+  int                   write_fixed_or_sop,
+  alt_u8                atlantic_channel)
+{
     312c:	dfc00715 	stw	ra,28(sp)
+  alt_avalon_sgdma_construct_descriptor_burst(desc, next, read_addr, 
     3130:	d8800315 	stw	r2,12(sp)
     3134:	d8800a17 	ldw	r2,40(sp)
     3138:	d8800215 	stw	r2,8(sp)
@@ -1954,12 +3046,27 @@ int main(void)
     3144:	d880080b 	ldhu	r2,32(sp)
     3148:	d8800015 	stw	r2,0(sp)
     314c:	0002e800 	call	2e80 <alt_avalon_sgdma_construct_descriptor_burst>
+    write_addr, length_or_eop, generate_eop, read_fixed, write_fixed_or_sop, 
+    0, 0, atlantic_channel);
+}
     3150:	dfc00717 	ldw	ra,28(sp)
     3154:	dec00804 	addi	sp,sp,32
     3158:	f800283a 	ret
 
 0000315c <alt_avalon_sgdma_init>:
+
+  /* 
+   * Halt any current transactions (reset the device)
+   * SW reset is written twice per SGDMA documentation 
+   */
+  IOWR_ALTERA_AVALON_SGDMA_CONTROL(dev->base,
     315c:	20c00317 	ldw	r3,12(r4)
+ * This routine disables interrupts, future descriptor processing,
+ * registers a specific instance of the device with the HAL,
+ * and installs an interrupt handler for the device.
+ */
+void alt_avalon_sgdma_init (alt_sgdma_dev *dev, alt_u32 ic_id, alt_u32 irq)
+{
     3160:	defffb04 	addi	sp,sp,-20
     3164:	dc800315 	stw	r18,12(sp)
     3168:	dc400215 	stw	r17,8(sp)
@@ -1968,17 +3075,39 @@ int main(void)
     3174:	2021883a 	mov	r16,r4
     3178:	2823883a 	mov	r17,r5
     317c:	3025883a 	mov	r18,r6
+
+  /* 
+   * Halt any current transactions (reset the device)
+   * SW reset is written twice per SGDMA documentation 
+   */
+  IOWR_ALTERA_AVALON_SGDMA_CONTROL(dev->base,
     3180:	00800074 	movhi	r2,1
     3184:	18800435 	stwio	r2,16(r3)
+    ALTERA_AVALON_SGDMA_CONTROL_SOFTWARERESET_MSK);
+  IOWR_ALTERA_AVALON_SGDMA_CONTROL(dev->base,
     3188:	20c00317 	ldw	r3,12(r4)
     318c:	18800435 	stwio	r2,16(r3)
+
+  /*
+   * Disable interrupts, halt future descriptor processing,
+   * and clear status register content
+   */
+  IOWR_ALTERA_AVALON_SGDMA_CONTROL(dev->base, 0x0);
     3190:	20800317 	ldw	r2,12(r4)
     3194:	10000435 	stwio	zero,16(r2)
+  IOWR_ALTERA_AVALON_SGDMA_STATUS(dev->base, 0xFF);
     3198:	20800317 	ldw	r2,12(r4)
     319c:	00c03fc4 	movi	r3,255
     31a0:	10c00035 	stwio	r3,0(r2)
+
+  /* Register this instance of the SGDMA controller with HAL */
+  alt_dev_llist_insert((alt_dev_llist*) dev, &alt_sgdma_list);
     31a4:	d1600904 	addi	r5,gp,-32732
     31a8:	00032080 	call	3208 <alt_dev_llist_insert>
+
+  /* Install IRQ handler */
+#ifdef ALT_ENHANCED_INTERRUPT_API_PRESENT
+  alt_ic_isr_register(ic_id, irq, alt_avalon_sgdma_irq, dev, 0x0);
     31ac:	01800034 	movhi	r6,0
     31b0:	d8000015 	stw	zero,0(sp)
     31b4:	800f883a 	mov	r7,r16
@@ -1986,6 +3115,10 @@ int main(void)
     31bc:	900b883a 	mov	r5,r18
     31c0:	8809883a 	mov	r4,r17
     31c4:	00029c40 	call	29c4 <alt_ic_isr_register>
+#else
+  alt_irq_register(irq, dev, alt_avalon_sgdma_irq);
+#endif  
+}
     31c8:	dfc00417 	ldw	ra,16(sp)
     31cc:	dc800317 	ldw	r18,12(sp)
     31d0:	dc400217 	ldw	r17,8(sp)
@@ -1994,14 +3127,38 @@ int main(void)
     31dc:	f800283a 	ret
 
 000031e0 <alt_dcache_flush>:
+void alt_dcache_flush (void* start, alt_u32 len)
+{
+#if NIOS2_DCACHE_SIZE > 0
+
+  char* i;
+  char* end = ((char*) start) + len; 
     31e0:	214b883a 	add	r5,r4,r5
+
+  for (i = start; i < end; i+= NIOS2_DCACHE_LINE_SIZE)
     31e4:	2005883a 	mov	r2,r4
     31e8:	1140032e 	bgeu	r2,r5,31f8 <alt_dcache_flush+0x18>
+  { 
+    ALT_FLUSH_DATA(i); 
     31ec:	1000001b 	flushda	0(r2)
+#if NIOS2_DCACHE_SIZE > 0
+
+  char* i;
+  char* end = ((char*) start) + len; 
+
+  for (i = start; i < end; i+= NIOS2_DCACHE_LINE_SIZE)
     31f0:	10800804 	addi	r2,r2,32
     31f4:	003ffc06 	br	31e8 <_gp+0xffff7d88>
+   * For an unaligned flush request, we've got one more line left.
+   * Note that this is dependent on NIOS2_DCACHE_LINE_SIZE to be a 
+   * multiple of 2 (which it always is).
+   */
+
+  if (((alt_u32) start) & (NIOS2_DCACHE_LINE_SIZE - 1))
     31f8:	210007cc 	andi	r4,r4,31
     31fc:	20000126 	beq	r4,zero,3204 <alt_dcache_flush+0x24>
+  {
+    ALT_FLUSH_DATA(i);
     3200:	1000001b 	flushda	0(r2)
     3204:	f800283a 	ret
 
@@ -2035,6 +3192,12 @@ int main(void)
     3270:	f800283a 	ret
 
 00003274 <alt_find_dev>:
+ * "name" must be an exact match for the devices registered name for a match to
+ * be found.
+ */
+ 
+alt_dev* alt_find_dev(const char* name, alt_llist* llist)
+{
     3274:	defffb04 	addi	sp,sp,-20
     3278:	dcc00315 	stw	r19,12(sp)
     327c:	dc800215 	stw	r18,8(sp)
@@ -2043,20 +3206,48 @@ int main(void)
     3288:	dfc00415 	stw	ra,16(sp)
     328c:	2027883a 	mov	r19,r4
     3290:	2823883a 	mov	r17,r5
+  alt_dev* next = (alt_dev*) llist->next;
     3294:	2c000017 	ldw	r16,0(r5)
+  alt_32 len;
+
+  len  = strlen(name) + 1;
     3298:	00033a80 	call	33a8 <strlen>
     329c:	14800044 	addi	r18,r2,1
+  /*
+   * Check each list entry in turn, until a match is found, or we reach the
+   * end of the list (i.e. next winds up pointing back to the list head).
+   */ 
+
+  while (next != (alt_dev*) llist)
     32a0:	84400726 	beq	r16,r17,32c0 <alt_find_dev+0x4c>
+    /* 
+     * memcmp() is used here rather than strcmp() in order to reduce the size
+     * of the executable.
+     */
+
+    if (!memcmp (next->name, name, len))
     32a4:	81000217 	ldw	r4,8(r16)
     32a8:	900d883a 	mov	r6,r18
     32ac:	980b883a 	mov	r5,r19
     32b0:	00029340 	call	2934 <memcmp>
     32b4:	10000426 	beq	r2,zero,32c8 <alt_find_dev+0x54>
+    {
+      /* match found */
+
+      return next;
+    }
+    next = (alt_dev*) next->llist.next;
     32b8:	84000017 	ldw	r16,0(r16)
     32bc:	003ff806 	br	32a0 <_gp+0xffff7e40>
+  }
+  
+  /* No match found */
+  
+  return NULL;
     32c0:	0005883a 	mov	r2,zero
     32c4:	00000106 	br	32cc <alt_find_dev+0x58>
     32c8:	8005883a 	mov	r2,r16
+}
     32cc:	dfc00417 	ldw	ra,16(sp)
     32d0:	dcc00317 	ldw	r19,12(sp)
     32d4:	dc800217 	ldw	r18,8(sp)
@@ -2066,11 +3257,23 @@ int main(void)
     32e4:	f800283a 	ret
 
 000032e8 <alt_icache_flush_all>:
+ */
+
+void alt_icache_flush_all (void)
+{
+#if NIOS2_ICACHE_SIZE > 0
+  alt_icache_flush (0, NIOS2_ICACHE_SIZE);
     32e8:	01440004 	movi	r5,4096
     32ec:	0009883a 	mov	r4,zero
     32f0:	00033701 	jmpi	3370 <alt_icache_flush>
 
 000032f4 <alt_exception_cause_generated_bad_addr>:
+ *         0: BADADDR is not valid
+ */
+int 
+alt_exception_cause_generated_bad_addr(alt_exception_cause cause)
+{
+  switch (cause) {
     32f4:	213ffe84 	addi	r4,r4,-6
     32f8:	008003c4 	movi	r2,15
     32fc:	11001636 	bltu	r2,r4,3358 <alt_exception_cause_generated_bad_addr+0x64>
@@ -2096,28 +3299,82 @@ int main(void)
     334c:	00003358 	cmpnei	zero,zero,205
     3350:	00003358 	cmpnei	zero,zero,205
     3354:	00003360 	cmpeqi	zero,zero,205
+  case NIOS2_EXCEPTION_ECC_DATA_ERR:
+    return 1;
+
+  case NIOS2_EXCEPTION_TLB_MISS:
+  case NIOS2_EXCEPTION_ECC_TLB_ERR:
+    return 0;
     3358:	0005883a 	mov	r2,zero
     335c:	f800283a 	ret
+  case NIOS2_EXCEPTION_MISALIGNED_TARGET_PC:
+  case NIOS2_EXCEPTION_TLB_READ_PERM_VIOLATION:
+  case NIOS2_EXCEPTION_TLB_WRITE_PERM_VIOLATION:
+  case NIOS2_EXCEPTION_MPU_DATA_REGION_VIOLATION:
+  case NIOS2_EXCEPTION_ECC_DATA_ERR:
+    return 1;
     3360:	00800044 	movi	r2,1
+    return 0;
+
+  default:
+    return 0;
+  }
+}
     3364:	f800283a 	ret
 
 00003368 <altera_nios2_gen2_irq_init>:
+ * To initialize the internal interrupt controller, just clear the IENABLE
+ * register so that all possible IRQs are disabled.
+ */
+void altera_nios2_gen2_irq_init(void) 
+{
+    NIOS2_WRITE_IENABLE(0);
     3368:	000170fa 	wrctl	ienable,zero
     336c:	f800283a 	ret
 
 00003370 <alt_icache_flush>:
+  if (len > NIOS2_ICACHE_SIZE)
+  {
+    len = NIOS2_ICACHE_SIZE;
+  }
+
+  end = ((char*) start) + len;
     3370:	00840004 	movi	r2,4096
     3374:	1140012e 	bgeu	r2,r5,337c <alt_icache_flush+0xc>
     3378:	100b883a 	mov	r5,r2
     337c:	214b883a 	add	r5,r4,r5
+
+  for (i = start; i < end; i+= NIOS2_ICACHE_LINE_SIZE)
     3380:	2005883a 	mov	r2,r4
     3384:	1140032e 	bgeu	r2,r5,3394 <alt_icache_flush+0x24>
+  { 
+    __asm__ volatile ("flushi %0" :: "r" (i)); 
     3388:	1000603a 	flushi	r2
+    len = NIOS2_ICACHE_SIZE;
+  }
+
+  end = ((char*) start) + len;
+
+  for (i = start; i < end; i+= NIOS2_ICACHE_LINE_SIZE)
     338c:	10800804 	addi	r2,r2,32
     3390:	003ffc06 	br	3384 <_gp+0xffff7f24>
+   * For an unaligned flush request, we've got one more line left.
+   * Note that this is dependent on NIOS2_ICACHE_LINE_SIZE to be a 
+   * multiple of 2 (which it always is).
+   */
+
+  if (((alt_u32) start) & (NIOS2_ICACHE_LINE_SIZE - 1))
     3394:	210007cc 	andi	r4,r4,31
     3398:	20000126 	beq	r4,zero,33a0 <alt_icache_flush+0x30>
+  {
+    __asm__ volatile ("flushi %0" :: "r" (i));
     339c:	1000603a 	flushi	r2
+  /* 
+   * Having flushed the cache, flush any stale instructions in the 
+   * pipeline 
+   */
+
+  __asm__ volatile ("flushp");
     33a0:	0000203a 	flushp
     33a4:	f800283a 	ret
 

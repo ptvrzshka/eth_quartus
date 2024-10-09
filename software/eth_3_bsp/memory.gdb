@@ -3,7 +3,7 @@
 # Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'eth_nios_v2'
 # SOPC Builder design path: ../../eth_nios_v2.sopcinfo
 #
-# Generated: Mon Sep 30 11:35:12 MSK 2024
+# Generated: Wed Oct 09 15:29:18 MSK 2024
 
 # DO NOT MODIFY THIS FILE
 #
@@ -49,5 +49,8 @@
 # system_ram
 memory 0x2000 0x3fff cache
 
+# rx_buf_ram
+memory 0x5400 0x5600 cache
+
 # header_ram
-memory 0x5400 0x5500 cache
+memory 0x5600 0x5700 cache

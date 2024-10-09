@@ -34,6 +34,7 @@
 		.rx_tx_buf_s2_clken                          (<connected-to-rx_tx_buf_s2_clken>),                          //                                      .clken
 		.rx_tx_buf_s2_write                          (<connected-to-rx_tx_buf_s2_write>),                          //                                      .write
 		.rx_tx_buf_s2_readdata                       (<connected-to-rx_tx_buf_s2_readdata>),                       //                                      .readdata
-		.rx_tx_buf_s2_writedata                      (<connected-to-rx_tx_buf_s2_writedata>)                       //                                      .writedata
+		.rx_tx_buf_s2_writedata                      (<connected-to-rx_tx_buf_s2_writedata>),                      //                                      .writedata
+		.irq_eth_input_export                        (<connected-to-irq_eth_input_export>)                         //                         irq_eth_input.export
 	);
 

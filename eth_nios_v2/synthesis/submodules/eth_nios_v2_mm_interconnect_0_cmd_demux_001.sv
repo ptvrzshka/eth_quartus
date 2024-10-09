@@ -29,9 +29,9 @@
 // Generation parameters:
 //   output_name:         eth_nios_v2_mm_interconnect_0_cmd_demux_001
 //   ST_DATA_W:           83
-//   ST_CHANNEL_W:        9
-//   NUM_OUTPUTS:         2
-//   VALID_WIDTH:         9
+//   ST_CHANNEL_W:        11
+//   NUM_OUTPUTS:         1
+//   VALID_WIDTH:         1
 // ------------------------------------------
 
 //------------------------------------------
@@ -45,9 +45,9 @@ module eth_nios_v2_mm_interconnect_0_cmd_demux_001
     // -------------------
     // Sink
     // -------------------
-    input  [9-1      : 0]   sink_valid,
+    input  [1-1      : 0]   sink_valid,
     input  [83-1    : 0]   sink_data, // ST_DATA_W=83
-    input  [9-1 : 0]   sink_channel, // ST_CHANNEL_W=9
+    input  [11-1 : 0]   sink_channel, // ST_CHANNEL_W=11
     input                         sink_startofpacket,
     input                         sink_endofpacket,
     output                        sink_ready,
@@ -57,17 +57,10 @@ module eth_nios_v2_mm_interconnect_0_cmd_demux_001
     // -------------------
     output reg                      src0_valid,
     output reg [83-1    : 0] src0_data, // ST_DATA_W=83
-    output reg [9-1 : 0] src0_channel, // ST_CHANNEL_W=9
+    output reg [11-1 : 0] src0_channel, // ST_CHANNEL_W=11
     output reg                      src0_startofpacket,
     output reg                      src0_endofpacket,
     input                           src0_ready,
-
-    output reg                      src1_valid,
-    output reg [83-1    : 0] src1_data, // ST_DATA_W=83
-    output reg [9-1 : 0] src1_channel, // ST_CHANNEL_W=9
-    output reg                      src1_startofpacket,
-    output reg                      src1_endofpacket,
-    input                           src1_ready,
 
 
     // -------------------
@@ -80,7 +73,7 @@ module eth_nios_v2_mm_interconnect_0_cmd_demux_001
 
 );
 
-    localparam NUM_OUTPUTS = 2;
+    localparam NUM_OUTPUTS = 1;
     wire [NUM_OUTPUTS - 1 : 0] ready_vector;
 
     // -------------------
@@ -92,14 +85,7 @@ module eth_nios_v2_mm_interconnect_0_cmd_demux_001
         src0_endofpacket   = sink_endofpacket;
         src0_channel       = sink_channel >> NUM_OUTPUTS;
 
-        src0_valid         = sink_channel[0] && sink_valid[0];
-
-        src1_data          = sink_data;
-        src1_startofpacket = sink_startofpacket;
-        src1_endofpacket   = sink_endofpacket;
-        src1_channel       = sink_channel >> NUM_OUTPUTS;
-
-        src1_valid         = sink_channel[1] && sink_valid[1];
+        src0_valid         = sink_channel[0] && sink_valid;
 
     end
 
@@ -107,9 +93,8 @@ module eth_nios_v2_mm_interconnect_0_cmd_demux_001
     // Backpressure
     // -------------------
     assign ready_vector[0] = src0_ready;
-    assign ready_vector[1] = src1_ready;
 
-    assign sink_ready = |(sink_channel & {{7{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
+    assign sink_ready = |(sink_channel & {{10{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
 
 endmodule
 

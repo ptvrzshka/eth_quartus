@@ -45,7 +45,7 @@
 //   PIPELINE_ARB:        1
 //   PKT_TRANS_LOCK:      72 (arbitration locking enabled)
 //   ST_DATA_W:           110
-//   ST_CHANNEL_W:        9
+//   ST_CHANNEL_W:        11
 // ------------------------------------------
 
 module eth_nios_v2_mm_interconnect_0_cmd_mux_005
@@ -55,42 +55,42 @@ module eth_nios_v2_mm_interconnect_0_cmd_mux_005
     // ----------------------
     input                       sink0_valid,
     input [110-1   : 0]  sink0_data,
-    input [9-1: 0]  sink0_channel,
+    input [11-1: 0]  sink0_channel,
     input                       sink0_startofpacket,
     input                       sink0_endofpacket,
     output                      sink0_ready,
 
     input                       sink1_valid,
     input [110-1   : 0]  sink1_data,
-    input [9-1: 0]  sink1_channel,
+    input [11-1: 0]  sink1_channel,
     input                       sink1_startofpacket,
     input                       sink1_endofpacket,
     output                      sink1_ready,
 
     input                       sink2_valid,
     input [110-1   : 0]  sink2_data,
-    input [9-1: 0]  sink2_channel,
+    input [11-1: 0]  sink2_channel,
     input                       sink2_startofpacket,
     input                       sink2_endofpacket,
     output                      sink2_ready,
 
     input                       sink3_valid,
     input [110-1   : 0]  sink3_data,
-    input [9-1: 0]  sink3_channel,
+    input [11-1: 0]  sink3_channel,
     input                       sink3_startofpacket,
     input                       sink3_endofpacket,
     output                      sink3_ready,
 
     input                       sink4_valid,
     input [110-1   : 0]  sink4_data,
-    input [9-1: 0]  sink4_channel,
+    input [11-1: 0]  sink4_channel,
     input                       sink4_startofpacket,
     input                       sink4_endofpacket,
     output                      sink4_ready,
 
     input                       sink5_valid,
     input [110-1   : 0]  sink5_data,
-    input [9-1: 0]  sink5_channel,
+    input [11-1: 0]  sink5_channel,
     input                       sink5_startofpacket,
     input                       sink5_endofpacket,
     output                      sink5_ready,
@@ -101,7 +101,7 @@ module eth_nios_v2_mm_interconnect_0_cmd_mux_005
     // ----------------------
     output                      src_valid,
     output [110-1    : 0] src_data,
-    output [9-1 : 0] src_channel,
+    output [11-1 : 0] src_channel,
     output                      src_startofpacket,
     output                      src_endofpacket,
     input                       src_ready,
@@ -112,12 +112,12 @@ module eth_nios_v2_mm_interconnect_0_cmd_mux_005
     input clk,
     input reset
 );
-    localparam PAYLOAD_W        = 110 + 9 + 2;
+    localparam PAYLOAD_W        = 110 + 11 + 2;
     localparam NUM_INPUTS       = 6;
     localparam SHARE_COUNTER_W  = 1;
     localparam PIPELINE_ARB     = 1;
     localparam ST_DATA_W        = 110;
-    localparam ST_CHANNEL_W     = 9;
+    localparam ST_CHANNEL_W     = 11;
     localparam PKT_TRANS_LOCK   = 72;
 
     // ------------------------------------------

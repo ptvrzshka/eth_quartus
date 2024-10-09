@@ -215,7 +215,7 @@ void timer_irq_handler(void *context)
     {
     	alt_dcache_flush_all();
 		alt_avalon_sgdma_construct_mem_to_stream_desc(&tx_descriptor_header, &tx_descriptor_data, (alt_u32 *)HEADER_RAM_BASE, 54, 0, 1, 0, 0);
-		alt_avalon_sgdma_construct_mem_to_stream_desc(&tx_descriptor_data, &tx_descriptor_end, RX_DMA_M_WRITE_RX_TX_BUF_BASE, 1280, 0, 0, 1, 0);
+		alt_avalon_sgdma_construct_mem_to_stream_desc(&tx_descriptor_data, &tx_descriptor_end, TX_DMA_M_READ_TX_BUFF_RAM_BASE, 1280, 0, 0, 1, 0);
 
 		alt_avalon_sgdma_do_async_transfer(sgdma_tx_dev, &tx_descriptor_header);
 		while (alt_avalon_sgdma_check_descriptor_status(&tx_descriptor_data) != 0);
