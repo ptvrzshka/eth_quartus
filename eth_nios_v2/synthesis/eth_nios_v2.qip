@@ -2,7 +2,7 @@ set_global_assignment -entity "eth_nios_v2" -library "eth_nios_v2" -name IP_TOOL
 set_global_assignment -entity "eth_nios_v2" -library "eth_nios_v2" -name IP_TOOL_VERSION "18.0"
 set_global_assignment -entity "eth_nios_v2" -library "eth_nios_v2" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "eth_nios_v2" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../eth_nios_v2.sopcinfo"]
-set_global_assignment -entity "eth_nios_v2" -library "eth_nios_v2" -name SLD_INFO "QSYS_NAME eth_nios_v2 HAS_SOPCINFO 1 GENERATION_ID 1728473148"
+set_global_assignment -entity "eth_nios_v2" -library "eth_nios_v2" -name SLD_INFO "QSYS_NAME eth_nios_v2 HAS_SOPCINFO 1 GENERATION_ID 1728479515"
 set_global_assignment -library "eth_nios_v2" -name MISC_FILE [file join $::quartus(qip_path) "../eth_nios_v2.cmp"]
 set_global_assignment -library "eth_nios_v2" -name SLD_FILE [file join $::quartus(qip_path) "eth_nios_v2.regmap"]
 set_global_assignment -library "eth_nios_v2" -name SLD_FILE [file join $::quartus(qip_path) "eth_nios_v2.debuginfo"]
@@ -16,7 +16,7 @@ set_global_assignment -entity "eth_nios_v2" -library "eth_nios_v2" -name IP_COMP
 set_global_assignment -entity "eth_nios_v2" -library "eth_nios_v2" -name IP_COMPONENT_REPORT_HIERARCHY "On"
 set_global_assignment -entity "eth_nios_v2" -library "eth_nios_v2" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "eth_nios_v2" -library "eth_nios_v2" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "eth_nios_v2" -library "eth_nios_v2" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTcyODQ3MzE0OA==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "eth_nios_v2" -library "eth_nios_v2" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTcyODQ3OTUxNQ==::QXV0byBHRU5FUkFUSU9OX0lE"
 set_global_assignment -entity "eth_nios_v2" -library "eth_nios_v2" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSAxMCBMUA==::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "eth_nios_v2" -library "eth_nios_v2" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MTBDTDAyNVlVMjU2STdH::QXV0byBERVZJQ0U="
 set_global_assignment -entity "eth_nios_v2" -library "eth_nios_v2" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Nw==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
@@ -1930,7 +1930,7 @@ set_global_assignment -entity "eth_nios_v2_eth_irq_pio" -library "eth_nios_v2" -
 set_global_assignment -entity "eth_nios_v2_eth_irq_pio" -library "eth_nios_v2" -name IP_COMPONENT_PARAMETER "ZGlyZWN0aW9u::SW5wdXQ=::RGlyZWN0aW9u"
 set_global_assignment -entity "eth_nios_v2_eth_irq_pio" -library "eth_nios_v2" -name IP_COMPONENT_PARAMETER "ZWRnZVR5cGU=::UklTSU5H::RWRnZSBUeXBl"
 set_global_assignment -entity "eth_nios_v2_eth_irq_pio" -library "eth_nios_v2" -name IP_COMPONENT_PARAMETER "Z2VuZXJhdGVJUlE=::dHJ1ZQ==::R2VuZXJhdGUgSVJR"
-set_global_assignment -entity "eth_nios_v2_eth_irq_pio" -library "eth_nios_v2" -name IP_COMPONENT_PARAMETER "aXJxVHlwZQ==::TEVWRUw=::SVJRIFR5cGU="
+set_global_assignment -entity "eth_nios_v2_eth_irq_pio" -library "eth_nios_v2" -name IP_COMPONENT_PARAMETER "aXJxVHlwZQ==::RURHRQ==::SVJRIFR5cGU="
 set_global_assignment -entity "eth_nios_v2_eth_irq_pio" -library "eth_nios_v2" -name IP_COMPONENT_PARAMETER "c2ltRG9UZXN0QmVuY2hXaXJpbmc=::ZmFsc2U=::SGFyZHdpcmUgUElPIGlucHV0cyBpbiB0ZXN0IGJlbmNo"
 set_global_assignment -entity "eth_nios_v2_eth_irq_pio" -library "eth_nios_v2" -name IP_COMPONENT_PARAMETER "d2lkdGg=::MQ==::V2lkdGggKDEtMzIgYml0cyk="
 set_global_assignment -entity "eth_nios_v2_eth_irq_pio" -library "eth_nios_v2" -name IP_COMPONENT_PARAMETER "Y2xvY2tSYXRl::MTI1MDAwMDAw::Y2xvY2tSYXRl"
@@ -1940,7 +1940,7 @@ set_global_assignment -entity "eth_nios_v2_eth_irq_pio" -library "eth_nios_v2" -
 set_global_assignment -entity "eth_nios_v2_eth_irq_pio" -library "eth_nios_v2" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9kb190ZXN0X2JlbmNoX3dpcmluZw==::ZmFsc2U=::ZGVyaXZlZF9kb190ZXN0X2JlbmNoX3dpcmluZw=="
 set_global_assignment -entity "eth_nios_v2_eth_irq_pio" -library "eth_nios_v2" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9jYXB0dXJl::dHJ1ZQ==::ZGVyaXZlZF9jYXB0dXJl"
 set_global_assignment -entity "eth_nios_v2_eth_irq_pio" -library "eth_nios_v2" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9lZGdlX3R5cGU=::UklTSU5H::ZGVyaXZlZF9lZGdlX3R5cGU="
-set_global_assignment -entity "eth_nios_v2_eth_irq_pio" -library "eth_nios_v2" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9pcnFfdHlwZQ==::TEVWRUw=::ZGVyaXZlZF9pcnFfdHlwZQ=="
+set_global_assignment -entity "eth_nios_v2_eth_irq_pio" -library "eth_nios_v2" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9pcnFfdHlwZQ==::RURHRQ==::ZGVyaXZlZF9pcnFfdHlwZQ=="
 set_global_assignment -entity "eth_nios_v2_eth_irq_pio" -library "eth_nios_v2" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9oYXNfaXJx::dHJ1ZQ==::ZGVyaXZlZF9oYXNfaXJx"
 
 set_global_assignment -library "eth_nios_v2" -name VERILOG_FILE [file join $::quartus(qip_path) "eth_nios_v2.v"]

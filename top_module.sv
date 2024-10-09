@@ -22,7 +22,7 @@ module top_module
 
 );
 
-
+assign test[0] = irq_eth_input_export;
 assign eth_tse_0_mac_mdio_connection_mdio_in = eth_tse_0_mac_mdio_connection_mdio_inout;
 assign eth_tse_0_mac_mdio_connection_mdio_inout = eth_tse_0_mac_mdio_connection_mdio_oen ? 1'hz : eth_tse_0_mac_mdio_connection_mdio_out;
 
@@ -49,11 +49,16 @@ eth_nios_v2 eth_nios_v2
 		.eth_tse_0_mac_rgmii_connection_tx_control		(eth_tse_0_mac_rgmii_connection_tx_control),   //                                      .tx_control
 		.eth_tse_0_pcs_mac_rx_clock_connection_clk		(eth_tse_0_pcs_mac_rx_clock_connection_clk),   // eth_tse_0_pcs_mac_rx_clock_connection.clk
 		.eth_tse_0_pcs_mac_tx_clock_connection_clk		(eth_tse_0_pcs_mac_tx_clock_connection_clk),    // eth_tse_0_pcs_mac_tx_clock_connection.clk
+		.irq_eth_input_export									(irq_eth_input_export)
 
 	);
 	
 	
-	
+test_data_generator test_data_generator
+(
+	.clk_clk															(clk_clk),
+	.eth_packet_ready												(irq_eth_input_export)
+);
 	
 	
 endmodule

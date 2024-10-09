@@ -26,6 +26,7 @@
 		.eth_tse_0_mac_status_connection_ena_10      (<connected-to-eth_tse_0_mac_status_connection_ena_10>),      //                                      .ena_10
 		.eth_tse_0_pcs_mac_rx_clock_connection_clk   (<connected-to-eth_tse_0_pcs_mac_rx_clock_connection_clk>),   // eth_tse_0_pcs_mac_rx_clock_connection.clk
 		.eth_tse_0_pcs_mac_tx_clock_connection_clk   (<connected-to-eth_tse_0_pcs_mac_tx_clock_connection_clk>),   // eth_tse_0_pcs_mac_tx_clock_connection.clk
+		.irq_eth_input_export                        (<connected-to-irq_eth_input_export>),                        //                         irq_eth_input.export
 		.rx_tx_buf_clk2_clk                          (<connected-to-rx_tx_buf_clk2_clk>),                          //                        rx_tx_buf_clk2.clk
 		.rx_tx_buf_reset2_reset                      (<connected-to-rx_tx_buf_reset2_reset>),                      //                      rx_tx_buf_reset2.reset
 		.rx_tx_buf_reset2_reset_req                  (<connected-to-rx_tx_buf_reset2_reset_req>),                  //                                      .reset_req
@@ -34,7 +35,6 @@
 		.rx_tx_buf_s2_clken                          (<connected-to-rx_tx_buf_s2_clken>),                          //                                      .clken
 		.rx_tx_buf_s2_write                          (<connected-to-rx_tx_buf_s2_write>),                          //                                      .write
 		.rx_tx_buf_s2_readdata                       (<connected-to-rx_tx_buf_s2_readdata>),                       //                                      .readdata
-		.rx_tx_buf_s2_writedata                      (<connected-to-rx_tx_buf_s2_writedata>),                      //                                      .writedata
-		.irq_eth_input_export                        (<connected-to-irq_eth_input_export>)                         //                         irq_eth_input.export
+		.rx_tx_buf_s2_writedata                      (<connected-to-rx_tx_buf_s2_writedata>)                       //                                      .writedata
 	);
 

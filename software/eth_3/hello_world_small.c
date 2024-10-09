@@ -18,6 +18,9 @@
 #include "alt_types.h"
 #include "IO.h"
 
+#include "altera_avalon_pio_regs.h"
+#include "sys/alt_irq.h"
+
 /*********************** Constant ***********************/
 // Definition of payload type transmit in RTP
 const char RTP_PAYLOAD_TYPE = 26;
@@ -84,9 +87,7 @@ struct udp_hdr
 /******************* Declare Function *******************/
 void tse_init(void);
 alt_u8 open_sgdma(void);
-void timer_init(alt_u32 timer_period);
 
-void timer_irq_handler(void *context);
 void sgdma_rx_irq_handler(void *context);
 
 void create_eth(struct eth_hdr* eth);
@@ -96,6 +97,9 @@ void create_ip(struct ip_hdr* ip, alt_u8 protocol, alt_u32 data_len);
 
 void create_icmp(struct icmp_packet *icmp, alt_u16 id, alt_u16 seq, alt_u8 *data);
 void create_udp(struct udp_hdr* udp, alt_u16 dest_port, alt_u32 data_len);
+
+void button_isr(void* context);
+void pio_init(void);
 
 alt_u16 calculate_checksum(alt_u8* data, alt_u32 length);
 
@@ -139,7 +143,7 @@ int main(void)
 	alt_u8 sdgma_status = open_sgdma();
 	if (sdgma_status == 1 || sdgma_status == 2) return(0);
 
-	timer_init(125000000);
+	pio_init();
 
 	while (1);
 
@@ -187,29 +191,14 @@ void tse_init(void)
 	IOWR(tse, 0x3a, 0x0000);
 }
 
-// Initialization of timer
-void timer_init(alt_u32 timer_period)
-{
-	// Disable timer before configuration
-	IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE, 0);
 
-	IOWR_ALTERA_AVALON_TIMER_PERIODL(TIMER_0_BASE, (timer_period & 0xFFFF));
-	IOWR_ALTERA_AVALON_TIMER_PERIODH(TIMER_0_BASE, (timer_period >> 16) & 0xFFFF);
 
-	// Register of interrupt
-	alt_ic_isr_register(TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID, TIMER_0_IRQ, timer_irq_handler, 0, 0);
-
-	// Enable timer and resolve interrupt
-	IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE, ALTERA_AVALON_TIMER_CONTROL_ITO_MSK |
-													ALTERA_AVALON_TIMER_CONTROL_CONT_MSK |
-													ALTERA_AVALON_TIMER_CONTROL_START_MSK);
-}
 
 // Handler of timer interrupt
-void timer_irq_handler(void *context)
+void button_isr(void* context)
 {
     // Clear flag of interrupt
-    IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+	IOWR_ALTERA_AVALON_PIO_EDGE_CAP(ETH_IRQ_PIO_BASE, 0x1);
 
     if (fl_proto == 1)
     {
@@ -380,3 +369,16 @@ alt_u16 calculate_checksum(alt_u8* data, alt_u32 length)
     while (temp >> 16) temp = (temp & 0xFFFF) + (temp >> 16);
     return ~((temp >> 8) | (temp << 8));
 }
+
+
+void pio_init(void)
+{
+	// Init PIO interrupt, 0b1 for 3 btn
+	IOWR_ALTERA_AVALON_PIO_IRQ_MASK(ETH_IRQ_PIO_BASE, 0x1);
+	IOWR_ALTERA_AVALON_PIO_EDGE_CAP(ETH_IRQ_PIO_BASE, 0x1);
+
+	// Register interrupt from PIO
+	alt_ic_isr_register(ETH_IRQ_PIO_IRQ_INTERRUPT_CONTROLLER_ID, ETH_IRQ_PIO_IRQ, button_isr, 0, 0);
+}
+
+

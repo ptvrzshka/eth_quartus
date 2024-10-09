@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'eth_nios_v2'
  * SOPC Builder design path: ../../eth_nios_v2.sopcinfo
  *
- * Generated: Wed Oct 09 15:29:18 MSK 2024
+ * Generated: Wed Oct 09 17:14:47 MSK 2024
  */
 
 /*
@@ -206,7 +206,7 @@
 #define ETH_IRQ_PIO_HAS_TRI 0
 #define ETH_IRQ_PIO_IRQ 4
 #define ETH_IRQ_PIO_IRQ_INTERRUPT_CONTROLLER_ID 0
-#define ETH_IRQ_PIO_IRQ_TYPE "LEVEL"
+#define ETH_IRQ_PIO_IRQ_TYPE "EDGE"
 #define ETH_IRQ_PIO_NAME "/dev/eth_irq_pio"
 #define ETH_IRQ_PIO_RESET_VALUE 0
 #define ETH_IRQ_PIO_SPAN 16
