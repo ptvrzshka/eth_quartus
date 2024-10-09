@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>09.10.2024 17:14:46</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1728479686932</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>09.10.2024 18:11:35</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1728483095910</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>D:\__PROJECTS\001_Granulit\2._QUARTUS\eth_quartus\software\eth_3_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\eth_nios_v2.sopcinfo</SopcDesignFile>

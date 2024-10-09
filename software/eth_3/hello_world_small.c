@@ -198,6 +198,7 @@ void tse_init(void)
 void button_isr(void* context)
 {
     // Clear flag of interrupt
+
 	IOWR_ALTERA_AVALON_PIO_EDGE_CAP(ETH_IRQ_PIO_BASE, 0x1);
 
     if (fl_proto == 1)
@@ -216,6 +217,8 @@ void button_isr(void* context)
 		alt_avalon_sgdma_do_async_transfer(sgdma_tx_dev, &tx_descriptor_header);
 		while (alt_avalon_sgdma_check_descriptor_status(&tx_descriptor_header) != 0);
     }
+
+
 }
 
 // Open the SGDMA transmit/receive device
