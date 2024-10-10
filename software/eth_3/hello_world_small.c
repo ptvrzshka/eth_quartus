@@ -130,13 +130,14 @@ struct udp_hdr *udp = (struct udp_hdr *)(HEADER_RAM_BASE + sizeof(struct eth_hdr
 volatile int *tse = (int *)TSE_BASE;
 
 // Flag to set MAC-address of PC
-alt_u8 fl_proto = 0;
+alt_u8 fl_proto = 1;
 
 /****************** Main block ******************/
 int main(void)
 {
 	create_eth(eth);
-	create_arp(arp, 0x0001);
+	create_ip(ip, 17, 1280 + sizeof(udp));
+	create_udp(udp, 5004, 1280);
 
 	tse_init();
 
@@ -201,23 +202,13 @@ void button_isr(void* context)
 
 	IOWR_ALTERA_AVALON_PIO_EDGE_CAP(ETH_IRQ_PIO_BASE, 0x1);
 
-    if (fl_proto == 1)
-    {
-    	alt_dcache_flush_all();
-		alt_avalon_sgdma_construct_mem_to_stream_desc(&tx_descriptor_header, &tx_descriptor_data, (alt_u32 *)HEADER_RAM_BASE, 54, 0, 1, 0, 0);
-		alt_avalon_sgdma_construct_mem_to_stream_desc(&tx_descriptor_data, &tx_descriptor_end, TX_DMA_M_READ_TX_BUFF_RAM_BASE, 1280, 0, 0, 1, 0);
 
-		alt_avalon_sgdma_do_async_transfer(sgdma_tx_dev, &tx_descriptor_header);
-		while (alt_avalon_sgdma_check_descriptor_status(&tx_descriptor_data) != 0);
-    }
-    else
-    {
-    	alt_dcache_flush_all();
-		alt_avalon_sgdma_construct_mem_to_stream_desc(&tx_descriptor_header, &tx_descriptor_data, (alt_u32 *)HEADER_RAM_BASE, 42, 0, 1, 1, 0);
-		alt_avalon_sgdma_do_async_transfer(sgdma_tx_dev, &tx_descriptor_header);
-		while (alt_avalon_sgdma_check_descriptor_status(&tx_descriptor_header) != 0);
-    }
+    alt_dcache_flush_all();
+	alt_avalon_sgdma_construct_mem_to_stream_desc(&tx_descriptor_header, &tx_descriptor_data, (alt_u32 *)HEADER_RAM_BASE, 54, 0, 1, 0, 0);
+	alt_avalon_sgdma_construct_mem_to_stream_desc(&tx_descriptor_data, &tx_descriptor_end, TX_DMA_M_READ_TX_BUFF_RAM_BASE, 1280, 0, 0, 1, 0);
 
+	alt_avalon_sgdma_do_async_transfer(sgdma_tx_dev, &tx_descriptor_header);
+	while (alt_avalon_sgdma_check_descriptor_status(&tx_descriptor_data) != 0);
 
 }
 
@@ -246,46 +237,6 @@ void sgdma_rx_irq_handler(void *context)
 	while (alt_avalon_sgdma_check_descriptor_status(&rx_descriptor) != 0);
 
 	alt_u8 *frame_pc = (alt_u8 *)(HEADER_RAM_BASE + 100);
-	if ((memcmp(frame_pc + 12, "\x08\x06", 2) == 0) && frame_pc[21] == 0x02)
-	{
-		fl_proto = 0;  // Заглушка
-
-		memcpy(eth->mac_dest, (frame_pc + 22), 6);
-
-//		create_ip(ip, 0x11, 1280 + sizeof(struct udp_hdr));				// 0x11 - protocol for UDP
-//		create_udp(udp, 5004, 1280);
-//
-		// Copy MAC-address and IP-address of PC to frame
-//		memcpy(ip->ip_dest, (frame_pc + 28), 4);
-//
-//		// Frequency of send UDP-packet (3900 - 32000 frame per second)
-//		timer_init(3890);
-	}
-	// && (memcmp(frame_pc + 30, ip->ip_src, 4) == 0) && frame_pc[23] == 0x1 && frame_pc[34] == 0x8
-	if ((memcmp(frame_pc, "\xDE\xAD\xBE\xEF\xCA\xFE", 6) == 0))
-	{
-		alt_u16 length_descriptor = frame_pc[17] << 8 | frame_pc[16];
-		length_descriptor += 14;
-
-		alt_u16 seq = 0;
-		alt_u16 id = 0;
-		alt_u8 *pointer_to_data = frame_pc + 42;
-
-		seq = frame_pc[40] << 8 | frame_pc[41];
-		id = frame_pc[38] << 8 | frame_pc[39];
-
-		create_icmp(icmp, id, seq, pointer_to_data);
-
-		create_ip(ip, 0x1, sizeof(icmp));
-
-		alt_dcache_flush_all();
-		alt_avalon_sgdma_construct_mem_to_stream_desc(&tx_descriptor_header, &tx_descriptor_data, (alt_u32 *)HEADER_RAM_BASE, length_descriptor, 0, 1, 1, 0);
-
-		alt_avalon_sgdma_do_async_transfer(sgdma_tx_dev, &tx_descriptor_header);
-		while (alt_avalon_sgdma_check_descriptor_status(&tx_descriptor_header) != 0);
-
-//		timer_init(0);
-	}
 
 	alt_dcache_flush_all();
 	alt_avalon_sgdma_construct_stream_to_mem_desc(&rx_descriptor, &rx_descriptor_end, (alt_u32 *)(HEADER_RAM_BASE + 100), 0, 0);
@@ -325,7 +276,7 @@ void create_ip(struct ip_hdr *ip, alt_u8 protocol, alt_u32 data_len)
 	ip->eth_type = __builtin_bswap16(0x0800);
 	ip->ver_ihl = 0x45;
 	ip->tos = 0x00;
-	ip->len = __builtin_bswap16(sizeof(struct ip_hdr) + data_len);
+	ip->len = __builtin_bswap16(sizeof(struct ip_hdr) + 2 + data_len);
 	ip->id = 0;
 	ip->flags_offset = 0;
 	ip->ttl = 0x40;
