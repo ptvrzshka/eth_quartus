@@ -65,23 +65,21 @@ set_location_assignment PIN_E6 -to eth_tse_0_mac_rgmii_connection_rgmii_out[0]
 set_location_assignment PIN_B8 -to eth_tse_0_pcs_mac_rx_clock_connection_clk
 set_location_assignment PIN_A5 -to eth_tse_0_mac_rgmii_connection_rx_control
 set_location_assignment PIN_D6 -to eth_tse_0_mac_rgmii_connection_tx_control
-set_global_assignment -name QIP_FILE eth_nios_v2/synthesis/eth_nios_v2.qip
-set_global_assignment -name SYSTEMVERILOG_FILE top_module.sv
-set_global_assignment -name QIP_FILE enet_pll.qip
-set_global_assignment -name HEX_FILE output_files/test.hex
 set_global_assignment -name TIMING_ANALYZER_MULTICORNER_ANALYSIS ON
 set_global_assignment -name SMART_RECOMPILE ON
 set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
-set_global_assignment -name SYSTEMVERILOG_FILE test_data_generator.sv
 set_location_assignment PIN_L1 -to test[0]
 set_location_assignment PIN_L2 -to test[1]
 set_location_assignment PIN_K1 -to test[2]
-set_global_assignment -name SDC_FILE SDC1.sdc
-set_global_assignment -name SYSTEMVERILOG_FILE hyperRamDriver.sv
-set_global_assignment -name SYSTEMVERILOG_FILE hyperRAMcontroller.sv
-set_global_assignment -name QIP_FILE HyperRamFifo.qip
-set_global_assignment -name QIP_FILE RamControlSeqFifo.qip
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name SYSTEMVERILOG_FILE src/top_module.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/test_data_generator.sv
+set_global_assignment -name VERILOG_FILE src/ramFifo.v
+set_global_assignment -name VERILOG_FILE src/RamControlSeqFifo.v
+set_global_assignment -name VERILOG_FILE src/HyperRamFifo.v
+set_global_assignment -name SYSTEMVERILOG_FILE src/hyperRamDriver.sv
+set_global_assignment -name SYSTEMVERILOG_FILE src/hyperRAMcontroller.sv
+set_global_assignment -name VERILOG_FILE src/enet_pll.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
