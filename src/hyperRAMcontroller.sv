@@ -2,140 +2,114 @@ module hyperRAMcontroller
 (
 	input 		clk_50,
 	
-	inout [7:0] RamChipData,					///////////////////////////
-	inout 		RamChipRwds,					///////////////////////////
-														///////////////////////////
-	output 		RamChipClk,						///  Chip Connections   ///
-	output 		RamChipClkInv,					///////////////////////////		
-	output		RamChipRestN,					///////////////////////////
-	output		RamChipChipSelect,			///////////////////////////
+	inout [7:0] dataChip,					///////////////////////////
+	inout 		rwdsChip,					///////////////////////////
+													///////////////////////////
+	output 		clockChip,					///  Chip Connections   ///
+	output 		clockChipN,					///////////////////////////		
+	output		resetnChip,					///////////////////////////
+	output		csChip,						///////////////////////////
 	
 	
-	input [7:0] RamDataToWrite,
-	input 		clkData,
+
+	input 		clockData,
 	
 	
 	
 	
-	input [22:0] RamAdrInput,					// RAM adress input 
-	input [10:0] RamTransactionLengInput,	// RAM trasnfer length
-	input RamReadWriteFlagInput,				// RAM read or write mode
-	input RamSeqclock,							// RAM queue write sync
+	input [22:0] adrQueury,						// RAM adress input 
+	input [10:0] transactionLenQueury,		// RAM trasnfer length
+	input rwFlagQueury,							// RAM read or write mode
+	input clockQueury,							// RAM queue write sync
 	
 	
-	output reg [23:0] RamAdrOutput,			//output information about actual transaction Adress
-	output reg RamReadWriteFlagOutput,		//output information about actual transaction Read/write flag
-	output wire transferingStatus,			//output information about actual transaction Transfer status
+	output reg [23:0] adrInfo,					//output information about actual transaction Adress
+	output reg rwFlagInfo,						//output information about actual transaction Read/write flag
+	output wire transferingStatusInfo,		//output information about actual transaction Transfer status
 	
 	
-	output [7:0] RamDataOutRead,				//read fifo output
-	input RamFifoReadReadReqR,					//read fifo read req
+	output [7:0] dataOutFifoRead,				//read fifo output
+	input RreqFifoRead,							//read fifo read req
 	
 	
-	input [7:0] RamDataToWriteW,				//write fifo input
-	input RamFifoWriteReqW						//write fifo write req
+	input [7:0] dataInputFifoWrite,			//write fifo input
+	input WreqFifoWrite							//write fifo write req
 );
 
 
 
-reg [35:0] RamControlSeqRegister;
+reg [35:0] dataInputQueuryInput;
 
 always @(posedge clk_50)													
-if (RamSeqclock)
+if (clockQueury)
 begin
-	RamControlSeqRegister[0] <= RamReadWriteFlagInput;
-	RamControlSeqRegister[23:1] <= RamAdrInput[22:0];
-	RamControlSeqRegister[35:24] <= RamTransactionLengInput[10:0];
+	dataInputQueuryInput[0] <= rwFlagQueury;
+	dataInputQueuryInput[23:1] <= adrQueury[22:0];
+	dataInputQueuryInput[35:24] <= transactionLenQueury[10:0];
 end
 
-reg RamControlSeqFifoClock;
-always @(posedge clk_50) RamControlSeqFifoClock <= RamSeqclock; 			//Create delayed sync signal for fifo writet request
+reg clockQueuryTemp;
+always @(posedge clk_50) clockQueuryTemp <= clockQueury; 			//Create delayed sync signal for fifo writet request
 
 
 
-reg RamControlSeqWrReq;
-always @(negedge clk_50) 																//Create RS - trigger for  fifo write request
-	if (RamSeqclock) RamControlSeqWrReq <= 1'b1;
-	else if (RamControlSeqFifoClock) RamControlSeqWrReq <= 1'b0;
+reg WreqFifoQuaury;
+always @(negedge clk_50) 														//Create RS - trigger for  fifo write request
+	if (clockQueury) WreqFifoQuaury <= 1'b1;
+	else if (clockQueuryTemp) WreqFifoQuaury <= 1'b0;
 	
 
-reg RamControlFifoReadReq;
-reg RamControlFifoReadClock;
-wire [35:0] RamControlSeqRegisteOutput;
+reg RreqFifoQueury;
+reg clockReadFifoQueury;
+wire [35:0] dataOutFifoQueury;
 
 
 RamControlSeqFifo RamControlSeqFifo 
 (
-	.data								(RamControlSeqRegister[35:0]),
-	.rdclk							(RamControlFifoReadClock),
-	.rdreq							(RamControlFifoReadReq),
-	.wrclk							(RamControlSeqFifoClock),
-	.wrreq							(RamControlSeqWrReq),
-	.q									(RamControlSeqRegisteOutput[35:0]),
-	.rdempty							(RamControlFifoEmpty)
+	.data							(dataInputQueuryInput[35:0]),
+	.rdclk						(clockReadFifoQueury),
+	.rdreq						(RreqFifoQueury),
+	.wrclk						(clockQueuryTemp),
+	.wrreq						(WreqFifoQuaury),
+	.q								(dataOutFifoQueury[35:0]),
+	.rdempty						(emptyFlagFifoQueury)
 );
 
 
-reg [7:0] RamTrasferFSM;
+reg [7:0] fsmStateTransfer;
 reg [7:0] nextState;
-reg [10:0] RamBytesToTransfer;
-reg [47:0] RamControlRegister;
+reg [10:0] dataLenRamDriver;
+reg [47:0] controlRegRamDriver;
+reg WreqFifoRead;
+reg RreqFifoWrite;
 
+always @(posedge clk_50 or posedge transferEndFlagRamDriver)
 
-
-
-reg RamFifoWriteReqR;
-
-
-//always_ff@(posedge RamClock200 or posedge RamFlagTrasferEnd)
-//begin
-//	if(RamFlagTrasferEnd)
-//		RamTrasferFSM <= 0;
-//	else
-//		RamTrasferFSM <= nextState;
-//end
-//
-//always_comb
-//begin
-//	case(RamTrasferFSM)
-//		0:
-//			begin
-//				if(flag)
-//					nextState = 1;
-//			end
-//	endcase
-//end
-//
-//always_ff@(negedge slow_clk or negedge reset)
-//	case(state)
-//		0:
-//	endcase
-
-
-always @(posedge clk_50 or posedge RamFlagTrasferEnd)
-
-if (RamFlagTrasferEnd)
+if (transferEndFlagRamDriver)
 begin
 
-	RamTrasferFSM <= 8'h0;
-	RamFifoReadReqW <= 1'b0;
-	RamFifoWriteReqR <= 1'b0;
-	RamEnable <= 1'b0;
+	fsmStateTransfer <= 8'h0;
+	RreqFifoWrite <= 1'b0;
+	WreqFifoRead <= 1'b0;
+	enableRamDriver <= 1'b0;
+	controlRegRamDriver <= 0;
+	dataLenRamDriver <= 0;
+	
 	
 end
 
 else begin
-	case (RamTrasferFSM)
+	case (fsmStateTransfer)
 	
-		8'h0:	if (!RamControlFifoEmpty) RamTrasferFSM <= 8'h1;			//IDLE state
+		8'h0:	if (!emptyFlagFifoQueury) fsmStateTransfer <= 8'h1;			//IDLE state
 		
-		8'h1:																				//if ram queue is not empty generate fifo sync signals
+		8'h1:																					//if ram queue is not empty generate fifo sync signals
 		begin		
-			RamControlFifoReadReq <= 1'b1;
-			if (RamControlFifoReadReq) 
+			RreqFifoQueury <= 1'b1;
+			if (RreqFifoQueury) 
 			begin
-				RamControlFifoReadClock <= 1'b1;
-				RamTrasferFSM <= 8'h2;
+				clockReadFifoQueury <= 1'b1;
+				fsmStateTransfer <= 8'h2;
 				
 			end
 		end
@@ -143,101 +117,101 @@ else begin
 		
 		8'h2:	
 		begin
-			RamControlFifoReadReq <= 1'b0;
-			RamControlFifoReadClock <= 1'b0;
-			RamTrasferFSM <= 8'h3;
+			RreqFifoQueury <= 1'b0;
+			clockReadFifoQueury <= 1'b0;
+			fsmStateTransfer <= 8'h3;
 		end
 		
 		
-		8'h3:																					//Control register settings
+		8'h3:																			//Control register settings
 		begin
-			RamBytesToTransfer[10:0] <= RamControlSeqRegisteOutput[35:25];						
+			dataLenRamDriver[10:0] <= dataOutFifoQueury[35:25];						
 			
-			RamControlRegister[47] <= RamControlSeqRegisteOutput[0];			//1 - a read transaction  0 - a write transaction
-			RamControlRegister[46] <= 1'b0;											//0 - memory space, 1 - control register space
-			RamControlRegister[45] <= 1'b0;											//0 - wrapped burst, 1 - linear burst
-			RamControlRegister[44:36] <= 9'h00;										//not used adress space
-			RamControlRegister[35:16] <= RamControlSeqRegisteOutput[23:4];	//high adress space
-			RamControlRegister[15:3] <= 13'h00;										//reserverd set to 0
-			RamControlRegister[2:0] <= RamControlSeqRegisteOutput[3:1];		//low adress space
+			controlRegRamDriver[47] <= dataOutFifoQueury[0];			//1 - a read transaction  0 - a write transaction
+			controlRegRamDriver[46] <= 1'b0;									//0 - memory space, 1 - control register space
+			controlRegRamDriver[45] <= 1'b0;									//0 - wrapped burst, 1 - linear burst
+			controlRegRamDriver[44:36] <= 9'h00;							//not used adress space
+			controlRegRamDriver[35:16] <= dataOutFifoQueury[23:4];	//high adress space
+			controlRegRamDriver[15:3] <= 13'h00;							//reserverd set to 0
+			controlRegRamDriver[2:0] <= dataOutFifoQueury[3:1];		//low adress space
 			
-			RamRWmode <= RamControlSeqRegisteOutput[0];
-			
-			
-			RamAdrOutput[22:0] <= RamControlSeqRegisteOutput[23:1];			//output information about actual transaction
-			RamReadWriteFlagOutput <= RamControlSeqRegisteOutput[0];			//output information about actual transaction
+			rwModeRamDriver <= dataOutFifoQueury[0];
 			
 			
+			adrInfo[22:0] <= dataOutFifoQueury[23:1];						//output information about actual transaction
+			rwFlagInfo <= dataOutFifoQueury[0];								//output information about actual transaction
 			
-			RamTrasferFSM <= 8'h4;
+			
+			
+			fsmStateTransfer <= 8'h4;
 			
 		end
 		
-		8'h4:																					//waiting for transfer control end and a latancy end
+		8'h4:																			//waiting for transfer control end and a latancy end
 		begin
-			RamEnable <= 1'b1;
-			if (RamFlagSetupDone) RamTrasferFSM <= 8'h5;
+			enableRamDriver <= 1'b1;
+			if (setupDoneFlagRamDriver) fsmStateTransfer <= 8'h5;
 		end
 		
 		8'h5:
 		begin
-			if (RamControlSeqRegisteOutput[0])										//if transaction type is read from RAM, up read fifo write request
+			if (dataOutFifoQueury[0])											//if transaction type is read from RAM, up read fifo write request
 				begin
-					RamFifoWriteReqR <= 1'b1;
-					RamFifoReadReqW <= 1'b0;	
+					WreqFifoRead <= 1'b1;
+					RreqFifoWrite <= 1'b0;	
 				end
-			else 																				//if transaction type is write to RAM, up write fifo read request
+			else 																		//if transaction type is write to RAM, up write fifo read request
 				begin
-					RamFifoWriteReqR <= 1'b0;
-					RamFifoReadReqW <= 1'b1;	
+					WreqFifoRead <= 1'b0;
+					RreqFifoWrite <= 1'b1;	
 				end												
 		
-			RamTrasferFSM <= 8'h6;
+			fsmStateTransfer <= 8'h6;
 		end
 		
 	
-		8'h6:																					//we can write error handler here, now that module doing bothing))
-		if (!RamFlagDataTransfewring)
-			RamTrasferFSM <= 8'h0;
+		8'h6:																			//we can write error handler here, now that module doing bothing))
+		if (!dataTransferFlagRamDriver)
+			fsmStateTransfer <= 8'h0;
 			
-		default: RamTrasferFSM <= 8'h0;
+		default: fsmStateTransfer <= 8'h0;
 		
 	endcase
 end
 
 
-assign transferingStatus = RamFlagDataTransfewring;
+assign transferingStatusInfo = dataTransferFlagRamDriver;
 
-wire [7:0] RamDataIn;
+wire [7:0] dataInputFifoRead;
 
 HyperRamFifo HyperRamFifoRead
 (	
-	.data									(RamDataIn[7:0]),
-	.wrclk								(RamClock400),
-	.wrreq								(RamFifoWriteReqR),
+	.data								(dataInputFifoRead[7:0]),
+	.wrclk							(clock400),
+	.wrreq							(WreqFifoRead),
 
-	.q										(RamDataOutRead[7:0]),
-	.rdclk								(clkData),
-	.rdreq								(RamFifoReadReadReqR),
+	.q									(dataOutFifoRead[7:0]),
+	.rdclk							(clockData),
+	.rdreq							(RreqFifoRead),
 
-	.aclr									(RamClr)
+	.aclr								(reset)
 
 );
 
 
-wire [7:0] RamDataOutR;
+wire [7:0] dataOutFifoWrite;
 
 HyperRamFifo HyperRamFifoWrite 
 (	
-	.data									(RamDataToWriteW[7:0]),
-	.wrclk								(clkData),
-	.wrreq								(RamFifoWriteReqW),
+	.data								(dataInputFifoWrite[7:0]),
+	.wrclk							(clockData),
+	.wrreq							(WreqFifoWrite),
 
-	.rdclk								(clkData),
-	.rdreq								(RamFifoReadReqW),
-	.q										(RamDataOutR[7:0]),
+	.rdclk							(clockData),
+	.rdreq							(RreqFifoWrite),
+	.q									(dataOutFifoWrite[7:0]),
 
-	.aclr									(RamClr)
+	.aclr								(reset)
 
 );
 
@@ -246,28 +220,28 @@ hyperRamDriver hyperRamDriver
 (
 
 
-	.enable								(RamEnable),								//Modul's enable
-	.clock200							(RamClock200), 
-	.clock200shifted					(RamClock200Shifted), 
-	.clock400							(RamClock400),
-	.rwMode								(RamRWmode),								//Choose read or write mode
-	.dataFromFifo						(RamDataOutR[7:0]),						//Input data
-	.caInfo								(RamControlRegister[47:0]),			//RAM settings register
-	.bytesToTransfer					(RamBytesToTransfer[10:0]),			//How many bytes module will trasnfer, 1280 max
-	.dataToFifo							(RamDataIn[7:0]),							//Output data
+	.enable								(enableRamDriver),								//Modul's enable
+	.clock200							(clock200), 
+	.clock200shifted					(clock200Shifted), 
+	.clock400							(clock400),
+	.rwMode								(rwModeRamDriver),								//Choose read or write mode
+	.dataFromFifo						(dataOutFifoWrite[7:0]),						//Input data
+	.caInfo								(controlRegRamDriver[47:0]),					//RAM settings register
+	.bytesToTransfer					(dataLenRamDriver[10:0]),						//How many bytes module will trasnfer, 1280 max
+	.dataToFifo							(dataInputFifoRead[7:0]),						//Output data
 
-	.toRamData							(RamChipData[7:0]),						//data connected to chip
-	.rwds									(RamChipRwds),								//rwds connected to chip
+	.toRamData							(dataChip[7:0]),									//data connected to chip
+	.rwds									(rwdsChip),											//rwds connected to chip
 
-	.toRamCk								(RamChipClk),								//clock connected to chip (pos in ddr mode)
-	.toRamCkInv							(RamChipClkInv),							//clock connected to chip (neg in ddr mode, in common mode is not connected)
-	.toRamNrst							(RamChipRestN),							//chip reset
-	.toRamCs								(RamChipChipSelect),						//chip chip select
-
-	.csDone								(RamFlagCsDone),							//chip select signal ended, chip ready to config
-	.setupDone							(RamFlagSetupDone),						//config ended, chip ready to transfer
-	.dataTransfering					(RamFlagDataTransfewring),				//data transfernig status
-	.processDone						(RamFlagTrasferEnd)						//data transfering ended
+	.toRamCk								(clockChip),										//clock connected to chip (pos in ddr mode)
+	.toRamCkInv							(clockChipN),										//clock connected to chip (neg in ddr mode, in common mode is not connected)
+	.toRamNrst							(resetnChip),										//chip reset
+	.toRamCs								(csChip),											//chip chip select
+	
+	.csDone								(csDoneFlagRamDriver),							//chip select signal ended, chip ready to config
+	.setupDone							(setupDoneFlagRamDriver),						//config ended, chip ready to transfer
+	.dataTransfering					(dataTransferFlagRamDriver),					//data transfernig status
+	.processDone						(transferEndFlagRamDriver)						//data transfering ended
 
 
 );
