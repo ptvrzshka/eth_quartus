@@ -48,7 +48,7 @@ eth_nios_v2 eth_nios_v2
 		.eth_tse_0_mac_rgmii_connection_rx_control		(eth_tse_0_mac_rgmii_connection_rx_control),   //                                      .rx_control
 		.eth_tse_0_mac_rgmii_connection_tx_control		(eth_tse_0_mac_rgmii_connection_tx_control),   //                                      .tx_control
 		.eth_tse_0_pcs_mac_rx_clock_connection_clk		(eth_tse_0_pcs_mac_rx_clock_connection_clk),   // eth_tse_0_pcs_mac_rx_clock_connection.clk
-		.eth_tse_0_pcs_mac_tx_clock_connection_clk		(eth_tse_0_pcs_mac_tx_clock_connection_clk),    // eth_tse_0_pcs_mac_tx_clock_connection.clk
+		.eth_tse_0_pcs_mac_tx_clock_connection_clk		(eth_tse_0_pcs_mac_tx_clock_connection_clk),   // eth_tse_0_pcs_mac_tx_clock_connection.clk
 		.irq_eth_input_export									(irq_eth_input_export)
 
 	);
@@ -59,6 +59,9 @@ test_data_generator test_data_generator
 	.clk_clk															(clk_clk),
 	.eth_packet_ready												(irq_eth_input_export)
 );
+
+
+
 
 
 

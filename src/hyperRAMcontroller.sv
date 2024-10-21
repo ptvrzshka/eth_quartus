@@ -10,20 +10,14 @@ module hyperRAMcontroller
 	output		RamChipRestN,					///////////////////////////
 	output		RamChipChipSelect,			///////////////////////////
 	
-	
-	input [7:0] RamDataToWrite,
-	input 		clkData,
-	
-	
-	
-	
+
 	input [22:0] RamAdrInput,					// RAM adress input 
 	input [10:0] RamTransactionLengInput,	// RAM trasnfer length
 	input RamReadWriteFlagInput,				// RAM read or write mode
 	input RamSeqclock,							// RAM queue write sync
 	
 	
-	output reg [23:0] RamAdrOutput,			//output information about actual transaction Adress
+	output reg [22:0] RamAdrOutput,			//output information about actual transaction Adress
 	output reg RamReadWriteFlagOutput,		//output information about actual transaction Read/write flag
 	output wire transferingStatus,			//output information about actual transaction Transfer status
 	
@@ -31,11 +25,28 @@ module hyperRAMcontroller
 	output [7:0] RamDataOutRead,				//read fifo output
 	input RamFifoReadReadReqR,					//read fifo read req
 	
+	input 		clkData,
 	
 	input [7:0] RamDataToWriteW,				//write fifo input
-	input RamFifoWriteReqW						//write fifo write req
+	input RamFifoWriteReqW,						//write fifo write req
+	
+	
+	
+	input reset,
+	
+	output RamClock200,
+	output RamClock200Shifted,
+	output RamClock400
 );
 
+
+hyperRamPll hyperRamPll 
+(
+	.inclk0 					(clk_50),
+	.c0						(RamClock200),
+	.c1              	   (RamClock200Shifted),
+	.c2             	   (RamClock400)
+);
 
 
 reg [35:0] RamControlSeqRegister;
@@ -61,7 +72,7 @@ always @(negedge clk_50) 																//Create RS - trigger for  fifo write r
 
 reg RamControlFifoReadReq;
 reg RamControlFifoReadClock;
-wire [35:0] RamControlSeqRegisteOutput;
+wire [34:0] RamControlSeqRegisteOutput;
 
 
 RamControlSeqFifo RamControlSeqFifo 
@@ -71,8 +82,9 @@ RamControlSeqFifo RamControlSeqFifo
 	.rdreq							(RamControlFifoReadReq),
 	.wrclk							(RamControlSeqFifoClock),
 	.wrreq							(RamControlSeqWrReq),
-	.q									(RamControlSeqRegisteOutput[35:0]),
-	.rdempty							(RamControlFifoEmpty)
+	.q									(RamControlSeqRegisteOutput[34:0]),
+	.rdempty							(RamControlFifoEmpty),
+	.aclr								(reset)
 );
 
 
@@ -121,6 +133,13 @@ begin
 	RamFifoReadReqW <= 1'b0;
 	RamFifoWriteReqR <= 1'b0;
 	RamEnable <= 1'b0;
+	RamControlRegister[47:0] <= 0;
+	RamBytesToTransfer[10:0] <= 0;
+	RamFifoWriteReqR <= 1'b0;
+	RamFifoReadReqW <= 1'b0;
+	RamControlFifoReadReq <= 1'b0;
+	RamControlFifoReadClock <= 1'b0;
+	
 	
 end
 
@@ -151,7 +170,7 @@ else begin
 		
 		8'h3:																					//Control register settings
 		begin
-			RamBytesToTransfer[10:0] <= RamControlSeqRegisteOutput[35:25];						
+			RamBytesToTransfer[10:0] <= RamControlSeqRegisteOutput[34:24];						
 			
 			RamControlRegister[47] <= RamControlSeqRegisteOutput[0];			//1 - a read transaction  0 - a write transaction
 			RamControlRegister[46] <= 1'b0;											//0 - memory space, 1 - control register space
@@ -181,7 +200,7 @@ else begin
 		
 		8'h5:
 		begin
-			if (RamControlSeqRegisteOutput[0])										//if transaction type is read from RAM, up read fifo write request
+			if (RamRWmode)																	//if transaction type is read from RAM, up read fifo write request
 				begin
 					RamFifoWriteReqR <= 1'b1;
 					RamFifoReadReqW <= 1'b0;	
@@ -220,7 +239,7 @@ HyperRamFifo HyperRamFifoRead
 	.rdclk								(clkData),
 	.rdreq								(RamFifoReadReadReqR),
 
-	.aclr									(RamClr)
+	.aclr									(reset)
 
 );
 
@@ -237,7 +256,7 @@ HyperRamFifo HyperRamFifoWrite
 	.rdreq								(RamFifoReadReqW),
 	.q										(RamDataOutR[7:0]),
 
-	.aclr									(RamClr)
+	.aclr									(reset)
 
 );
 
