@@ -45,6 +45,7 @@ module RamControlSeqFifo (
 	wrreq,
 	q,
 	rdempty,
+	rdusedw,
 	wrfull);
 
 	input	  aclr;
@@ -55,6 +56,7 @@ module RamControlSeqFifo (
 	input	  wrreq;
 	output	[35:0]  q;
 	output	  rdempty;
+	output	[6:0]  rdusedw;
 	output	  wrfull;
 `ifndef ALTERA_RESERVED_QIS
 // synopsys translate_off
@@ -66,10 +68,12 @@ module RamControlSeqFifo (
 
 	wire [35:0] sub_wire0;
 	wire  sub_wire1;
-	wire  sub_wire2;
+	wire [6:0] sub_wire2;
+	wire  sub_wire3;
 	wire [35:0] q = sub_wire0[35:0];
 	wire  rdempty = sub_wire1;
-	wire  wrfull = sub_wire2;
+	wire [6:0] rdusedw = sub_wire2[6:0];
+	wire  wrfull = sub_wire3;
 
 	dcfifo	dcfifo_component (
 				.aclr (aclr),
@@ -80,10 +84,10 @@ module RamControlSeqFifo (
 				.wrreq (wrreq),
 				.q (sub_wire0),
 				.rdempty (sub_wire1),
-				.wrfull (sub_wire2),
+				.rdusedw (sub_wire2),
+				.wrfull (sub_wire3),
 				.eccstatus (),
 				.rdfull (),
-				.rdusedw (),
 				.wrempty (),
 				.wrusedw ());
 	defparam
@@ -111,7 +115,7 @@ endmodule
 // Retrieval info: PRIVATE: AlmostEmptyThr NUMERIC "-1"
 // Retrieval info: PRIVATE: AlmostFull NUMERIC "0"
 // Retrieval info: PRIVATE: AlmostFullThr NUMERIC "127"
-// Retrieval info: PRIVATE: CLOCKS_ARE_SYNCHRONIZED NUMERIC "1"
+// Retrieval info: PRIVATE: CLOCKS_ARE_SYNCHRONIZED NUMERIC "0"
 // Retrieval info: PRIVATE: Clock NUMERIC "4"
 // Retrieval info: PRIVATE: Depth NUMERIC "128"
 // Retrieval info: PRIVATE: Empty NUMERIC "1"
@@ -133,7 +137,7 @@ endmodule
 // Retrieval info: PRIVATE: output_width NUMERIC "36"
 // Retrieval info: PRIVATE: rsEmpty NUMERIC "1"
 // Retrieval info: PRIVATE: rsFull NUMERIC "0"
-// Retrieval info: PRIVATE: rsUsedW NUMERIC "0"
+// Retrieval info: PRIVATE: rsUsedW NUMERIC "1"
 // Retrieval info: PRIVATE: sc_aclr NUMERIC "0"
 // Retrieval info: PRIVATE: sc_sclr NUMERIC "0"
 // Retrieval info: PRIVATE: wsEmpty NUMERIC "0"
@@ -159,6 +163,7 @@ endmodule
 // Retrieval info: USED_PORT: rdclk 0 0 0 0 INPUT NODEFVAL "rdclk"
 // Retrieval info: USED_PORT: rdempty 0 0 0 0 OUTPUT NODEFVAL "rdempty"
 // Retrieval info: USED_PORT: rdreq 0 0 0 0 INPUT NODEFVAL "rdreq"
+// Retrieval info: USED_PORT: rdusedw 0 0 7 0 OUTPUT NODEFVAL "rdusedw[6..0]"
 // Retrieval info: USED_PORT: wrclk 0 0 0 0 INPUT NODEFVAL "wrclk"
 // Retrieval info: USED_PORT: wrfull 0 0 0 0 OUTPUT NODEFVAL "wrfull"
 // Retrieval info: USED_PORT: wrreq 0 0 0 0 INPUT NODEFVAL "wrreq"
@@ -170,6 +175,7 @@ endmodule
 // Retrieval info: CONNECT: @wrreq 0 0 0 0 wrreq 0 0 0 0
 // Retrieval info: CONNECT: q 0 0 36 0 @q 0 0 36 0
 // Retrieval info: CONNECT: rdempty 0 0 0 0 @rdempty 0 0 0 0
+// Retrieval info: CONNECT: rdusedw 0 0 7 0 @rdusedw 0 0 7 0
 // Retrieval info: CONNECT: wrfull 0 0 0 0 @wrfull 0 0 0 0
 // Retrieval info: GEN_FILE: TYPE_NORMAL RamControlSeqFifo.v TRUE
 // Retrieval info: GEN_FILE: TYPE_NORMAL RamControlSeqFifo.inc FALSE

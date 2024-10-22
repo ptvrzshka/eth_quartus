@@ -12,7 +12,7 @@ input wire [10:0] bytesToTransfer;						//How many bytes module will trasnfer, 1
 output wire [7:0] dataToFifo;								//Output data
 inout wire [7:0] toRamData;								//data connected to chip
 inout wire rwds;												//rwds connected to chip
-
+output reg [10:0] fastCountNegedge = 0;
 //output wire [7:0] toRamData;
 //output wire rwds;
 
@@ -153,7 +153,7 @@ begin
 end
 
 ///////////////////////////////
-output reg [10:0] fastCountNegedge = 0;
+
 always_ff@(negedge clock400)
 begin
 	if(!enable)

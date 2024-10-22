@@ -1,52 +1,54 @@
-module hyperRAMcontroller
+`timescale  1 ns/ 1 ns
+
+module hyperRAMcontroller_tests
 (
-	input 					clk_50,
 	
-	inout  	[7:0]			dataChip,						///////////////////////////
-	inout 					rwdsChip,						///////////////////////////
-																	///////////////////////////
-	output 					clockChip,						///  Chip Connections   ///
-	output 					clockChipN,						///////////////////////////		
-	output					resetnChip,						///////////////////////////
-	output					csChip,							///////////////////////////
 	
+	inout [7:0] dataChip,					///////////////////////////
+	inout 		rwdsChip,					///////////////////////////
+													///////////////////////////
+	output 		clockChip,					///  Chip Connections   ///
+	output 		clockChipN,					///////////////////////////		
+	output		resetnChip,					///////////////////////////
+	output		csChip,						///////////////////////////
+	
+	input 		clockData,
 
-	input 					clockData,
+	input [22:0] adrQueury,						// RAM adress input 
+	input [10:0] transactionLenQueury,		// RAM trasnfer length
+	input rwFlagQueury,							// RAM read or write mode
+	input clockQueury,							// RAM queue write sync
 	
+	
+	output reg [23:0] adrInfo,					//output information about actual transaction Adress
+	output reg rwFlagInfo,						//output information about actual transaction Read/write flag
+	output wire transferingStatusInfo,		//output information about actual transaction Transfer status
+	
+	
+	output [7:0] dataOutFifoRead,				//read fifo output
+	input RreqFifoRead,							//read fifo read req
+	
+	input 		clkData,
+	
+	input reset,
 
-	input  	[22:0]		adrQueury,						// RAM adress input 
-	input  	[10:0]		transactionLenQueury,		// RAM trasnfer length
-	input						rwFlagQueury,					// RAM read or write mode
-	input 					clockQueury,					// RAM queue write sync
-	
-	
-	output reg [6:0] 		numInQueuryInfo,				// number in queury 
-	output					transferingStatusInfo,		// transfer status for decrement queury position
-	output reg [11:0]		adrWriteInfo,					// start writing adress 
-	
-	output  	[7:0]			dataOutRamRead,				//read fifo output
-	input 	[11:0]		adrReadRamRead,				//read fifo read req
-	
-	input 					clkData,
-	
-	input 					reset,
-	
-	output 					clock200,
-	output					clock200Shifted,
-	output 					clock400,
-	
-	input  	[7:0]			dataInputFifoWrite,			//write fifo input
-	input 					WreqFifoWrite					//write fifo write req
+	input [7:0] dataInputFifoWrite,			//write fifo input
+	input WreqFifoWrite							//write fifo write req
 );
 
+reg clk_50;
+reg clock200;
+reg clock200Shifted;
+reg clock400;
 
-hyperRamPll hyperRamPll 
-(
-	.inclk0 					(clk_50),
-	.c0						(clock200),
-	.c1              	   (clock200Shifted),
-	.c2             	   (clock400)
-);
+//
+//hyperRamPll hyperRamPll 
+//(
+//	.inclk0 					(clk_50),
+//	.c0						(clock200),
+//	.c1              	   (clock200Shifted),
+//	.c2             	   (clock400)
+//);
 
 
 reg [35:0] dataInputQueuryInput;
@@ -73,7 +75,7 @@ always @(negedge clk_50) 														//Create RS - trigger for  fifo write req
 reg RreqFifoQueury;
 reg clockReadFifoQueury;
 wire [35:0] dataOutFifoQueury;
-wire [6:0] numInQueury;
+
 
 RamControlSeqFifo RamControlSeqFifo 
 (
@@ -83,30 +85,44 @@ RamControlSeqFifo RamControlSeqFifo
 	.wrclk						(clockQueuryTemp),
 	.wrreq						(WreqFifoQuaury),
 	.q								(dataOutFifoQueury[35:0]),
-	.rdempty						(emptyFlagFifoQueury),
-	.rdusedw						(numInQueury[6:0])
+	.rdempty						(emptyFlagFifoQueury)
 );
 
+
+
+
+initial
+begin
+	clk_50 = 0;
+	clock200 = 0;
+	clock400 = 0;
+end
+
+always
+begin 
+	#5 clk_50 = !clk_50;
+	#2 clock200 = !clock200;
+	#1 clock400 = !clock400;
+end
 
 reg [7:0] fsmStateTransfer;
 reg [7:0] nextState;
 reg [10:0] dataLenRamDriver;
 reg [47:0] controlRegRamDriver;
-reg WrenRamRead;
+reg WreqFifoRead;
 reg RreqFifoWrite;
-wire transferEndFlagRamDriver;
 
 always @(posedge clk_50 or posedge transferEndFlagRamDriver)
 
 if (transferEndFlagRamDriver)
 begin
 
-	fsmStateTransfer <= 8'h0;
+	fsmStateTransfer[7:0] <= 8'h0;
 	RreqFifoWrite <= 1'b0;
-	WrenRamRead <= 1'b0;
+	WreqFifoRead <= 1'b0;
 	enableRamDriver <= 1'b0;
-	controlRegRamDriver <= 0;
-	dataLenRamDriver <= 0;
+	controlRegRamDriver[47:0] <= 0;
+	dataLenRamDriver[10:0] <= 0;
 	
 	
 end
@@ -149,8 +165,12 @@ else begin
 			controlRegRamDriver[2:0] <= dataOutFifoQueury[3:1];		//low adress space
 			
 			rwModeRamDriver <= dataOutFifoQueury[0];
-			numInQueury[6:0] <= numInQueury[6:0];							//fixing position in queury for current transfer, 
-																						//user can control him position in queury
+			
+			
+			adrInfo[22:0] <= dataOutFifoQueury[23:1];						//output information about actual transaction
+			rwFlagInfo <= dataOutFifoQueury[0];								//output information about actual transaction
+			
+			
 			
 			fsmStateTransfer <= 8'h4;
 			
@@ -159,7 +179,6 @@ else begin
 		8'h4:																			//waiting for transfer control end and a latancy end
 		begin
 			enableRamDriver <= 1'b1;
-			adrWriteInfo[11:0] <= adrWriteRamRead;
 			if (setupDoneFlagRamDriver) fsmStateTransfer <= 8'h5;
 		end
 		
@@ -167,12 +186,12 @@ else begin
 		begin
 			if (rwModeRamDriver)													//if transaction type is read from RAM, up read fifo write request
 				begin		
-					WrenRamRead <= 1'b1;
+					WreqFifoRead <= 1'b1;
 					RreqFifoWrite <= 1'b0;	
 				end
 			else 																		//if transaction type is write to RAM, up write fifo read request
 				begin
-					WrenRamRead <= 1'b0;
+					WreqFifoRead <= 1'b0;
 					RreqFifoWrite <= 1'b1;	
 				end												
 		
@@ -190,30 +209,23 @@ else begin
 end
 
 
-assign transferingStatusInfo = transferEndFlagRamDriver;
+assign transferingStatusInfo = dataTransferFlagRamDriver;
 
-wire [7:0] dataInputRamRead;
+wire [7:0] dataInputFifoRead;
 
+HyperRamFifo HyperRamFifoRead
+(	
+	.data								(dataInputFifoRead[7:0]),
+	.wrclk							(clock400),
+	.wrreq							(WreqFifoRead),
 
-reg [11:0] adrWriteRamRead;
+	.q									(dataOutFifoRead[7:0]),
+	.rdclk							(clockData),
+	.rdreq							(RreqFifoRead),
 
-//Fast write adress for read RAM
-always @(posedge clock400) if(rwModeRamDriver && dataTransferFlagRamDriver) adrWriteRamRead <= adrWriteRamRead + 1;
+	.aclr								(reset)
 
-
-ramRead ramRead 
-(
-	.wraddress				(adrWriteRamRead[11:0]),
-	.wrclock					(clock400),
-	.wren						(WrenRamRead),
-	.data						(dataInputRamRead[7:0]),
-	
-	
-	.rdclock					(clockData),
-	.rdaddress				(adrReadRamRead[11:0]),
-	.q							(dataOutRamRead[7:0])
 );
-
 
 
 wire [7:0] dataOutFifoWrite;
@@ -233,9 +245,6 @@ HyperRamFifo HyperRamFifoWrite
 );
 
 
-	
-
-
 hyperRamDriver hyperRamDriver
 (
 
@@ -248,7 +257,7 @@ hyperRamDriver hyperRamDriver
 	.dataFromFifo						(dataOutFifoWrite[7:0]),						//Input data
 	.caInfo								(controlRegRamDriver[47:0]),					//RAM settings register
 	.bytesToTransfer					(dataLenRamDriver[10:0]),						//How many bytes module will trasnfer, 1280 max
-	.dataToFifo							(dataInputRamRead[7:0]),						//Output data
+	.dataToFifo							(dataInputFifoRead[7:0]),						//Output data
 
 	.toRamData							(dataChip[7:0]),									//data connected to chip
 	.rwds									(rwdsChip),											//rwds connected to chip
