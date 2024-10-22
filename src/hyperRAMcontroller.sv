@@ -22,7 +22,7 @@ module hyperRAMcontroller
 	
 	output reg [6:0] 		numInQueuryInfo,				// number in queury 
 	output					transferingStatusInfo,		// transfer status for decrement queury position
-	output reg [11:0]		adrWriteInfo,					// start writing adress 
+	output reg [11:0]		adrReadInfo,					// start writing adress 
 	
 	output  	[7:0]			dataOutRamRead,				//read fifo output
 	input 	[11:0]		adrReadRamRead,				//read fifo read req
@@ -60,15 +60,15 @@ begin
 end
 
 reg clockQueuryTemp;
-always @(posedge clk_50) clockQueuryTemp <= clockQueury; 			//Create delayed sync signal for fifo writet request
-
+always @(posedge clk_50) clockQueuryTemp <= clockQueury; 			
+//Create delayed sync signal for fifo writet request
 
 
 reg WreqFifoQuaury;
-always @(negedge clk_50) 														//Create RS - trigger for  fifo write request
+always @(negedge clk_50) 														
 	if (clockQueury) WreqFifoQuaury <= 1'b1;
 	else if (clockQueuryTemp) WreqFifoQuaury <= 1'b0;
-	
+//Create RS - trigger for  fifo write request	
 
 reg RreqFifoQueury;
 reg clockReadFifoQueury;
@@ -96,6 +96,9 @@ reg WrenRamRead;
 reg RreqFifoWrite;
 wire transferEndFlagRamDriver;
 
+always @(posedge clock200) numInQueuryInfo[6:0] <= numInQueury[6:0];						
+//fixing position in queury for current transfer
+
 always @(posedge clk_50 or posedge transferEndFlagRamDriver)
 
 if (transferEndFlagRamDriver)
@@ -114,29 +117,31 @@ end
 else begin
 	case (fsmStateTransfer)
 	
-		8'h0:	if (!emptyFlagFifoQueury) fsmStateTransfer <= 8'h1;			//IDLE state
+		8'h0:	if (!emptyFlagFifoQueury) fsmStateTransfer <= 8'h1;	//IDLE state
 		
-		8'h1:																					//if ram queue is not empty generate fifo sync signals
+		8'h1:
+		//if ram queue is not empty generate fifo sync signals		
 		begin		
 			RreqFifoQueury <= 1'b1;
 			if (RreqFifoQueury) 
 			begin
-				clockReadFifoQueury <= 1'b1;
-				fsmStateTransfer <= 8'h2;
-				
+				clockReadFifoQueury <= 1'b1;									
+				fsmStateTransfer <= 8'h2;		
 			end
 		end
 		
 		
-		8'h2:	
+		8'h2:
+		//generate queury fifo sync signals
 		begin
-			RreqFifoQueury <= 1'b0;
+			RreqFifoQueury <= 1'b0;												
 			clockReadFifoQueury <= 1'b0;
 			fsmStateTransfer <= 8'h3;
 		end
 		
 		
-		8'h3:																			//Control register settings
+		8'h3:
+		//Control register settings
 		begin
 			dataLenRamDriver[10:0] <= dataOutFifoQueury[34:24];						
 			
@@ -149,28 +154,31 @@ else begin
 			controlRegRamDriver[2:0] <= dataOutFifoQueury[3:1];		//low adress space
 			
 			rwModeRamDriver <= dataOutFifoQueury[0];
-			numInQueury[6:0] <= numInQueury[6:0];							//fixing position in queury for current transfer, 
+			 
 																						//user can control him position in queury
 			
 			fsmStateTransfer <= 8'h4;
 			
 		end
 		
-		8'h4:																			//waiting for transfer control end and a latancy end
+		8'h4:
+		//waiting for transfer control end and a latancy end		
 		begin
 			enableRamDriver <= 1'b1;
-			adrWriteInfo[11:0] <= adrWriteRamRead;
+			adrReadInfo[11:0] <= adrWriteRamRead[11:0];
 			if (setupDoneFlagRamDriver) fsmStateTransfer <= 8'h5;
 		end
 		
 		8'h5:
 		begin
-			if (rwModeRamDriver)													//if transaction type is read from RAM, up read fifo write request
+			if (rwModeRamDriver)
+			//if transaction type is read from RAM, up read fifo write request
 				begin		
 					WrenRamRead <= 1'b1;
 					RreqFifoWrite <= 1'b0;	
 				end
-			else 																		//if transaction type is write to RAM, up write fifo read request
+			else
+			//if transaction type is write to RAM, up write fifo read request
 				begin
 					WrenRamRead <= 1'b0;
 					RreqFifoWrite <= 1'b1;	
@@ -180,7 +188,8 @@ else begin
 		end
 		
 	
-		8'h6:																			//we can write error handler here, now that module doing bothing))
+		8'h6:
+		//we can write error handler here, now that module doing bothing))
 		if (!dataTransferFlagRamDriver)
 			fsmStateTransfer <= 8'h0;
 			
