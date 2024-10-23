@@ -1,0 +1,10 @@
+Info: Using NativeLink to launch synthesis Tool
+Synthesis tool <None> is not supported by NativeLink
+Error: NativeLink flow failed to complete synthesis
+
+================The following information is provided to Debug NativeLink Script=================
+Nativelink TCL script failed with errorCode:  POSIX ENOENT {no such file or directory}
+Nativelink TCL script failed with errorInfo:  couldn't open "D:/intelFPGA/18.0/quartus/bin64/tclIndex": no such file or directory
+    while executing
+"open [file join $dir tclIndex]"
+PATH Environment Variable is set to :  d:\intelfpga\18.0\quartus\bin64\;d:\intelfpga\18.0\quartus\bin64\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\WireGuard\;D:\Program Files\PuTTY\;C:\Program Files (x86)\HP\HP OCR\DB_Lib\;C:\Program Files\HP\Common\HPDestPlgIn\;C:\Program Files (x86)\HP\Common\HPDestPlgIn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\dotnet\;c:\Program Files\Git\cmd;C:\Program Files\TortoiseGit\bin;C:\Users\User\AppData\Local\Microsoft\WindowsApps;C:\Program Files\HP\Common\HPDestPlgIn\;C:\Program Files (x86)\HP\Common\HPDestPlgIn\;D:\programs\Microsoft VS Code\bin;C:\Users\User\.dotnet\tools;D:\Program Files\modeltech64_10.6d\win64;d:\modeltech64_10.5\win64;C:\modeltech64_10.4c\win64

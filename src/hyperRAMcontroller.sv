@@ -94,13 +94,20 @@ reg [10:0] dataLenRamDriver;
 reg [47:0] controlRegRamDriver;
 reg WrenRamRead;
 reg RreqFifoWrite;
+reg enableRamDriver;
+reg rwModeRamDriver;
 wire transferEndFlagRamDriver;
+wire dataTransferFlagRamDriver;
+wire [7:0] dataInputRamRead;
+reg [11:0] adrWriteRamRead;
+wire setupDoneFlagRamDriver;
 
 always @(posedge clock200) numInQueuryInfo[6:0] <= numInQueury[6:0];						
 //fixing position in queury for current transfer
 
-always @(posedge clk_50 or posedge transferEndFlagRamDriver)
 
+
+always @(posedge clk_50 or posedge transferEndFlagRamDriver)
 if (transferEndFlagRamDriver)
 begin
 
@@ -201,14 +208,10 @@ end
 
 assign transferingStatusInfo = transferEndFlagRamDriver;
 
-wire [7:0] dataInputRamRead;
 
 
-reg [11:0] adrWriteRamRead;
-
-//Fast write adress for read RAM
 always @(posedge clock400) if(rwModeRamDriver && dataTransferFlagRamDriver) adrWriteRamRead <= adrWriteRamRead + 1;
-
+//Fast write adress for read RAM
 
 ramRead ramRead 
 (

@@ -1,0 +1,8 @@
+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRAMcontroller.sv {1 {vlog -work testHyperRam -vopt -sv -stats=none D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRAMcontroller.sv
+Model Technology ModelSim SE-64 vlog 10.4c Compiler 2015.07 Jul 20 2015
+-- Compiling module hyperRAMcontroller
+
+Top level modules:
+	hyperRAMcontroller
+
+} {} {}}

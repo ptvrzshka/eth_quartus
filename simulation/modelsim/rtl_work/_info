@@ -1,0 +1,125 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/simulation/modelsim
+vHyperRamFifo
+Z1 !s110 1729671358
+!i10b 1
+!s100 mFZEPnZFG;T^_XlLjNlL<0
+I:o3j>`iLKV_Rb83jEE_fa0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1729494332
+8D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/HyperRamFifo.v
+FD:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/HyperRamFifo.v
+Z3 L0 39
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1729671358.000000
+!s107 D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/HyperRamFifo.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src|D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/HyperRamFifo.v|
+!i113 1
+Z6 o-vlog01compat -work work
+Z7 !s92 -vlog01compat -work work +incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src
+Z8 tCvgOpt 0
+n@hyper@ram@fifo
+vhyperRamPll
+R1
+!i10b 1
+!s100 >Zh70A^m876a`CLHe5^Lb0
+Ih`EP2zl?ezS_kj>MmCzS]2
+R2
+R0
+w1729526473
+8D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamPll.v
+FD:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamPll.v
+R3
+R4
+r1
+!s85 0
+31
+R5
+!s107 D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamPll.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src|D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamPll.v|
+!i113 1
+R6
+R7
+R8
+nhyper@ram@pll
+vhyperRamPll_altpll
+R1
+!i10b 1
+!s100 U2_d2<8dkmo5JS_V^3XV>0
+IE6eQlMA5BHB9]Z2zBzkRO0
+R2
+R0
+w1729526721
+8D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/db/hyperrampll_altpll.v
+FD:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/db/hyperrampll_altpll.v
+L0 29
+R4
+r1
+!s85 0
+31
+R5
+!s107 D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/db/hyperrampll_altpll.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/db|D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/db/hyperrampll_altpll.v|
+!i113 1
+R6
+!s92 -vlog01compat -work work +incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/db
+R8
+nhyper@ram@pll_altpll
+vRamControlSeqFifo
+R1
+!i10b 1
+!s100 2@@oGMFIfAZ]]lH[JR_X?1
+ISQ[2<4@D_@a>nWRNT7PNW0
+R2
+R0
+w1729585086
+8D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/RamControlSeqFifo.v
+FD:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/RamControlSeqFifo.v
+R3
+R4
+r1
+!s85 0
+31
+R5
+!s107 D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/RamControlSeqFifo.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src|D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/RamControlSeqFifo.v|
+!i113 1
+R6
+R7
+R8
+n@ram@control@seq@fifo
+vramRead
+R1
+!i10b 1
+!s100 <fH6EcYTbfiKB2Om109ZX2
+I68Y7:^E6zJmO4c1S4MY]42
+R2
+R0
+w1729603002
+8D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/ramRead.v
+FD:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/ramRead.v
+R3
+R4
+r1
+!s85 0
+31
+R5
+!s107 D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/ramRead.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus|D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/ramRead.v|
+!i113 1
+R6
+!s92 -vlog01compat -work work +incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus
+R8
+nram@read

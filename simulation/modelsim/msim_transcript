@@ -1,0 +1,176 @@
+# Reading D:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+# do new_internet_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying D:/intelFPGA/18.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src {D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/RamControlSeqFifo.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 11:15:58 on Oct 23,2024
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src" D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/RamControlSeqFifo.v 
+# -- Compiling module RamControlSeqFifo
+# 
+# Top level modules:
+# 	RamControlSeqFifo
+# End time: 11:15:58 on Oct 23,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src {D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/HyperRamFifo.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 11:15:58 on Oct 23,2024
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src" D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/HyperRamFifo.v 
+# -- Compiling module HyperRamFifo
+# 
+# Top level modules:
+# 	HyperRamFifo
+# End time: 11:15:58 on Oct 23,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src {D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamPll.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 11:15:58 on Oct 23,2024
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src" D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamPll.v 
+# -- Compiling module hyperRamPll
+# 
+# Top level modules:
+# 	hyperRamPll
+# End time: 11:15:58 on Oct 23,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus {D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/ramRead.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 11:15:58 on Oct 23,2024
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus" D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/ramRead.v 
+# -- Compiling module ramRead
+# 
+# Top level modules:
+# 	ramRead
+# End time: 11:15:58 on Oct 23,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/db {D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/db/hyperrampll_altpll.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 11:15:58 on Oct 23,2024
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/db" D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/db/hyperrampll_altpll.v 
+# -- Compiling module hyperRamPll_altpll
+# 
+# Top level modules:
+# 	hyperRamPll_altpll
+# End time: 11:15:58 on Oct 23,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src {D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 11:15:58 on Oct 23,2024
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src" D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv 
+# -- Compiling module hyperRamDriver
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(51): (vlog-2110) Illegal reference to net "csDone".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(53): (vlog-2110) Illegal reference to net "csDone".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(70): (vlog-2110) Illegal reference to net "toRamCs".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(72): (vlog-2110) Illegal reference to net "toRamCs".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(77): (vlog-2110) Illegal reference to net "toRamCs".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(79): (vlog-2110) Illegal reference to net "toRamCs".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(89): (vlog-2110) Illegal reference to net "clockMask".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(91): (vlog-2110) Illegal reference to net "clockMask".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(115): (vlog-2110) Illegal reference to net "setupDone".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(117): (vlog-2110) Illegal reference to net "setupDone".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(122): (vlog-2110) Illegal reference to net "setupDone".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(124): (vlog-2110) Illegal reference to net "setupDone".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(134): (vlog-2110) Illegal reference to net "dataTransfering".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(138): (vlog-2110) Illegal reference to net "dataTransfering".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(145): (vlog-2110) Illegal reference to net "dataTransfering".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(149): (vlog-2110) Illegal reference to net "dataTransfering".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(179): (vlog-2110) Illegal reference to net "toRamData".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(180): (vlog-2110) Illegal reference to net "toRamData".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(181): (vlog-2110) Illegal reference to net "toRamData".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(182): (vlog-2110) Illegal reference to net "toRamData".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(183): (vlog-2110) Illegal reference to net "toRamData".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(184): (vlog-2110) Illegal reference to net "toRamData".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(191): (vlog-2110) Illegal reference to net "toRamData".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(195): (vlog-2110) Illegal reference to net "toRamData".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(202): (vlog-2110) Illegal reference to net "toRamData".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(206): (vlog-2110) Illegal reference to net "toRamData".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(216): (vlog-2110) Illegal reference to net "dataToFifo".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(220): (vlog-2110) Illegal reference to net "dataToFifo".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(228): (vlog-2110) Illegal reference to net "rwds".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(234): (vlog-2110) Illegal reference to net "rwds".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(238): (vlog-2110) Illegal reference to net "rwds".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(243): (vlog-2110) Illegal reference to net "rwds".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(253): (vlog-2110) Illegal reference to net "processDone".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(255): (vlog-2110) Illegal reference to net "processDone".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(260): (vlog-2110) Illegal reference to net "processDone".
+# ** Error: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDriver.sv(262): (vlog-2110) Illegal reference to net "processDone".
+# End time: 11:15:58 on Oct 23,2024, Elapsed time: 0:00:00
+# Errors: 36, Warnings: 0
+# ** Error: D:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./new_internet_run_msim_rtl_verilog.do line 13
+# D:/intelFPGA/18.1/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog -sv -work work +incdir+D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src {D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamDrive..."
+vsim work.ramRead
+# vsim work.ramRead 
+# Start time: 11:16:30 on Oct 23,2024
+# Loading work.ramRead
+# ** Error: (vsim-3033) D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/ramRead.v(67): Instantiation of 'altsyncram' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /ramRead File: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/ramRead.v
+#         Searched libraries:
+#             D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/simulation/modelsim/rtl_work
+# Error loading design
+# End time: 11:16:30 on Oct 23,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vsim work.HyperRamFifo
+# vsim work.HyperRamFifo 
+# Start time: 11:16:32 on Oct 23,2024
+# Loading work.HyperRamFifo
+# ** Error: (vsim-3033) D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/HyperRamFifo.v(66): Instantiation of 'dcfifo' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /HyperRamFifo File: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/HyperRamFifo.v
+#         Searched libraries:
+#             D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/simulation/modelsim/rtl_work
+# Error loading design
+# End time: 11:16:32 on Oct 23,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vsim work.ramRead
+# vsim work.ramRead 
+# Start time: 11:16:37 on Oct 23,2024
+# Loading work.ramRead
+# ** Error: (vsim-3033) D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/ramRead.v(67): Instantiation of 'altsyncram' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /ramRead File: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/ramRead.v
+#         Searched libraries:
+#             D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/simulation/modelsim/rtl_work
+# Error loading design
+# End time: 11:16:37 on Oct 23,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vsim rtl_work.HyperRamFifo
+# vsim rtl_work.HyperRamFifo 
+# Start time: 11:16:42 on Oct 23,2024
+# Loading rtl_work.HyperRamFifo
+# ** Error: (vsim-3033) D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/HyperRamFifo.v(66): Instantiation of 'dcfifo' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /HyperRamFifo File: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/HyperRamFifo.v
+#         Searched libraries:
+#             D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/simulation/modelsim/rtl_work
+# Error loading design
+# End time: 11:16:42 on Oct 23,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vsim rtl_work.hyperRamPll
+# vsim rtl_work.hyperRamPll 
+# Start time: 11:16:44 on Oct 23,2024
+# Loading rtl_work.hyperRamPll
+# ** Error: (vsim-3033) D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamPll.v(65): Instantiation of 'altpll' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /hyperRamPll File: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/hyperRamPll.v
+#         Searched libraries:
+#             D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/simulation/modelsim/rtl_work
+# Error loading design
+# End time: 11:16:44 on Oct 23,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vsim work.RamControlSeqFifo
+# vsim work.RamControlSeqFifo 
+# Start time: 11:16:44 on Oct 23,2024
+# Loading work.RamControlSeqFifo
+# ** Error: (vsim-3033) D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/RamControlSeqFifo.v(78): Instantiation of 'dcfifo' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /RamControlSeqFifo File: D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/src/RamControlSeqFifo.v
+#         Searched libraries:
+#             D:/__PROJECTS/001_Granulit/2._QUARTUS/eth_quartus/simulation/modelsim/rtl_work
+# Error loading design
+# End time: 11:16:45 on Oct 23,2024, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0
